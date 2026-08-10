@@ -821,14 +821,12 @@
             color: var(--primary-dark);
         }
 
-        /* --- product grid --- */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 28px;
         }
 
-        /* --- product card --- */
         .product-card {
             background: var(--warm-white);
             border-radius: var(--radius);
@@ -847,7 +845,6 @@
             border-color: var(--gold-light);
         }
 
-        /* --- product image --- */
         .product-image {
             position: relative;
             aspect-ratio: 3/4;
@@ -867,7 +864,6 @@
             transform: scale(1.05);
         }
 
-        /* subtle overlay for depth */
         .product-image::after {
             content: '';
             position: absolute;
@@ -876,7 +872,6 @@
             pointer-events: none;
         }
 
-        /* --- badges --- */
         .product-image .tag {
             position: absolute;
             top: 14px;
@@ -893,7 +888,6 @@
             box-shadow: 0 2px 8px rgba(201, 169, 110, 0.3);
         }
 
-        /* --- wishlist --- */
         .product-image .wishlist {
             position: absolute;
             top: 14px;
@@ -921,7 +915,6 @@
             transform: scale(1.08);
         }
 
-        /* --- product info --- */
         .product-info {
             padding: 18px 20px 22px;
             flex: 1;
@@ -984,7 +977,6 @@
             font-weight: 400;
         }
 
-        /* --- add to cart button --- */
         .product-info .btn-add {
             width: 100%;
             padding: 12px;
@@ -1011,7 +1003,6 @@
             transform: translateY(0);
         }
 
-        /* --- responsive --- */
         @media (max-width: 1024px) {
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1116,7 +1107,9 @@
             }
         }
 
-        /* ===== COMFORT & CRAFTSMANSHIP ===== */
+        /* ================================================================
+           WHY SILK & SOUL — PREMIUM REFINED
+           ================================================================ */
         .craftsmanship {
             padding: 80px 0 90px;
             background: var(--cream);
@@ -1130,6 +1123,7 @@
             align-items: center;
         }
 
+        /* left column: image + testimonial */
         .craft-image-block {
             position: relative;
         }
@@ -1148,13 +1142,14 @@
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.6s ease;
+            transition: transform 0.7s ease;
         }
 
         .craft-image-wrapper:hover .craft-img {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
+        /* testimonial card */
         .craft-testimonial {
             position: absolute;
             bottom: -24px;
@@ -1163,9 +1158,15 @@
             background: var(--warm-white);
             padding: 20px 28px;
             border-radius: var(--radius-sm);
-            box-shadow: var(--shadow);
+            box-shadow: 0 12px 40px rgba(45, 27, 26, 0.10);
             border-left: 4px solid var(--gold);
             max-width: 320px;
+            transition: var(--transition);
+        }
+
+        .craft-testimonial:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(45, 27, 26, 0.14);
         }
 
         .craft-testimonial .quote-icon {
@@ -1190,8 +1191,10 @@
 
         .craft-testimonial .attribution .name {
             color: var(--text-dark);
+            font-weight: 600;
         }
 
+        /* right column: content */
         .craft-content {
             display: flex;
             flex-direction: column;
@@ -1203,7 +1206,7 @@
             font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             color: var(--gold);
             margin-bottom: 8px;
         }
@@ -1230,6 +1233,7 @@
             margin-bottom: 32px;
         }
 
+        /* benefits list */
         .craft-benefits {
             display: flex;
             flex-direction: column;
@@ -1263,11 +1267,13 @@
             font-size: 1.1rem;
             color: var(--primary);
             transition: var(--transition);
+            font-family: 'Playfair Display', serif;
         }
 
         .craft-benefit:hover .badge {
             background: var(--gold);
-            transform: scale(1.05);
+            transform: scale(1.08);
+            box-shadow: 0 4px 16px rgba(201, 169, 110, 0.3);
         }
 
         .craft-benefit .info h4 {
@@ -1275,6 +1281,7 @@
             font-weight: 600;
             color: var(--text-dark);
             margin-bottom: 2px;
+            letter-spacing: -0.01em;
         }
 
         .craft-benefit .info p {
@@ -1309,6 +1316,111 @@
 
         .craft-link:hover .arrow {
             transform: translateX(4px);
+        }
+
+        /* responsive */
+        @media (max-width: 1024px) {
+            .craftsmanship .container {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .craft-image-wrapper {
+                aspect-ratio: 4/5;
+                max-width: 520px;
+                margin: 0 auto;
+            }
+            .craft-testimonial {
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+                max-width: 340px;
+                bottom: -20px;
+            }
+            .craft-content {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            .craft-sub {
+                max-width: 100%;
+            }
+            .craft-benefit .info p {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .craftsmanship {
+                padding: 60px 0 70px;
+            }
+            .craftsmanship .container {
+                gap: 40px;
+            }
+            .craft-heading {
+                font-size: 2rem;
+            }
+            .craft-sub {
+                font-size: 1rem;
+                margin-bottom: 24px;
+            }
+            .craft-image-wrapper {
+                aspect-ratio: 4/5;
+                max-width: 100%;
+            }
+            .craft-testimonial {
+                position: relative;
+                bottom: 0;
+                left: 0;
+                transform: none;
+                max-width: 100%;
+                margin-top: 16px;
+                border-left: 4px solid var(--gold);
+                padding: 16px 20px;
+                box-shadow: var(--shadow);
+            }
+            .craft-testimonial blockquote {
+                font-size: 0.9rem;
+            }
+            .craft-benefits {
+                gap: 20px;
+            }
+            .craft-benefit {
+                gap: 16px;
+                padding-bottom: 20px;
+            }
+            .craft-benefit .badge {
+                width: 40px;
+                height: 40px;
+                font-size: 0.95rem;
+            }
+            .craft-benefit .info h4 {
+                font-size: 0.95rem;
+            }
+            .craft-benefit .info p {
+                font-size: 0.85rem;
+            }
+            .craft-link {
+                font-size: 0.9rem;
+            }
+            .craft-eyebrow {
+                font-size: 0.65rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .craft-heading {
+                font-size: 1.6rem;
+            }
+            .craft-testimonial {
+                padding: 14px 16px;
+            }
+            .craft-testimonial blockquote {
+                font-size: 0.85rem;
+            }
+            .craft-benefit .badge {
+                width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+            }
         }
 
         /* ===== TESTIMONIALS ===== */
@@ -1544,7 +1656,7 @@
             grid-column: 1 / -1;
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE OVERALL ===== */
         @media (max-width: 1024px) {
             .hero .container {
                 grid-template-columns: 1fr;
@@ -1567,32 +1679,6 @@
             .hero-image-wrapper {
                 max-width: 400px;
                 margin: 0 auto;
-            }
-            .craftsmanship .container {
-                grid-template-columns: 1fr;
-                gap: 48px;
-            }
-            .craft-image-wrapper {
-                aspect-ratio: 4/5;
-                max-width: 520px;
-                margin: 0 auto;
-            }
-            .craft-testimonial {
-                left: 50%;
-                transform: translateX(-50%);
-                right: auto;
-                max-width: 340px;
-                bottom: -20px;
-            }
-            .craft-content {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            .craft-sub {
-                max-width: 100%;
-            }
-            .craft-benefit .info p {
-                max-width: 100%;
             }
             .testimonial-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1657,61 +1743,6 @@
                 padding: 14px 28px;
                 font-size: 0.95rem;
             }
-            .craftsmanship {
-                padding: 60px 0 70px;
-            }
-            .craftsmanship .container {
-                gap: 40px;
-            }
-            .craft-heading {
-                font-size: 2rem;
-            }
-            .craft-sub {
-                font-size: 1rem;
-                margin-bottom: 24px;
-            }
-            .craft-image-wrapper {
-                aspect-ratio: 4/5;
-                max-width: 100%;
-            }
-            .craft-testimonial {
-                position: relative;
-                bottom: 0;
-                left: 0;
-                transform: none;
-                max-width: 100%;
-                margin-top: 16px;
-                border-left: 4px solid var(--gold);
-                padding: 16px 20px;
-                box-shadow: var(--shadow);
-            }
-            .craft-testimonial blockquote {
-                font-size: 0.9rem;
-            }
-            .craft-benefits {
-                gap: 20px;
-            }
-            .craft-benefit {
-                gap: 16px;
-                padding-bottom: 20px;
-            }
-            .craft-benefit .badge {
-                width: 40px;
-                height: 40px;
-                font-size: 0.95rem;
-            }
-            .craft-benefit .info h4 {
-                font-size: 0.95rem;
-            }
-            .craft-benefit .info p {
-                font-size: 0.85rem;
-            }
-            .craft-link {
-                font-size: 0.9rem;
-            }
-            .craft-eyebrow {
-                font-size: 0.65rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1738,20 +1769,6 @@
             }
             .logo {
                 font-size: 1.3rem;
-            }
-            .craft-heading {
-                font-size: 1.6rem;
-            }
-            .craft-testimonial {
-                padding: 14px 16px;
-            }
-            .craft-testimonial blockquote {
-                font-size: 0.85rem;
-            }
-            .craft-benefit .badge {
-                width: 36px;
-                height: 36px;
-                font-size: 0.85rem;
             }
         }
     </style>
@@ -1851,6 +1868,78 @@
         </div>
     </section>
 
+    <!-- ================================================================
+    WHY SILK & SOUL — PREMIUM REFINED
+    ================================================================ -->
+    <section class="craftsmanship" id="craftsmanship">
+        <div class="container">
+
+            <!-- LEFT COLUMN: Image + Testimonial -->
+            <div class="craft-image-block">
+                <div class="craft-image-wrapper">
+                    <img
+                    src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp"
+                    alt="Elegant woman wearing a Silk & Soul saree in a natural setting"
+                    class="craft-img"
+                    />
+                </div>
+                <div class="craft-testimonial">
+                    <blockquote>
+                        <span class="quote-icon">“</span>
+                        Beautiful, comfortable, and even better in person.
+                    </blockquote>
+                    <div class="attribution">
+                        — <span class="name">Priya</span>, Verified Customer
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Benefits -->
+            <div class="craft-content">
+                <span class="craft-eyebrow">Why Silk & Soul</span>
+                <h2 class="craft-heading">
+                    Sarees made for <br /><span class="accent">the way you live.</span>
+                </h2>
+                <p class="craft-sub">
+                    Beautiful fabrics, effortless drapes, and comfort you can feel all day.
+                </p>
+
+                <div class="craft-benefits">
+                    <!-- Benefit 01 -->
+                    <div class="craft-benefit">
+                        <span class="badge">01</span>
+                        <div class="info">
+                            <h4>Lightweight &amp; breathable</h4>
+                            <p>Handpicked fabrics that feel soft and comfortable, from everyday cottons to elegant silk blends.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 02 -->
+                    <div class="craft-benefit">
+                        <span class="badge">02</span>
+                        <div class="info">
+                            <h4>Effortless drape</h4>
+                            <p>Thoughtfully crafted sarees that fall beautifully and stay comfortable throughout the day.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 03 -->
+                    <div class="craft-benefit">
+                        <span class="badge">03</span>
+                        <div class="info">
+                            <h4>Made for every moment</h4>
+                            <p>From workdays to festive evenings, styles designed to move effortlessly with you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#categories" class="craft-link">
+                    Explore Our Sarees
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
     <!-- ===== CATEGORIES ===== -->
     <section class="categories" id="categories">
         <div class="container">
@@ -1905,9 +1994,7 @@
         </div>
     </section>
 
-    <!-- ================================================================
-    BEST SELLERS — PREMIUM REFINED
-    ================================================================ -->
+    <!-- ===== BEST SELLERS ===== -->
     <section class="best-sellers" id="best-sellers">
         <div class="container">
             <div class="section-header">
@@ -1919,7 +2006,6 @@
             </div>
 
             <div class="product-grid">
-                <!-- Product 1: Mysore Silk -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Mysore Silk — Wine Red" loading="lazy" />
@@ -1941,7 +2027,6 @@
                     </div>
                 </div>
 
-                <!-- Product 2: Cotton Handloom -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Cotton Handloom — Teal Blue" loading="lazy" />
@@ -1963,7 +2048,6 @@
                     </div>
                 </div>
 
-                <!-- Product 3: Georgette Drape -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Drape — Dusty Rose" loading="lazy" />
@@ -1985,7 +2069,6 @@
                     </div>
                 </div>
 
-                <!-- Product 4: Tussar Silk -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Tussar Silk — Mustard Gold" loading="lazy" />
@@ -2005,65 +2088,6 @@
                         <button class="btn-add">Add to Cart</button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== COMFORT & CRAFTSMANSHIP ===== -->
-    <section class="craftsmanship" id="craftsmanship">
-        <div class="container">
-            <div class="craft-image-block">
-                <div class="craft-image-wrapper">
-                    <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Elegant woman wearing a Silk & Soul saree" class="craft-img" />
-                </div>
-                <div class="craft-testimonial">
-                    <blockquote>
-                        <span class="quote-icon">“</span>
-                        Beautiful, comfortable, and even better in person.
-                    </blockquote>
-                    <div class="attribution">
-                        — <span class="name">Priya</span>, Verified Customer
-                    </div>
-                </div>
-            </div>
-
-            <div class="craft-content">
-                <span class="craft-eyebrow">Why Silk & Soul</span>
-                <h2 class="craft-heading">
-                    Sarees made for <br /><span class="accent">the way you live.</span>
-                </h2>
-                <p class="craft-sub">
-                    Beautiful fabrics, effortless drapes, and comfort you can feel all day.
-                </p>
-
-                <div class="craft-benefits">
-                    <div class="craft-benefit">
-                        <span class="badge">01</span>
-                        <div class="info">
-                            <h4>Lightweight &amp; breathable</h4>
-                            <p>Handpicked fabrics that feel soft and comfortable, from everyday cottons to elegant silk blends.</p>
-                        </div>
-                    </div>
-                    <div class="craft-benefit">
-                        <span class="badge">02</span>
-                        <div class="info">
-                            <h4>Effortless drape</h4>
-                            <p>Thoughtfully crafted sarees that fall beautifully and stay comfortable throughout the day.</p>
-                        </div>
-                    </div>
-                    <div class="craft-benefit">
-                        <span class="badge">03</span>
-                        <div class="info">
-                            <h4>Made for every moment</h4>
-                            <p>From workdays to festive evenings, styles designed to move effortlessly with you.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <a href="#categories" class="craft-link">
-                    Explore Our Sarees
-                    <span class="arrow">→</span>
-                </a>
             </div>
         </div>
     </section>

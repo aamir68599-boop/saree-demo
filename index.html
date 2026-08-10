@@ -455,114 +455,203 @@
             color: var(--text-muted);
         }
 
-        /* ===== PROBLEM / SOLUTION ===== */
-        .problem-solution {
-            padding: 80px 0;
+        /* ===== COMFORT & CRAFTSMANSHIP (REDESIGNED) ===== */
+        .craftsmanship {
+            padding: 80px 0 90px;
             background: var(--cream);
+            position: relative;
         }
 
-        .section-label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.6rem;
-            line-height: 1.2;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 16px;
-        }
-
-        .section-sub {
-            font-size: 1.1rem;
-            color: var(--text-soft);
-            max-width: 560px;
-            line-height: 1.7;
-        }
-
-        .ps-grid {
+        .craftsmanship .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
-            margin-top: 48px;
+            gap: 64px;
             align-items: center;
         }
 
-        .ps-visual {
-            background: var(--warm-white);
-            border-radius: var(--radius);
-            padding: 40px;
-            box-shadow: var(--shadow);
+        /* --- LEFT COLUMN: Image + Testimonial --- */
+        .craft-image-block {
             position: relative;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            gap: 16px;
-            text-align: center;
         }
 
-        .ps-visual .big-emoji {
-            font-size: 4rem;
+        .craft-image-wrapper {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            background: var(--beige);
+            aspect-ratio: 4/5;
         }
 
-        .ps-visual .ps-label {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--text-soft);
+        .craft-image-wrapper .craft-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
         }
 
-        .ps-visual .ps-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
+        .craft-image-wrapper:hover .craft-img {
+            transform: scale(1.02);
+        }
+
+        /* testimonial card overlapping the image */
+        .craft-testimonial {
+            position: absolute;
+            bottom: -24px;
+            left: 24px;
+            right: 24px;
+            background: var(--warm-white);
+            padding: 20px 28px;
+            border-radius: var(--radius-sm);
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--gold);
             max-width: 320px;
         }
 
-        .ps-content {
+        .craft-testimonial .quote-icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-right: 4px;
+        }
+
+        .craft-testimonial blockquote {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-soft);
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .craft-testimonial .attribution {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .craft-testimonial .attribution .name {
+            color: var(--text-dark);
+        }
+
+        /* --- RIGHT COLUMN: Benefits --- */
+        .craft-content {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .craft-eyebrow {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .craft-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            line-height: 1.15;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .craft-heading .accent {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .craft-sub {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            max-width: 480px;
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        /* benefits list */
+        .craft-benefits {
             display: flex;
             flex-direction: column;
             gap: 28px;
+            margin-bottom: 32px;
         }
 
-        .ps-point {
+        .craft-benefit {
             display: flex;
-            gap: 18px;
+            gap: 20px;
             align-items: flex-start;
+            padding-bottom: 28px;
+            border-bottom: 1px solid rgba(45, 27, 26, 0.06);
         }
 
-        .ps-point .num {
+        .craft-benefit:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .craft-benefit .badge {
             flex-shrink: 0;
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             background: var(--gold-light);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
+            font-size: 1.1rem;
             color: var(--primary);
-            font-size: 1.1rem;
+            transition: var(--transition);
         }
 
-        .ps-point h4 {
-            font-size: 1.1rem;
+        .craft-benefit:hover .badge {
+            background: var(--gold);
+            transform: scale(1.05);
+        }
+
+        .craft-benefit .info h4 {
+            font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 4px;
             color: var(--text-dark);
+            margin-bottom: 2px;
         }
 
-        .ps-point p {
+        .craft-benefit .info p {
+            font-size: 0.92rem;
             color: var(--text-soft);
-            font-size: 0.95rem;
             line-height: 1.6;
+            max-width: 400px;
+        }
+
+        .craft-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+            width: fit-content;
+        }
+
+        .craft-link:hover {
+            gap: 14px;
+            border-bottom-color: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        .craft-link .arrow {
+            transition: var(--transition);
+        }
+
+        .craft-link:hover .arrow {
+            transform: translateX(4px);
         }
 
         /* ===== CATEGORIES ===== */
@@ -1033,8 +1122,37 @@
                 margin: 0 auto;
             }
 
-            .ps-grid {
+            /* craftsmanship tablet */
+            .craftsmanship .container {
                 grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .craft-image-wrapper {
+                aspect-ratio: 4/5;
+                max-width: 520px;
+                margin: 0 auto;
+            }
+
+            .craft-testimonial {
+                left: 50%;
+                transform: translateX(-50%);
+                right: auto;
+                max-width: 340px;
+                bottom: -20px;
+            }
+
+            .craft-content {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .craft-sub {
+                max-width: 100%;
+            }
+
+            .craft-benefit .info p {
+                max-width: 100%;
             }
 
             .cat-grid {
@@ -1129,11 +1247,6 @@
                 max-width: 320px;
             }
 
-            .ps-visual {
-                padding: 28px 20px;
-                min-height: 200px;
-            }
-
             .best-sellers .section-header {
                 flex-direction: column;
                 align-items: center;
@@ -1156,6 +1269,76 @@
             .btn-gold {
                 padding: 14px 28px;
                 font-size: 0.95rem;
+            }
+
+            /* craftsmanship mobile */
+            .craftsmanship {
+                padding: 60px 0 70px;
+            }
+
+            .craftsmanship .container {
+                gap: 40px;
+            }
+
+            .craft-heading {
+                font-size: 2rem;
+            }
+
+            .craft-sub {
+                font-size: 1rem;
+                margin-bottom: 24px;
+            }
+
+            .craft-image-wrapper {
+                aspect-ratio: 4/5;
+                max-width: 100%;
+            }
+
+            .craft-testimonial {
+                position: relative;
+                bottom: 0;
+                left: 0;
+                transform: none;
+                max-width: 100%;
+                margin-top: 16px;
+                border-left: 4px solid var(--gold);
+                padding: 16px 20px;
+                box-shadow: var(--shadow);
+            }
+
+            .craft-testimonial blockquote {
+                font-size: 0.9rem;
+            }
+
+            .craft-benefits {
+                gap: 20px;
+            }
+
+            .craft-benefit {
+                gap: 16px;
+                padding-bottom: 20px;
+            }
+
+            .craft-benefit .badge {
+                width: 40px;
+                height: 40px;
+                font-size: 0.95rem;
+            }
+
+            .craft-benefit .info h4 {
+                font-size: 0.95rem;
+            }
+
+            .craft-benefit .info p {
+                font-size: 0.85rem;
+            }
+
+            .craft-link {
+                font-size: 0.9rem;
+            }
+
+            .craft-eyebrow {
+                font-size: 0.65rem;
             }
         }
 
@@ -1215,6 +1398,24 @@
             }
 
             .trust-item .title {
+                font-size: 0.85rem;
+            }
+
+            .craft-heading {
+                font-size: 1.6rem;
+            }
+
+            .craft-testimonial {
+                padding: 14px 16px;
+            }
+
+            .craft-testimonial blockquote {
+                font-size: 0.85rem;
+            }
+
+            .craft-benefit .badge {
+                width: 36px;
+                height: 36px;
                 font-size: 0.85rem;
             }
         }
@@ -1333,49 +1534,75 @@
         </div>
     </section>
 
-    <!-- ===== PROBLEM / SOLUTION ===== -->
-    <section class="problem-solution" id="problem-solution">
+    <!-- ===== COMFORT & CRAFTSMANSHIP (REDESIGNED) ===== -->
+    <section class="craftsmanship" id="craftsmanship">
         <div class="container">
-            <span class="section-label">✨ The Shift</span>
-            <h2 class="section-title">
-                Sarees that <br class="hide-mobile" />don't hold you back.
-            </h2>
-            <p class="section-sub">
-                Because beauty should never come at the cost of comfort.
-            </p>
 
-            <div class="ps-grid">
-                <div class="ps-visual">
-                    <div class="big-emoji">🧘</div>
-                    <div class="ps-label">"I can breathe, move, and live in it."</div>
-                    <div class="ps-desc">
-                        — Priya, 34 · IT Professional
-                    </div>
+            <!-- LEFT COLUMN: Image + Testimonial -->
+            <div class="craft-image-block">
+                <div class="craft-image-wrapper">
+                    <!-- Premium editorial lifestyle image -->
+                    <img
+                    src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp"
+                    alt="Elegant woman wearing a Silk & Soul saree in a natural setting"
+                    class="craft-img"
+                    />
                 </div>
-                <div class="ps-content">
-                    <div class="ps-point">
-                        <span class="num">1</span>
-                        <div>
-                            <h4>Lightweight, breathable weaves</h4>
-                            <p>Handpicked fabrics that feel like a second skin — from pure cotton to lightweight silk blends.</p>
-                        </div>
-                    </div>
-                    <div class="ps-point">
-                        <span class="num">2</span>
-                        <div>
-                            <h4>Drapes that stay in place</h4>
-                            <p>Thoughtfully designed pleats and falls so you never have to adjust — just move with confidence.</p>
-                        </div>
-                    </div>
-                    <div class="ps-point">
-                        <span class="num">3</span>
-                        <div>
-                            <h4>From desk to dinner</h4>
-                            <p>Versatile styles that take you from work meetings to family gatherings without missing a beat.</p>
-                        </div>
+                <!-- testimonial card overlapping the image -->
+                <div class="craft-testimonial">
+                    <blockquote>
+                        <span class="quote-icon">“</span>
+                        Beautiful, comfortable, and even better in person.
+                    </blockquote>
+                    <div class="attribution">
+                        — <span class="name">Priya</span>, Verified Customer
                     </div>
                 </div>
             </div>
+
+            <!-- RIGHT COLUMN: Benefits -->
+            <div class="craft-content">
+                <span class="craft-eyebrow">Why Silk & Soul</span>
+                <h2 class="craft-heading">
+                    Sarees made for <br /><span class="accent">the way you live.</span>
+                </h2>
+                <p class="craft-sub">
+                    Beautiful fabrics, effortless drapes, and comfort you can feel all day.
+                </p>
+
+                <div class="craft-benefits">
+                    <!-- Benefit 01 -->
+                    <div class="craft-benefit">
+                        <span class="badge">01</span>
+                        <div class="info">
+                            <h4>Lightweight &amp; breathable</h4>
+                            <p>Handpicked fabrics that feel soft and comfortable, from everyday cottons to elegant silk blends.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 02 -->
+                    <div class="craft-benefit">
+                        <span class="badge">02</span>
+                        <div class="info">
+                            <h4>Effortless drape</h4>
+                            <p>Thoughtfully crafted sarees that fall beautifully and stay comfortable throughout the day.</p>
+                        </div>
+                    </div>
+                    <!-- Benefit 03 -->
+                    <div class="craft-benefit">
+                        <span class="badge">03</span>
+                        <div class="info">
+                            <h4>Made for every moment</h4>
+                            <p>From workdays to festive evenings, styles designed to move effortlessly with you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#categories" class="craft-link">
+                    Explore Our Sarees
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+
         </div>
     </section>
 
@@ -1667,7 +1894,6 @@
             toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
         });
 
-        // Close nav when a link is clicked
         document.querySelectorAll('.nav a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('open');

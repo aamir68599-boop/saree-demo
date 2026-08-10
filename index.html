@@ -417,9 +417,7 @@
             font-weight: 400;
         }
 
-        /* ================================================================
-           TRUST BAR — REFINED PREMIUM EDITORIAL
-           ================================================================ */
+        /* ===== TRUST BAR ===== */
         .trust-bar {
             padding: 40px 0;
             background: var(--warm-white);
@@ -436,7 +434,6 @@
             position: relative;
         }
 
-        /* --- each item --- */
         .trust-item {
             display: flex;
             flex-direction: column;
@@ -447,7 +444,6 @@
             transition: var(--transition);
         }
 
-        /* subtle vertical dividers */
         .trust-item::after {
             content: '';
             position: absolute;
@@ -463,7 +459,6 @@
             display: none;
         }
 
-        /* --- icon --- */
         .trust-item .icon {
             font-size: 1.6rem;
             line-height: 1;
@@ -486,7 +481,6 @@
             color: var(--gold);
         }
 
-        /* --- title --- */
         .trust-item .title {
             font-weight: 600;
             font-size: 0.92rem;
@@ -496,7 +490,6 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* --- description --- */
         .trust-item .desc {
             font-size: 0.8rem;
             color: var(--text-muted);
@@ -505,39 +498,31 @@
             line-height: 1.5;
         }
 
-        /* --- responsive adjustments for trust bar --- */
         @media (max-width: 768px) {
             .trust-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0;
             }
-
             .trust-item {
                 padding: 12px 12px;
             }
-
             .trust-item::after {
                 display: none;
             }
-
             .trust-item:nth-child(2)::after {
                 display: none;
             }
-
             .trust-item .icon {
                 font-size: 1.4rem;
                 width: 42px;
                 height: 42px;
             }
-
             .trust-item .title {
                 font-size: 0.85rem;
             }
-
             .trust-item .desc {
                 font-size: 0.75rem;
             }
-
             .trust-bar {
                 padding: 28px 0;
             }
@@ -548,32 +533,248 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 4px;
             }
-
             .trust-item {
                 padding: 10px 8px;
             }
-
             .trust-item .icon {
                 font-size: 1.2rem;
                 width: 36px;
                 height: 36px;
                 margin-bottom: 4px;
             }
-
             .trust-item .title {
                 font-size: 0.78rem;
             }
-
             .trust-item .desc {
                 font-size: 0.68rem;
             }
-
             .trust-bar {
                 padding: 20px 0;
             }
         }
 
-        /* ===== COMFORT & CRAFTSMANSHIP (REDESIGNED) ===== */
+        /* ================================================================
+           CATEGORIES — PREMIUM REFINED
+           ================================================================ */
+        .categories {
+            padding: 80px 0;
+            background: var(--warm-white);
+        }
+
+        .categories .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .categories .section-header .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .categories .section-header .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.15;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .categories .section-header .section-sub {
+            font-size: 1.05rem;
+            color: var(--text-soft);
+            max-width: 480px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        /* --- grid --- */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        /* --- card --- */
+        .cat-card {
+            background: var(--cream);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(45, 27, 26, 0.05);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+
+        .cat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold-light);
+        }
+
+        /* --- image --- */
+        .cat-card .cat-image {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            background: var(--beige);
+        }
+
+        .cat-card .cat-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .cat-card:hover .cat-image img {
+            transform: scale(1.05);
+        }
+
+        /* subtle overlay for depth */
+        .cat-card .cat-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(45, 27, 26, 0.04) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        /* --- content --- */
+        .cat-card .cat-content {
+            padding: 20px 20px 24px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cat-card .cat-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+            letter-spacing: 0.01em;
+            transition: var(--transition);
+        }
+
+        .cat-card:hover .cat-content h4 {
+            color: var(--primary);
+        }
+
+        .cat-card .cat-content p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.01em;
+        }
+
+        /* subtle "Explore" hint on hover */
+        .cat-card .cat-content .explore-hint {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            opacity: 0;
+            transform: translateY(4px);
+            transition: var(--transition);
+        }
+
+        .cat-card:hover .cat-content .explore-hint {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- responsive --- */
+        @media (max-width: 1024px) {
+            .cat-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .categories .section-header .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .categories {
+                padding: 60px 0;
+            }
+            .categories .section-header {
+                margin-bottom: 32px;
+            }
+            .categories .section-header .section-title {
+                font-size: 1.8rem;
+            }
+            .categories .section-header .section-sub {
+                font-size: 0.95rem;
+            }
+            .cat-grid {
+                gap: 16px;
+            }
+            .cat-card .cat-content {
+                padding: 16px 14px 20px;
+            }
+            .cat-card .cat-content h4 {
+                font-size: 1rem;
+            }
+            .cat-card .cat-content p {
+                font-size: 0.8rem;
+            }
+            .cat-card .cat-image {
+                aspect-ratio: 4/5;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .categories {
+                padding: 48px 0;
+            }
+            .cat-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .cat-card .cat-content {
+                padding: 12px 10px 16px;
+            }
+            .cat-card .cat-content h4 {
+                font-size: 0.9rem;
+            }
+            .cat-card .cat-content p {
+                font-size: 0.7rem;
+            }
+            .cat-card .cat-image {
+                aspect-ratio: 4/5;
+            }
+            .categories .section-header .section-title {
+                font-size: 1.5rem;
+            }
+            .categories .section-header .section-sub {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* ===== COMFORT & CRAFTSMANSHIP ===== */
         .craftsmanship {
             padding: 80px 0 90px;
             background: var(--cream);
@@ -587,7 +788,6 @@
             align-items: center;
         }
 
-        /* --- LEFT COLUMN: Image + Testimonial --- */
         .craft-image-block {
             position: relative;
         }
@@ -613,7 +813,6 @@
             transform: scale(1.02);
         }
 
-        /* testimonial card overlapping the image */
         .craft-testimonial {
             position: absolute;
             bottom: -24px;
@@ -651,7 +850,6 @@
             color: var(--text-dark);
         }
 
-        /* --- RIGHT COLUMN: Benefits --- */
         .craft-content {
             display: flex;
             flex-direction: column;
@@ -690,7 +888,6 @@
             margin-bottom: 32px;
         }
 
-        /* benefits list */
         .craft-benefits {
             display: flex;
             flex-direction: column;
@@ -770,60 +967,6 @@
 
         .craft-link:hover .arrow {
             transform: translateX(4px);
-        }
-
-        /* ===== CATEGORIES ===== */
-        .categories {
-            padding: 80px 0;
-            background: var(--warm-white);
-        }
-
-        .categories .section-header {
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .categories .section-header .section-sub {
-            margin: 0 auto;
-        }
-
-        .cat-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .cat-card {
-            background: var(--cream);
-            border-radius: var(--radius);
-            padding: 32px 20px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(45, 27, 26, 0.04);
-            cursor: pointer;
-        }
-
-        .cat-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--gold-light);
-        }
-
-        .cat-card .icon {
-            font-size: 2.8rem;
-            margin-bottom: 12px;
-        }
-
-        .cat-card h4 {
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-bottom: 4px;
-            color: var(--text-dark);
-        }
-
-        .cat-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
         }
 
         /* ===== BEST SELLERS ===== */
@@ -1216,42 +1359,33 @@
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-
             .hero-content {
                 max-width: 100%;
             }
-
             .hero p {
                 max-width: 100%;
                 margin-left: auto;
                 margin-right: auto;
             }
-
             .hero-actions {
                 justify-content: center;
             }
-
             .hero-trust {
                 justify-content: center;
             }
-
             .hero-image-wrapper {
                 max-width: 400px;
                 margin: 0 auto;
             }
-
-            /* craftsmanship tablet */
             .craftsmanship .container {
                 grid-template-columns: 1fr;
                 gap: 48px;
             }
-
             .craft-image-wrapper {
                 aspect-ratio: 4/5;
                 max-width: 520px;
                 margin: 0 auto;
             }
-
             .craft-testimonial {
                 left: 50%;
                 transform: translateX(-50%);
@@ -1259,45 +1393,32 @@
                 max-width: 340px;
                 bottom: -20px;
             }
-
             .craft-content {
                 max-width: 600px;
                 margin: 0 auto;
             }
-
             .craft-sub {
                 max-width: 100%;
             }
-
             .craft-benefit .info p {
                 max-width: 100%;
             }
-
-            .cat-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .testimonial-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .footer .container {
                 grid-template-columns: 1fr 1fr;
                 gap: 32px;
             }
-
             .nav {
                 display: none;
             }
-
             .mobile-toggle {
                 display: block;
             }
-
             .nav.open {
                 display: flex;
                 flex-direction: column;
@@ -1318,95 +1439,71 @@
             .hero h1 {
                 font-size: 2.4rem;
             }
-
             .hero {
                 padding: 40px 0 56px;
             }
-
             .section-title {
                 font-size: 2rem;
             }
-
-            .cat-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-
             .product-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 16px;
             }
-
             .testimonial-grid {
                 grid-template-columns: 1fr;
             }
-
             .footer .container {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
-
             .final-cta h2 {
                 font-size: 2rem;
             }
-
             .hero-image-wrapper .floating-badge {
                 right: 4px;
                 bottom: 16px;
                 padding: 10px 16px;
                 font-size: 0.8rem;
             }
-
             .hero-image-wrapper {
                 max-width: 320px;
             }
-
             .best-sellers .section-header {
                 flex-direction: column;
                 align-items: center;
                 text-align: center;
             }
-
             .product-info {
                 padding: 14px 16px 18px;
             }
-
             .product-info .name {
                 font-size: 0.9rem;
             }
-
             .product-info .price {
                 font-size: 1rem;
             }
-
             .btn-primary,
             .btn-gold {
                 padding: 14px 28px;
                 font-size: 0.95rem;
             }
-
-            /* craftsmanship mobile */
             .craftsmanship {
                 padding: 60px 0 70px;
             }
-
             .craftsmanship .container {
                 gap: 40px;
             }
-
             .craft-heading {
                 font-size: 2rem;
             }
-
             .craft-sub {
                 font-size: 1rem;
                 margin-bottom: 24px;
             }
-
             .craft-image-wrapper {
                 aspect-ratio: 4/5;
                 max-width: 100%;
             }
-
             .craft-testimonial {
                 position: relative;
                 bottom: 0;
@@ -1418,38 +1515,30 @@
                 padding: 16px 20px;
                 box-shadow: var(--shadow);
             }
-
             .craft-testimonial blockquote {
                 font-size: 0.9rem;
             }
-
             .craft-benefits {
                 gap: 20px;
             }
-
             .craft-benefit {
                 gap: 16px;
                 padding-bottom: 20px;
             }
-
             .craft-benefit .badge {
                 width: 40px;
                 height: 40px;
                 font-size: 0.95rem;
             }
-
             .craft-benefit .info h4 {
                 font-size: 0.95rem;
             }
-
             .craft-benefit .info p {
                 font-size: 0.85rem;
             }
-
             .craft-link {
                 font-size: 0.9rem;
             }
-
             .craft-eyebrow {
                 font-size: 0.65rem;
             }
@@ -1459,65 +1548,40 @@
             .hero h1 {
                 font-size: 1.8rem;
             }
-
             .hero p {
                 font-size: 1rem;
             }
-
             .hero-trust {
                 gap: 14px;
             }
-
             .hero-trust-item {
                 font-size: 0.8rem;
             }
-
-            .cat-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-
-            .cat-card {
-                padding: 20px 12px;
-            }
-
-            .cat-card .icon {
-                font-size: 2rem;
-            }
-
             .product-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
-
             .section-title {
                 font-size: 1.6rem;
             }
-
             .final-cta h2 {
                 font-size: 1.6rem;
             }
-
             .guarantee h2 {
                 font-size: 1.6rem;
             }
-
             .logo {
                 font-size: 1.3rem;
             }
-
             .craft-heading {
                 font-size: 1.6rem;
             }
-
             .craft-testimonial {
                 padding: 14px 16px;
             }
-
             .craft-testimonial blockquote {
                 font-size: 0.85rem;
             }
-
             .craft-benefit .badge {
                 width: 36px;
                 height: 36px;
@@ -1544,19 +1608,13 @@
             </nav>
 
             <div class="nav-actions">
-                <button class="icon-btn" aria-label="Search">
-                    🔍
-                </button>
-                <button class="icon-btn" aria-label="Wishlist">
-                    ♡
-                </button>
+                <button class="icon-btn" aria-label="Search">🔍</button>
+                <button class="icon-btn" aria-label="Wishlist">♡</button>
                 <button class="icon-btn" aria-label="Cart">
                     🛒
                     <span class="badge">2</span>
                 </button>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                    ☰
-                </button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
             </div>
         </div>
     </header>
@@ -1575,26 +1633,14 @@
                     and all-day comfort so you can own every moment.
                 </p>
                 <div class="hero-actions">
-                    <a href="#final-cta" class="btn-primary">
-                        ✦ Shop Now
-                    </a>
-                    <a href="#categories" class="btn-secondary">
-                        Explore Collection
-                    </a>
+                    <a href="#final-cta" class="btn-primary">✦ Shop Now</a>
+                    <a href="#categories" class="btn-secondary">Explore Collection</a>
                 </div>
                 <div class="hero-trust">
-                    <span class="hero-trust-item">
-                        <span class="icon">✓</span> Free Shipping
-                    </span>
-                    <span class="hero-trust-item">
-                        <span class="icon">✓</span> 7-Day Try-On
-                    </span>
-                    <span class="hero-trust-item">
-                        <span class="icon">✓</span> 100% Handwoven
-                    </span>
-                    <span class="hero-trust-item">
-                        <span class="icon">✓</span> 20K+ Happy Women
-                    </span>
+                    <span class="hero-trust-item"><span class="icon">✓</span> Free Shipping</span>
+                    <span class="hero-trust-item"><span class="icon">✓</span> 7-Day Try-On</span>
+                    <span class="hero-trust-item"><span class="icon">✓</span> 100% Handwoven</span>
+                    <span class="hero-trust-item"><span class="icon">✓</span> 20K+ Happy Women</span>
                 </div>
             </div>
 
@@ -1613,33 +1659,24 @@
         </div>
     </section>
 
-    <!-- ================================================================
-    TRUST BAR — REFINED PREMIUM EDITORIAL
-    ================================================================ -->
+    <!-- ===== TRUST BAR ===== -->
     <section class="trust-bar">
         <div class="container trust-grid">
-            <!-- 01 · Free Shipping -->
             <div class="trust-item">
                 <span class="icon">✧</span>
                 <span class="title">Free Shipping</span>
                 <span class="desc">On orders above ₹999</span>
             </div>
-
-            <!-- 02 · 7-Day Easy Returns -->
             <div class="trust-item">
                 <span class="icon">↻</span>
                 <span class="title">7-Day Easy Returns</span>
                 <span class="desc">No questions asked</span>
             </div>
-
-            <!-- 03 · Premium Fabrics -->
             <div class="trust-item">
                 <span class="icon">✦</span>
                 <span class="title">Premium Fabrics</span>
                 <span class="desc">Silk, cotton &amp; more</span>
             </div>
-
-            <!-- 04 · Loved by 20K+ -->
             <div class="trust-item">
                 <span class="icon">♡</span>
                 <span class="title">Loved by 20K+</span>
@@ -1648,21 +1685,76 @@
         </div>
     </section>
 
-    <!-- ===== COMFORT & CRAFTSMANSHIP (REDESIGNED) ===== -->
+    <!-- ================================================================
+    CATEGORIES — PREMIUM REFINED
+    ================================================================ -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">✦ Shop by Style</span>
+                <h2 class="section-title">Find your perfect drape</h2>
+                <p class="section-sub">From everyday elegance to celebration-ready glamour.</p>
+            </div>
+
+            <div class="cat-grid">
+                <!-- Card 1 · Cotton Comfort -->
+                <div class="cat-card">
+                    <div class="cat-image">
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Cotton Comfort — soft, breathable cotton saree" loading="lazy" />
+                    </div>
+                    <div class="cat-content">
+                        <h4>Cotton Comfort</h4>
+                        <p>Breezy, soft, everyday</p>
+                        <span class="explore-hint">Explore →</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 · Silk Luxe -->
+                <div class="cat-card">
+                    <div class="cat-image">
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Silk Luxe — luxurious silk saree for celebrations" loading="lazy" />
+                    </div>
+                    <div class="cat-content">
+                        <h4>Silk Luxe</h4>
+                        <p>Celebration &amp; weddings</p>
+                        <span class="explore-hint">Explore →</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 · Georgette & Chiffon -->
+                <div class="cat-card">
+                    <div class="cat-image">
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Georgette & Chiffon — flowing, graceful saree fabric" loading="lazy" />
+                    </div>
+                    <div class="cat-content">
+                        <h4>Georgette &amp; Chiffon</h4>
+                        <p>Flowing &amp; graceful</p>
+                        <span class="explore-hint">Explore →</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 · Designer Drapes -->
+                <div class="cat-card">
+                    <div class="cat-image">
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Designer Drapes — contemporary designer saree" loading="lazy" />
+                    </div>
+                    <div class="cat-content">
+                        <h4>Designer Drapes</h4>
+                        <p>Contemporary &amp; unique</p>
+                        <span class="explore-hint">Explore →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMFORT & CRAFTSMANSHIP ===== -->
     <section class="craftsmanship" id="craftsmanship">
         <div class="container">
-
-            <!-- LEFT COLUMN: Image + Testimonial -->
             <div class="craft-image-block">
                 <div class="craft-image-wrapper">
-                    <!-- Premium editorial lifestyle image -->
-                    <img
-                    src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp"
-                    alt="Elegant woman wearing a Silk & Soul saree in a natural setting"
-                    class="craft-img"
-                    />
+                    <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Elegant woman wearing a Silk & Soul saree in a natural setting" class="craft-img" />
                 </div>
-                <!-- testimonial card overlapping the image -->
                 <div class="craft-testimonial">
                     <blockquote>
                         <span class="quote-icon">“</span>
@@ -1674,7 +1766,6 @@
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: Benefits -->
             <div class="craft-content">
                 <span class="craft-eyebrow">Why Silk & Soul</span>
                 <h2 class="craft-heading">
@@ -1685,7 +1776,6 @@
                 </p>
 
                 <div class="craft-benefits">
-                    <!-- Benefit 01 -->
                     <div class="craft-benefit">
                         <span class="badge">01</span>
                         <div class="info">
@@ -1693,7 +1783,6 @@
                             <p>Handpicked fabrics that feel soft and comfortable, from everyday cottons to elegant silk blends.</p>
                         </div>
                     </div>
-                    <!-- Benefit 02 -->
                     <div class="craft-benefit">
                         <span class="badge">02</span>
                         <div class="info">
@@ -1701,7 +1790,6 @@
                             <p>Thoughtfully crafted sarees that fall beautifully and stay comfortable throughout the day.</p>
                         </div>
                     </div>
-                    <!-- Benefit 03 -->
                     <div class="craft-benefit">
                         <span class="badge">03</span>
                         <div class="info">
@@ -1716,41 +1804,6 @@
                     <span class="arrow">→</span>
                 </a>
             </div>
-
-        </div>
-    </section>
-
-    <!-- ===== CATEGORIES ===== -->
-    <section class="categories" id="categories">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-label">✦ Shop by Style</span>
-                <h2 class="section-title">Find your perfect drape</h2>
-                <p class="section-sub">From everyday elegance to celebration-ready glamour.</p>
-            </div>
-
-            <div class="cat-grid">
-                <div class="cat-card">
-                    <div class="icon">🌿</div>
-                    <h4>Cotton Comfort</h4>
-                    <p>Breezy, soft, everyday</p>
-                </div>
-                <div class="cat-card">
-                    <div class="icon">✨</div>
-                    <h4>Silk Luxe</h4>
-                    <p>Celebration & weddings</p>
-                </div>
-                <div class="cat-card">
-                    <div class="icon">🌸</div>
-                    <h4>Georgette & Chiffon</h4>
-                    <p>Flowing & graceful</p>
-                </div>
-                <div class="cat-card">
-                    <div class="icon">👑</div>
-                    <h4>Designer Drapes</h4>
-                    <p>Contemporary & unique</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1762,13 +1815,10 @@
                     <span class="section-label">🏆 Bestsellers</span>
                     <h2 class="section-title">Most loved by women like you</h2>
                 </div>
-                <a href="#" style="font-weight:600;color:var(--primary);font-size:0.95rem;">
-                    View All →
-                </a>
+                <a href="#" style="font-weight:600;color:var(--primary);font-size:0.95rem;">View All →</a>
             </div>
 
             <div class="product-grid">
-                <!-- Product 1 -->
                 <div class="product-card">
                     <div class="product-image">
                         <span style="font-size:3rem;opacity:0.3;">✦</span>
@@ -1790,7 +1840,6 @@
                     </div>
                 </div>
 
-                <!-- Product 2 -->
                 <div class="product-card">
                     <div class="product-image">
                         <span style="font-size:3rem;opacity:0.3;">✦</span>
@@ -1812,7 +1861,6 @@
                     </div>
                 </div>
 
-                <!-- Product 3 -->
                 <div class="product-card">
                     <div class="product-image">
                         <span style="font-size:3rem;opacity:0.3;">✦</span>
@@ -1834,7 +1882,6 @@
                     </div>
                 </div>
 
-                <!-- Product 4 -->
                 <div class="product-card">
                     <div class="product-image">
                         <span style="font-size:3rem;opacity:0.3;">✦</span>

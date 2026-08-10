@@ -8,7 +8,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -26,6 +26,7 @@
             --primary-dark: #5A1E38;
             --gold: #C9A96E;
             --gold-light: #DFC896;
+            --gold-pale: #F4EDE0;
             --cream: #FCF8F3;
             --beige: #F0E8DE;
             --warm-white: #FFFCF9;
@@ -1423,82 +1424,352 @@
             }
         }
 
-        /* ===== TESTIMONIALS ===== */
+        /* ================================================================
+           TESTIMONIALS — PREMIUM REFINED ✦
+           ================================================================ */
         .testimonials {
-            padding: 80px 0;
+            padding: 90px 0 100px;
             background: var(--warm-white);
+            position: relative;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+            opacity: 0.3;
         }
 
         .testimonials .section-header {
             text-align: center;
-            margin-bottom: 48px;
+            margin-bottom: 56px;
+            position: relative;
+        }
+
+        .testimonials .section-header .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 12px;
+            position: relative;
+            padding: 0 16px;
+        }
+
+        .testimonials .section-header .section-label::before,
+        .testimonials .section-header .section-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 24px;
+            height: 1px;
+            background: var(--gold-light);
+            opacity: 0.3;
+        }
+
+        .testimonials .section-header .section-label::before {
+            right: 100%;
+        }
+
+        .testimonials .section-header .section-label::after {
+            left: 100%;
+        }
+
+        .testimonials .section-header .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.15;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
         }
 
         .testimonials .section-header .section-sub {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 460px;
             margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+            letter-spacing: 0.01em;
         }
 
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            gap: 30px;
         }
 
         .testimonial-card {
             background: var(--cream);
-            padding: 32px 28px;
+            padding: 36px 32px 32px;
             border-radius: var(--radius);
-            border: 1px solid rgba(45, 27, 26, 0.04);
+            border: 1px solid rgba(201, 169, 110, 0.12);
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            box-shadow: 0 2px 16px rgba(45, 27, 26, 0.03);
+        }
+
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold-light), var(--gold), var(--gold-light));
+            opacity: 0;
+            transition: var(--transition);
+            border-radius: var(--radius) var(--radius) 0 0;
         }
 
         .testimonial-card:hover {
-            box-shadow: var(--shadow);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(201, 169, 110, 0.3);
+        }
+
+        .testimonial-card:hover::after {
+            opacity: 1;
         }
 
         .testimonial-card .stars {
             color: var(--gold);
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            letter-spacing: 2px;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .testimonial-card .stars span {
+            display: inline-block;
         }
 
         .testimonial-card blockquote {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: var(--text-soft);
+            font-family: 'Playfair Display', serif;
             font-style: italic;
-            margin-bottom: 16px;
+            font-weight: 400;
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text-soft);
+            margin-bottom: 24px;
+            flex: 1;
+            position: relative;
+            padding-left: 4px;
+        }
+
+        .testimonial-card blockquote::before {
+            content: '\201C';
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            color: var(--gold-light);
+            line-height: 0.6;
+            display: block;
+            margin-bottom: 4px;
+            opacity: 0.6;
         }
 
         .testimonial-card .author {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 16px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(201, 169, 110, 0.15);
         }
 
         .testimonial-card .author .avatar {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            background: var(--gold-light);
+            background: linear-gradient(135deg, var(--gold-pale), var(--gold-light));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
+            font-weight: 700;
+            font-size: 1.05rem;
             color: var(--primary);
-            font-size: 1.1rem;
+            flex-shrink: 0;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            border: 2px solid rgba(201, 169, 110, 0.15);
+        }
+
+        .testimonial-card:hover .author .avatar {
+            border-color: var(--gold);
+            transform: scale(1.04);
+            box-shadow: 0 4px 16px rgba(201, 169, 110, 0.2);
+        }
+
+        .testimonial-card .author .info {
+            display: flex;
+            flex-direction: column;
         }
 
         .testimonial-card .author .name {
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-dark);
+            line-height: 1.3;
+            letter-spacing: -0.01em;
         }
 
-        .testimonial-card .author .age {
+        .testimonial-card .author .detail {
             font-size: 0.8rem;
             color: var(--text-muted);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        /* ================================================================
+           TESTIMONIALS — RESPONSIVE
+           ================================================================ */
+        @media (max-width: 1024px) {
+            .testimonial-grid {
+                gap: 24px;
+            }
+
+            .testimonials .section-header .section-title {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonials {
+                padding: 64px 0 72px;
+            }
+
+            .testimonials .section-header {
+                margin-bottom: 40px;
+            }
+
+            .testimonials .section-header .section-title {
+                font-size: 2rem;
+            }
+
+            .testimonials .section-header .section-sub {
+                font-size: 0.95rem;
+                max-width: 100%;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .testimonial-card {
+                padding: 28px 24px 26px;
+            }
+
+            .testimonial-card blockquote {
+                font-size: 0.92rem;
+                line-height: 1.65;
+            }
+
+            .testimonial-card .author .avatar {
+                width: 44px;
+                height: 44px;
+                font-size: 0.9rem;
+            }
+
+            .testimonial-card .author .name {
+                font-size: 0.92rem;
+            }
+
+            .testimonial-card .author .detail {
+                font-size: 0.75rem;
+            }
+
+            .testimonials .section-header .section-label::before,
+            .testimonials .section-header .section-label::after {
+                width: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testimonials {
+                padding: 48px 0 56px;
+            }
+
+            .testimonials .section-header {
+                margin-bottom: 32px;
+            }
+
+            .testimonials .section-header .section-title {
+                font-size: 1.6rem;
+            }
+
+            .testimonials .section-header .section-sub {
+                font-size: 0.85rem;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+                max-width: 480px;
+                margin: 0 auto;
+            }
+
+            .testimonial-card {
+                padding: 24px 20px 22px;
+            }
+
+            .testimonial-card .stars {
+                font-size: 0.85rem;
+                margin-bottom: 14px;
+            }
+
+            .testimonial-card blockquote {
+                font-size: 0.88rem;
+                line-height: 1.6;
+                margin-bottom: 18px;
+                padding-left: 0;
+            }
+
+            .testimonial-card blockquote::before {
+                font-size: 1.8rem;
+                margin-bottom: 2px;
+            }
+
+            .testimonial-card .author {
+                padding-top: 16px;
+                gap: 14px;
+            }
+
+            .testimonial-card .author .avatar {
+                width: 40px;
+                height: 40px;
+                font-size: 0.8rem;
+            }
+
+            .testimonial-card .author .name {
+                font-size: 0.88rem;
+            }
+
+            .testimonial-card .author .detail {
+                font-size: 0.72rem;
+            }
+
+            .testimonials .section-header .section-label {
+                font-size: 0.6rem;
+                letter-spacing: 2px;
+                padding: 0 12px;
+            }
+
+            .testimonials .section-header .section-label::before,
+            .testimonials .section-header .section-label::after {
+                width: 12px;
+            }
         }
 
         /* ===== GUARANTEE ===== */
@@ -1680,9 +1951,6 @@
                 max-width: 400px;
                 margin: 0 auto;
             }
-            .testimonial-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
             .footer .container {
                 grid-template-columns: 1fr 1fr;
                 gap: 32px;
@@ -1718,9 +1986,6 @@
             }
             .section-title {
                 font-size: 2rem;
-            }
-            .testimonial-grid {
-                grid-template-columns: 1fr;
             }
             .footer .container {
                 grid-template-columns: 1fr;
@@ -2092,18 +2357,23 @@
         </div>
     </section>
 
-    <!-- ===== TESTIMONIALS ===== -->
+    <!-- ================================================================
+    TESTIMONIALS — REFINED PREMIUM ✦
+    ================================================================ -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">❤️ Real Stories</span>
+                <span class="section-label">♥ Real Stories</span>
                 <h2 class="section-title">What women are saying</h2>
                 <p class="section-sub">Hear from women who found their perfect drape.</p>
             </div>
 
             <div class="testimonial-grid">
+                <!-- Card 1 -->
                 <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
+                    <div class="stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
                     <blockquote>
                         “I've worn sarees for 20+ years, and this is the first time I've felt
                         truly comfortable all day. The fabric is so light — I wore it to a
@@ -2111,15 +2381,18 @@
                     </blockquote>
                     <div class="author">
                         <div class="avatar">SN</div>
-                        <div>
+                        <div class="info">
                             <div class="name">Sunita Nair</div>
-                            <div class="age">48 · Teacher</div>
+                            <div class="detail">48 · Teacher</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Card 2 -->
                 <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
+                    <div class="stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
                     <blockquote>
                         “As a working mom, I need sarees that move with me. This one
                         doesn't slip, doesn't bunch up — I can chase my toddler and still
@@ -2127,15 +2400,18 @@
                     </blockquote>
                     <div class="author">
                         <div class="avatar">PM</div>
-                        <div>
+                        <div class="info">
                             <div class="name">Priya Malhotra</div>
-                            <div class="age">34 · Marketing Lead</div>
+                            <div class="detail">34 · Marketing Lead</div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Card 3 -->
                 <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
+                    <div class="stars">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
                     <blockquote>
                         “I was nervous about wearing a saree for the first time at my
                         cousin's wedding. This one was so easy to drape and I got
@@ -2143,9 +2419,9 @@
                     </blockquote>
                     <div class="author">
                         <div class="avatar">AR</div>
-                        <div>
+                        <div class="info">
                             <div class="name">Ananya Reddy</div>
-                            <div class="age">26 · Software Engineer</div>
+                            <div class="detail">26 · Software Engineer</div>
                         </div>
                     </div>
                 </div>

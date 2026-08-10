@@ -596,14 +596,12 @@
             letter-spacing: 0.01em;
         }
 
-        /* --- grid --- */
         .cat-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
 
-        /* --- card --- */
         .cat-card {
             background: var(--cream);
             border-radius: var(--radius);
@@ -623,7 +621,6 @@
             border-color: var(--gold-light);
         }
 
-        /* --- image --- */
         .cat-card .cat-image {
             position: relative;
             width: 100%;
@@ -644,7 +641,6 @@
             transform: scale(1.05);
         }
 
-        /* subtle overlay for depth */
         .cat-card .cat-image::after {
             content: '';
             position: absolute;
@@ -653,7 +649,6 @@
             pointer-events: none;
         }
 
-        /* --- content --- */
         .cat-card .cat-content {
             padding: 20px 20px 24px;
             text-align: center;
@@ -686,7 +681,6 @@
             letter-spacing: 0.01em;
         }
 
-        /* subtle "Explore" hint on hover */
         .cat-card .cat-content .explore-hint {
             display: inline-block;
             margin-top: 10px;
@@ -705,7 +699,6 @@
             transform: translateY(0);
         }
 
-        /* --- responsive --- */
         @media (max-width: 1024px) {
             .cat-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -771,6 +764,355 @@
             }
             .categories .section-header .section-sub {
                 font-size: 0.85rem;
+            }
+        }
+
+        /* ================================================================
+           BEST SELLERS — PREMIUM REFINED
+           ================================================================ */
+        .best-sellers {
+            padding: 80px 0;
+            background: var(--cream);
+        }
+
+        .best-sellers .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .best-sellers .section-header .section-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .best-sellers .section-header .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .best-sellers .section-header .view-all {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .best-sellers .section-header .view-all:hover {
+            gap: 10px;
+            border-bottom-color: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        /* --- product grid --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px;
+        }
+
+        /* --- product card --- */
+        .product-card {
+            background: var(--warm-white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(45, 27, 26, 0.04);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--gold-light);
+        }
+
+        /* --- product image --- */
+        .product-image {
+            position: relative;
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background: var(--beige);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            display: block;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        /* subtle overlay for depth */
+        .product-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(45, 27, 26, 0.03) 0%, transparent 40%);
+            pointer-events: none;
+        }
+
+        /* --- badges --- */
+        .product-image .tag {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: var(--gold);
+            color: var(--text-dark);
+            font-size: 0.65rem;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(201, 169, 110, 0.3);
+        }
+
+        /* --- wishlist --- */
+        .product-image .wishlist {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(255, 252, 249, 0.85);
+            backdrop-filter: blur(4px);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-soft);
+            box-shadow: 0 2px 12px rgba(45, 27, 26, 0.06);
+            z-index: 2;
+        }
+
+        .product-image .wishlist:hover {
+            background: #fff;
+            color: var(--primary);
+            transform: scale(1.08);
+        }
+
+        /* --- product info --- */
+        .product-info {
+            padding: 18px 20px 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .product-info .name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
+        }
+
+        .product-info .variant {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            margin-bottom: 6px;
+        }
+
+        .product-info .price-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .product-info .price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .product-info .price-old {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+
+        .product-info .rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-soft);
+            margin-bottom: 12px;
+        }
+
+        .product-info .rating .stars {
+            color: var(--gold);
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        .product-info .rating .count {
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* --- add to cart button --- */
+        .product-info .btn-add {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+            margin-top: auto;
+            box-shadow: 0 2px 16px rgba(123, 45, 78, 0.15);
+        }
+
+        .product-info .btn-add:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(123, 45, 78, 0.25);
+        }
+
+        .product-info .btn-add:active {
+            transform: translateY(0);
+        }
+
+        /* --- responsive --- */
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            .best-sellers .section-header .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .best-sellers {
+                padding: 60px 0;
+            }
+            .best-sellers .section-header {
+                margin-bottom: 32px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .best-sellers .section-header .section-title {
+                font-size: 1.8rem;
+            }
+            .product-grid {
+                gap: 16px;
+            }
+            .product-info {
+                padding: 14px 16px 18px;
+            }
+            .product-info .name {
+                font-size: 0.95rem;
+            }
+            .product-info .price {
+                font-size: 1.05rem;
+            }
+            .product-info .btn-add {
+                font-size: 0.85rem;
+                padding: 10px;
+            }
+            .product-image .tag {
+                font-size: 0.6rem;
+                padding: 3px 10px;
+                top: 10px;
+                left: 10px;
+            }
+            .product-image .wishlist {
+                width: 32px;
+                height: 32px;
+                font-size: 0.95rem;
+                top: 10px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .best-sellers {
+                padding: 48px 0;
+            }
+            .best-sellers .section-header .section-title {
+                font-size: 1.5rem;
+            }
+            .product-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .product-info {
+                padding: 10px 12px 14px;
+            }
+            .product-info .name {
+                font-size: 0.85rem;
+            }
+            .product-info .variant {
+                font-size: 0.7rem;
+            }
+            .product-info .price {
+                font-size: 0.95rem;
+            }
+            .product-info .price-old {
+                font-size: 0.75rem;
+            }
+            .product-info .rating {
+                font-size: 0.7rem;
+                margin-bottom: 8px;
+            }
+            .product-info .btn-add {
+                font-size: 0.75rem;
+                padding: 8px;
+                border-radius: 30px;
+            }
+            .product-image .tag {
+                font-size: 0.5rem;
+                padding: 2px 8px;
+                top: 6px;
+                left: 6px;
+            }
+            .product-image .wishlist {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+                top: 6px;
+                right: 6px;
             }
         }
 
@@ -967,157 +1309,6 @@
 
         .craft-link:hover .arrow {
             transform: translateX(4px);
-        }
-
-        /* ===== BEST SELLERS ===== */
-        .best-sellers {
-            padding: 80px 0;
-            background: var(--cream);
-        }
-
-        .best-sellers .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 48px;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 28px;
-        }
-
-        .product-card {
-            background: var(--warm-white);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid rgba(45, 27, 26, 0.04);
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .product-image {
-            aspect-ratio: 3/4;
-            background: linear-gradient(135deg, var(--beige), var(--cream));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: rgba(123, 45, 78, 0.2);
-            position: relative;
-        }
-
-        .product-image .tag {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: var(--gold);
-            color: var(--text-dark);
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 4px 14px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .product-image .wishlist {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(255, 255, 255, 0.85);
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(4px);
-        }
-
-        .product-image .wishlist:hover {
-            background: #fff;
-            transform: scale(1.1);
-        }
-
-        .product-info {
-            padding: 18px 20px 22px;
-        }
-
-        .product-info .name {
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-dark);
-            margin-bottom: 2px;
-        }
-
-        .product-info .variant {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .product-info .price-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .product-info .price {
-            font-weight: 700;
-            font-size: 1.15rem;
-            color: var(--primary);
-        }
-
-        .product-info .price-old {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-decoration: line-through;
-        }
-
-        .product-info .rating {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 0.85rem;
-            color: var(--text-soft);
-        }
-
-        .product-info .rating .stars {
-            color: var(--gold);
-            letter-spacing: 1px;
-        }
-
-        .product-info .btn-add {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid var(--primary);
-            background: transparent;
-            color: var(--primary);
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 4px;
-        }
-
-        .product-info .btn-add:hover {
-            background: var(--primary);
-            color: #fff;
         }
 
         /* ===== TESTIMONIALS ===== */
@@ -1403,9 +1594,6 @@
             .craft-benefit .info p {
                 max-width: 100%;
             }
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
             .testimonial-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1445,10 +1633,6 @@
             .section-title {
                 font-size: 2rem;
             }
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
             .testimonial-grid {
                 grid-template-columns: 1fr;
             }
@@ -1467,20 +1651,6 @@
             }
             .hero-image-wrapper {
                 max-width: 320px;
-            }
-            .best-sellers .section-header {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .product-info {
-                padding: 14px 16px 18px;
-            }
-            .product-info .name {
-                font-size: 0.9rem;
-            }
-            .product-info .price {
-                font-size: 1rem;
             }
             .btn-primary,
             .btn-gold {
@@ -1556,10 +1726,6 @@
             }
             .hero-trust-item {
                 font-size: 0.8rem;
-            }
-            .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
             }
             .section-title {
                 font-size: 1.6rem;
@@ -1685,9 +1851,7 @@
         </div>
     </section>
 
-    <!-- ================================================================
-    CATEGORIES — PREMIUM REFINED
-    ================================================================ -->
+    <!-- ===== CATEGORIES ===== -->
     <section class="categories" id="categories">
         <div class="container">
             <div class="section-header">
@@ -1697,10 +1861,9 @@
             </div>
 
             <div class="cat-grid">
-                <!-- Card 1 · Cotton Comfort -->
                 <div class="cat-card">
                     <div class="cat-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Cotton Comfort — soft, breathable cotton saree" loading="lazy" />
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Cotton Comfort" loading="lazy" />
                     </div>
                     <div class="cat-content">
                         <h4>Cotton Comfort</h4>
@@ -1708,11 +1871,9 @@
                         <span class="explore-hint">Explore →</span>
                     </div>
                 </div>
-
-                <!-- Card 2 · Silk Luxe -->
                 <div class="cat-card">
                     <div class="cat-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Silk Luxe — luxurious silk saree for celebrations" loading="lazy" />
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Silk Luxe" loading="lazy" />
                     </div>
                     <div class="cat-content">
                         <h4>Silk Luxe</h4>
@@ -1720,11 +1881,9 @@
                         <span class="explore-hint">Explore →</span>
                     </div>
                 </div>
-
-                <!-- Card 3 · Georgette & Chiffon -->
                 <div class="cat-card">
                     <div class="cat-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Georgette & Chiffon — flowing, graceful saree fabric" loading="lazy" />
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Georgette & Chiffon" loading="lazy" />
                     </div>
                     <div class="cat-content">
                         <h4>Georgette &amp; Chiffon</h4>
@@ -1732,11 +1891,9 @@
                         <span class="explore-hint">Explore →</span>
                     </div>
                 </div>
-
-                <!-- Card 4 · Designer Drapes -->
                 <div class="cat-card">
                     <div class="cat-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Designer Drapes — contemporary designer saree" loading="lazy" />
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Designer Drapes" loading="lazy" />
                     </div>
                     <div class="cat-content">
                         <h4>Designer Drapes</h4>
@@ -1748,12 +1905,116 @@
         </div>
     </section>
 
+    <!-- ================================================================
+    BEST SELLERS — PREMIUM REFINED
+    ================================================================ -->
+    <section class="best-sellers" id="best-sellers">
+        <div class="container">
+            <div class="section-header">
+                <div>
+                    <span class="section-label">✦ Bestsellers</span>
+                    <h2 class="section-title">Most loved by women like you</h2>
+                </div>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+
+            <div class="product-grid">
+                <!-- Product 1: Mysore Silk -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Mysore Silk — Wine Red" loading="lazy" />
+                        <span class="tag">Bestseller</span>
+                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="name">Mysore Silk</div>
+                        <div class="variant">Pure Silk · Wine Red</div>
+                        <div class="price-row">
+                            <span class="price">₹4,999</span>
+                            <span class="price-old">₹6,499</span>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="count">(214)</span>
+                        </div>
+                        <button class="btn-add">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2: Cotton Handloom -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Cotton Handloom — Teal Blue" loading="lazy" />
+                        <span class="tag">New</span>
+                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="name">Cotton Handloom</div>
+                        <div class="variant">Pure Cotton · Teal Blue</div>
+                        <div class="price-row">
+                            <span class="price">₹2,299</span>
+                            <span class="price-old">₹2,999</span>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="count">(187)</span>
+                        </div>
+                        <button class="btn-add">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3: Georgette Drape -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Drape — Dusty Rose" loading="lazy" />
+                        <span class="tag">Top Rated</span>
+                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="name">Georgette Drape</div>
+                        <div class="variant">Georgette · Dusty Rose</div>
+                        <div class="price-row">
+                            <span class="price">₹3,799</span>
+                            <span class="price-old">₹4,499</span>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="count">(156)</span>
+                        </div>
+                        <button class="btn-add">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 4: Tussar Silk -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Tussar Silk — Mustard Gold" loading="lazy" />
+                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="name">Tussar Silk</div>
+                        <div class="variant">Tussar Silk · Mustard Gold</div>
+                        <div class="price-row">
+                            <span class="price">₹5,499</span>
+                            <span class="price-old">₹6,999</span>
+                        </div>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="count">(98)</span>
+                        </div>
+                        <button class="btn-add">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== COMFORT & CRAFTSMANSHIP ===== -->
     <section class="craftsmanship" id="craftsmanship">
         <div class="container">
             <div class="craft-image-block">
                 <div class="craft-image-wrapper">
-                    <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Elegant woman wearing a Silk & Soul saree in a natural setting" class="craft-img" />
+                    <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Elegant woman wearing a Silk & Soul saree" class="craft-img" />
                 </div>
                 <div class="craft-testimonial">
                     <blockquote>
@@ -1803,104 +2064,6 @@
                     Explore Our Sarees
                     <span class="arrow">→</span>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== BEST SELLERS ===== -->
-    <section class="best-sellers" id="best-sellers">
-        <div class="container">
-            <div class="section-header">
-                <div>
-                    <span class="section-label">🏆 Bestsellers</span>
-                    <h2 class="section-title">Most loved by women like you</h2>
-                </div>
-                <a href="#" style="font-weight:600;color:var(--primary);font-size:0.95rem;">View All →</a>
-            </div>
-
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <span style="font-size:3rem;opacity:0.3;">✦</span>
-                        <span class="tag">Bestseller</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Mysore Silk</div>
-                        <div class="variant">Pure Silk · Wine Red</div>
-                        <div class="price-row">
-                            <span class="price">₹4,999</span>
-                            <span class="price-old">₹6,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span>(214)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <span style="font-size:3rem;opacity:0.3;">✦</span>
-                        <span class="tag">New</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Cotton Handloom</div>
-                        <div class="variant">Pure Cotton · Teal Blue</div>
-                        <div class="price-row">
-                            <span class="price">₹2,299</span>
-                            <span class="price-old">₹2,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span>(187)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <span style="font-size:3rem;opacity:0.3;">✦</span>
-                        <span class="tag">Top Rated</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Georgette Drape</div>
-                        <div class="variant">Georgette · Dusty Rose</div>
-                        <div class="price-row">
-                            <span class="price">₹3,799</span>
-                            <span class="price-old">₹4,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span>(156)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <div class="product-image">
-                        <span style="font-size:3rem;opacity:0.3;">✦</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Tussar Silk</div>
-                        <div class="variant">Tussar Silk · Mustard Gold</div>
-                        <div class="price-row">
-                            <span class="price">₹5,499</span>
-                            <span class="price-old">₹6,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span>(98)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

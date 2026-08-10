@@ -417,42 +417,160 @@
             font-weight: 400;
         }
 
-        /* ===== TRUST BAR ===== */
+        /* ================================================================
+           TRUST BAR — REFINED PREMIUM EDITORIAL
+           ================================================================ */
         .trust-bar {
-            padding: 32px 0;
+            padding: 40px 0;
             background: var(--warm-white);
             border-top: 1px solid rgba(45, 27, 26, 0.05);
             border-bottom: 1px solid rgba(45, 27, 26, 0.05);
+            position: relative;
         }
 
         .trust-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 0;
             text-align: center;
+            position: relative;
         }
 
+        /* --- each item --- */
         .trust-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            justify-content: center;
+            padding: 8px 16px;
+            position: relative;
+            transition: var(--transition);
         }
 
+        /* subtle vertical dividers */
+        .trust-item::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: rgba(45, 27, 26, 0.06);
+            transition: var(--transition);
+        }
+
+        .trust-item:last-child::after {
+            display: none;
+        }
+
+        /* --- icon --- */
         .trust-item .icon {
-            font-size: 2rem;
-            margin-bottom: 4px;
+            font-size: 1.6rem;
+            line-height: 1;
+            color: var(--gold);
+            margin-bottom: 8px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(201, 169, 110, 0.08);
+            transition: var(--transition);
         }
 
+        .trust-item:hover .icon {
+            transform: scale(1.08);
+            background: rgba(201, 169, 110, 0.16);
+            color: var(--gold);
+        }
+
+        /* --- title --- */
         .trust-item .title {
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: var(--text-dark);
+            letter-spacing: 0.02em;
+            margin-bottom: 2px;
+            font-family: 'Inter', sans-serif;
         }
 
+        /* --- description --- */
         .trust-item .desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.01em;
+            line-height: 1.5;
+        }
+
+        /* --- responsive adjustments for trust bar --- */
+        @media (max-width: 768px) {
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0;
+            }
+
+            .trust-item {
+                padding: 12px 12px;
+            }
+
+            .trust-item::after {
+                display: none;
+            }
+
+            .trust-item:nth-child(2)::after {
+                display: none;
+            }
+
+            .trust-item .icon {
+                font-size: 1.4rem;
+                width: 42px;
+                height: 42px;
+            }
+
+            .trust-item .title {
+                font-size: 0.85rem;
+            }
+
+            .trust-item .desc {
+                font-size: 0.75rem;
+            }
+
+            .trust-bar {
+                padding: 28px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 4px;
+            }
+
+            .trust-item {
+                padding: 10px 8px;
+            }
+
+            .trust-item .icon {
+                font-size: 1.2rem;
+                width: 36px;
+                height: 36px;
+                margin-bottom: 4px;
+            }
+
+            .trust-item .title {
+                font-size: 0.78rem;
+            }
+
+            .trust-item .desc {
+                font-size: 0.68rem;
+            }
+
+            .trust-bar {
+                padding: 20px 0;
+            }
         }
 
         /* ===== COMFORT & CRAFTSMANSHIP (REDESIGNED) ===== */
@@ -1209,11 +1327,6 @@
                 font-size: 2rem;
             }
 
-            .trust-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
             .cat-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -1393,14 +1506,6 @@
                 font-size: 1.3rem;
             }
 
-            .trust-item .icon {
-                font-size: 1.6rem;
-            }
-
-            .trust-item .title {
-                font-size: 0.85rem;
-            }
-
             .craft-heading {
                 font-size: 1.6rem;
             }
@@ -1508,26 +1613,35 @@
         </div>
     </section>
 
-    <!-- ===== TRUST BAR ===== -->
+    <!-- ================================================================
+    TRUST BAR — REFINED PREMIUM EDITORIAL
+    ================================================================ -->
     <section class="trust-bar">
         <div class="container trust-grid">
+            <!-- 01 · Free Shipping -->
             <div class="trust-item">
-                <span class="icon">🚚</span>
+                <span class="icon">✧</span>
                 <span class="title">Free Shipping</span>
                 <span class="desc">On orders above ₹999</span>
             </div>
+
+            <!-- 02 · 7-Day Easy Returns -->
             <div class="trust-item">
-                <span class="icon">🔄</span>
+                <span class="icon">↻</span>
                 <span class="title">7-Day Easy Returns</span>
                 <span class="desc">No questions asked</span>
             </div>
+
+            <!-- 03 · Premium Fabrics -->
             <div class="trust-item">
-                <span class="icon">✨</span>
+                <span class="icon">✦</span>
                 <span class="title">Premium Fabrics</span>
-                <span class="desc">Silk, cotton & more</span>
+                <span class="desc">Silk, cotton &amp; more</span>
             </div>
+
+            <!-- 04 · Loved by 20K+ -->
             <div class="trust-item">
-                <span class="icon">❤️</span>
+                <span class="icon">♡</span>
                 <span class="title">Loved by 20K+</span>
                 <span class="desc">Real women, real stories</span>
             </div>

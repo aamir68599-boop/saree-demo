@@ -696,6 +696,23 @@
             gap: 24px;
         }
 
+        .cat-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .cat-card-link:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .cat-card-link:hover .cat-card {
+            border-color: var(--gold-light);
+        }
+
         .cat-card {
             background: var(--cream);
             border-radius: var(--radius);
@@ -707,12 +724,6 @@
             flex-direction: column;
             height: 100%;
             position: relative;
-        }
-
-        .cat-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--gold-light);
         }
 
         .cat-card .cat-image {
@@ -731,7 +742,7 @@
             display: block;
         }
 
-        .cat-card:hover .cat-image img {
+        .cat-card-link:hover .cat-card .cat-image img {
             transform: scale(1.05);
         }
 
@@ -763,7 +774,7 @@
             transition: var(--transition);
         }
 
-        .cat-card:hover .cat-content h4 {
+        .cat-card-link:hover .cat-card .cat-content h4 {
             color: var(--primary);
         }
 
@@ -788,7 +799,7 @@
             transition: var(--transition);
         }
 
-        .cat-card:hover .cat-content .explore-hint {
+        .cat-card-link:hover .cat-card .cat-content .explore-hint {
             opacity: 1;
             transform: translateY(0);
         }
@@ -2706,46 +2717,61 @@
             </div>
 
             <div class="cat-grid">
-                <div class="cat-card">
-                    <div class="cat-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Cotton Comfort" loading="lazy" />
+                <!-- Cotton Comfort -->
+                <a href="https://saree-demo.aamir68599.workers.dev/cotton-comfort" class="cat-card-link">
+                    <div class="cat-card">
+                        <div class="cat-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Cotton Comfort" loading="lazy" />
+                        </div>
+                        <div class="cat-content">
+                            <h4>Cotton Comfort</h4>
+                            <p>Breezy, soft, everyday</p>
+                            <span class="explore-hint">Explore →</span>
+                        </div>
                     </div>
-                    <div class="cat-content">
-                        <h4>Cotton Comfort</h4>
-                        <p>Breezy, soft, everyday</p>
-                        <span class="explore-hint">Explore →</span>
+                </a>
+
+                <!-- Silk Luxe -->
+                <a href="https://saree-demo.aamir68599.workers.dev/silk-luxe" class="cat-card-link">
+                    <div class="cat-card">
+                        <div class="cat-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Silk Luxe" loading="lazy" />
+                        </div>
+                        <div class="cat-content">
+                            <h4>Silk Luxe</h4>
+                            <p>Celebration &amp; weddings</p>
+                            <span class="explore-hint">Explore →</span>
+                        </div>
                     </div>
-                </div>
-                <div class="cat-card">
-                    <div class="cat-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Silk Luxe" loading="lazy" />
+                </a>
+
+                <!-- Georgette & Chiffon -->
+                <a href="https://saree-demo.aamir68599.workers.dev/georgette-chiffon" class="cat-card-link">
+                    <div class="cat-card">
+                        <div class="cat-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Georgette & Chiffon" loading="lazy" />
+                        </div>
+                        <div class="cat-content">
+                            <h4>Georgette &amp; Chiffon</h4>
+                            <p>Flowing &amp; graceful</p>
+                            <span class="explore-hint">Explore →</span>
+                        </div>
                     </div>
-                    <div class="cat-content">
-                        <h4>Silk Luxe</h4>
-                        <p>Celebration &amp; weddings</p>
-                        <span class="explore-hint">Explore →</span>
+                </a>
+
+                <!-- Designer Drapes -->
+                <a href="https://saree-demo.aamir68599.workers.dev/designer-drapes" class="cat-card-link">
+                    <div class="cat-card">
+                        <div class="cat-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Designer Drapes" loading="lazy" />
+                        </div>
+                        <div class="cat-content">
+                            <h4>Designer Drapes</h4>
+                            <p>Contemporary &amp; unique</p>
+                            <span class="explore-hint">Explore →</span>
+                        </div>
                     </div>
-                </div>
-                <div class="cat-card">
-                    <div class="cat-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Georgette & Chiffon" loading="lazy" />
-                    </div>
-                    <div class="cat-content">
-                        <h4>Georgette &amp; Chiffon</h4>
-                        <p>Flowing &amp; graceful</p>
-                        <span class="explore-hint">Explore →</span>
-                    </div>
-                </div>
-                <div class="cat-card">
-                    <div class="cat-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Designer Drapes" loading="lazy" />
-                    </div>
-                    <div class="cat-content">
-                        <h4>Designer Drapes</h4>
-                        <p>Contemporary &amp; unique</p>
-                        <span class="explore-hint">Explore →</span>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -2981,10 +3007,10 @@
 
             <div class="footer-col">
                 <h4>Shop</h4>
-                <a href="#">Cotton Sarees</a>
-                <a href="#">Silk Sarees</a>
-                <a href="#">Georgette</a>
-                <a href="#">Designer Drapes</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/cotton-comfort">Cotton Sarees</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/silk-luxe">Silk Sarees</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/georgette-chiffon">Georgette</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/designer-drapes">Designer Drapes</a>
             </div>
 
             <div class="footer-col">

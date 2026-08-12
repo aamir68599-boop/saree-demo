@@ -1040,6 +1040,34 @@
             transform: translateY(0);
         }
 
+        /* product-card link wrapper for first product */
+        .product-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .product-card-link:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-card-link:hover .product-card {
+            border-color: var(--gold-light);
+            box-shadow: none;
+            transform: none;
+        }
+
+        .product-card-link .product-card {
+            cursor: pointer;
+        }
+
+        .product-card-link .product-card .btn-add {
+            pointer-events: none;
+        }
+
         /* ================================================================
            WHY SILK & SOUL — PREMIUM REFINED
            ================================================================ */
@@ -2788,26 +2816,29 @@
             </div>
 
             <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Mysore Silk — Wine Red" loading="lazy" />
-                        <span class="tag">Bestseller</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Mysore Silk</div>
-                        <div class="variant">Pure Silk · Wine Red</div>
-                        <div class="price-row">
-                            <span class="price">₹4,999</span>
-                            <span class="price-old">₹6,499</span>
+                <!-- Product 1 — linked to mysore product page -->
+                <a href="https://saree-demo.aamir68599.workers.dev/mysore-silk-crepe-burgundy-wine-saree" class="product-card-link">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp" alt="Mysore Silk Crepe Burgundy Wine Saree" loading="lazy" />
+                            <span class="tag">Bestseller</span>
+                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
                         </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(214)</span>
+                        <div class="product-info">
+                            <div class="name">Mysore Silk Crepe</div>
+                            <div class="variant">Pure Silk · Burgundy Wine</div>
+                            <div class="price-row">
+                                <span class="price">₹16,365</span>
+                                <span class="price-old">₹18,999</span>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="count">(214)</span>
+                            </div>
+                            <button class="btn-add">Add to Cart</button>
                         </div>
-                        <button class="btn-add">Add to Cart</button>
                     </div>
-                </div>
+                </a>
 
                 <div class="product-card">
                     <div class="product-image">
@@ -3065,7 +3096,33 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        // Wishlist buttons
+        document.querySelectorAll('.wishlist').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                this.textContent = this.textContent === '♡' ? '♥' : '♡';
+                this.style.color = this.textContent === '♥' ? '#E74C3C' : '';
+            });
+        });
+
+        // Add to cart buttons (only for non-linked product cards)
+        document.querySelectorAll('.product-card:not(.product-card-link .product-card) .btn-add').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const original = this.textContent;
+                this.textContent = '✓ Added!';
+                this.style.background = '#2E7D32';
+                this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
+                setTimeout(() => {
+                    this.textContent = original;
+                    this.style.background = '';
+                    this.style.boxShadow = '';
+                }, 2000);
+            });
+        });
     </script>
 
 </body>
-</html> 
+</html>

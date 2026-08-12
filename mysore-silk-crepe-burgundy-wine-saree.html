@@ -389,7 +389,7 @@
             align-items: start;
         }
 
-        /* --- Product Image --- */
+        /* --- Product Gallery --- */
         .product-gallery {
             position: sticky;
             top: 100px;
@@ -440,6 +440,24 @@
         .product-gallery .main-image .badge-strip span.gold-badge {
             background: var(--gold);
             color: var(--text-dark);
+        }
+
+        /* --- Second image in gallery --- */
+        .product-gallery .secondary-image {
+            margin-top: 16px;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--beige);
+            box-shadow: var(--shadow);
+            aspect-ratio: 3/4;
+            position: relative;
+        }
+
+        .product-gallery .secondary-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         /* --- Product Info --- */
@@ -1054,6 +1072,9 @@
                 font-size: 0.5rem;
                 padding: 3px 10px;
             }
+            .product-gallery .secondary-image {
+                margin-top: 12px;
+            }
             .related-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
@@ -1130,9 +1151,10 @@
 
                 <!-- LEFT: Gallery -->
                 <div class="product-gallery">
+                    <!-- Main Image -->
                     <div class="main-image">
                         <img
-                        src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp"
+                        src="https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp"
                         alt="Mysore Silk Crepe Burgundy Wine Saree With Blouse"
                         />
                         <div class="badge-strip">
@@ -1140,6 +1162,13 @@
                             <span class="gold-badge">★ Best Price Challenge</span>
                             <span class="gold-badge">✓ Duty Free</span>
                         </div>
+                    </div>
+                    <!-- Second Image -->
+                    <div class="secondary-image">
+                        <img
+                        src="https://saree-demo.aamir68599.workers.dev/mysore%20image%202.webp"
+                        alt="Mysore Silk Crepe Burgundy Wine Saree With Blouse - View 2"
+                        />
                     </div>
                 </div>
 

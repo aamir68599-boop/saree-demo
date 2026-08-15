@@ -702,7 +702,7 @@
             font-weight: 600;
         }
 
-        /* ===== PRODUCT GRID — COTTON ===== */
+        /* ===== PRODUCT GRID — COTTON (Single Product) ===== */
         .category-products {
             padding: 48px 0 80px;
             background: var(--warm-white);
@@ -710,8 +710,29 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 1fr;
             gap: 28px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .product-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .product-card-link:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-card-link:hover .product-card {
+            border-color: var(--gold-light);
+            box-shadow: none;
+            transform: none;
         }
 
         .product-card {
@@ -737,12 +758,15 @@
             aspect-ratio: 3/4;
             overflow: hidden;
             background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s ease;
             display: block;
         }
@@ -773,21 +797,6 @@
             letter-spacing: 0.8px;
             z-index: 2;
             box-shadow: 0 2px 8px rgba(201, 169, 110, 0.3);
-        }
-
-        .product-image .tag.green {
-            background: #7BA88E;
-            color: #fff;
-        }
-
-        .product-image .tag.blue {
-            background: #6B8FA7;
-            color: #fff;
-        }
-
-        .product-image .tag.rose {
-            background: #D4A0A0;
-            color: #fff;
         }
 
         .product-image .wishlist {
@@ -1303,8 +1312,7 @@
             }
 
             .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                max-width: 360px;
             }
 
             .cotton-benefits .container {
@@ -1357,7 +1365,7 @@
             }
 
             .product-grid {
-                gap: 16px;
+                max-width: 320px;
             }
 
             .product-info {
@@ -1517,8 +1525,7 @@
             }
 
             .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                max-width: 280px;
             }
 
             .product-info {
@@ -1646,7 +1653,7 @@
             }
 
             .product-grid {
-                gap: 10px;
+                max-width: 240px;
             }
             .product-info {
                 padding: 8px 10px 12px;
@@ -1779,293 +1786,42 @@
                 <button class="filter-btn">Checked</button>
             </div>
             <div class="results-count">
-                Showing <strong>12</strong> products
+                Showing <strong>1</strong> product
             </div>
         </div>
     </section>
 
     <!-- ================================================================
-    PRODUCT GRID — COTTON COMFORT
+    PRODUCT GRID — COTTON COMFORT (Single Product)
     ================================================================ -->
     <section class="category-products">
         <div class="container">
             <div class="product-grid">
 
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Handloom Cotton — Ivory" loading="lazy" />
-                        <span class="tag green">Handloom</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Handloom Cotton</div>
-                        <div class="variant">Pure Cotton · Ivory</div>
-                        <div class="price-row">
-                            <span class="price">₹2,499</span>
-                            <span class="price-old">₹3,299</span>
+                <!-- Single Product — linked to pure handloom cotton product page -->
+                <a href="https://saree-demo.aamir68599.workers.dev/pure-handloom-cotton-saree" class="product-card-link">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp" alt="Pure Handloom Cotton Saree — Teal Blue" loading="lazy" />
+                            <span class="tag">Handloom</span>
+                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                            <button class="quick-view">Quick View</button>
                         </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(142)</span>
+                        <div class="product-info">
+                            <div class="name">Pure Handloom Cotton</div>
+                            <div class="variant">Pure Cotton · Teal Blue</div>
+                            <div class="price-row">
+                                <span class="price">₹2,299</span>
+                                <span class="price-old">₹2,999</span>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="count">(187)</span>
+                            </div>
+                            <button class="btn-add">Add to Cart</button>
                         </div>
-                        <button class="btn-add">Add to Cart</button>
                     </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Block Print Cotton — Indigo" loading="lazy" />
-                        <span class="tag blue">Block Print</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Block Print Cotton</div>
-                        <div class="variant">Pure Cotton · Indigo</div>
-                        <div class="price-row">
-                            <span class="price">₹2,899</span>
-                            <span class="price-old">₹3,699</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(98)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Solid Cotton — Sage Green" loading="lazy" />
-                        <span class="tag">Bestseller</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Solid Cotton</div>
-                        <div class="variant">Pure Cotton · Sage Green</div>
-                        <div class="price-row">
-                            <span class="price">₹1,999</span>
-                            <span class="price-old">₹2,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(76)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Checked Cotton — Rust" loading="lazy" />
-                        <span class="tag rose">Checked</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Checked Cotton</div>
-                        <div class="variant">Pure Cotton · Rust</div>
-                        <div class="price-row">
-                            <span class="price">₹2,199</span>
-                            <span class="price-old">₹2,799</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(63)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Handloom Cotton — Terracotta" loading="lazy" />
-                        <span class="tag green">Handloom</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Handloom Cotton</div>
-                        <div class="variant">Pure Cotton · Terracotta</div>
-                        <div class="price-row">
-                            <span class="price">₹2,699</span>
-                            <span class="price-old">₹3,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(112)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Block Print Cotton — Mustard" loading="lazy" />
-                        <span class="tag blue">Block Print</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Block Print Cotton</div>
-                        <div class="variant">Pure Cotton · Mustard</div>
-                        <div class="price-row">
-                            <span class="price">₹2,999</span>
-                            <span class="price-old">₹3,899</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(87)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Solid Cotton — Sky Blue" loading="lazy" />
-                        <span class="tag">Top Rated</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Solid Cotton</div>
-                        <div class="variant">Pure Cotton · Sky Blue</div>
-                        <div class="price-row">
-                            <span class="price">₹1,899</span>
-                            <span class="price-old">₹2,399</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(134)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Checked Cotton — Teal" loading="lazy" />
-                        <span class="tag rose">Checked</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Checked Cotton</div>
-                        <div class="variant">Pure Cotton · Teal</div>
-                        <div class="price-row">
-                            <span class="price">₹2,399</span>
-                            <span class="price-old">₹2,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(56)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Handloom Cotton — Blush" loading="lazy" />
-                        <span class="tag green">Handloom</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Handloom Cotton</div>
-                        <div class="variant">Pure Cotton · Blush</div>
-                        <div class="price-row">
-                            <span class="price">₹2,799</span>
-                            <span class="price-old">₹3,599</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(91)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Block Print Cotton — Charcoal" loading="lazy" />
-                        <span class="tag blue">Block Print</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Block Print Cotton</div>
-                        <div class="variant">Pure Cotton · Charcoal</div>
-                        <div class="price-row">
-                            <span class="price">₹3,199</span>
-                            <span class="price-old">₹4,199</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(68)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 11 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Solid Cotton — Dusty Rose" loading="lazy" />
-                        <span class="tag">New</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Solid Cotton</div>
-                        <div class="variant">Pure Cotton · Dusty Rose</div>
-                        <div class="price-row">
-                            <span class="price">₹2,099</span>
-                            <span class="price-old">₹2,599</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(43)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 12 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Checked Cotton — Olive" loading="lazy" />
-                        <span class="tag rose">Checked</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Checked Cotton</div>
-                        <div class="variant">Pure Cotton · Olive</div>
-                        <div class="price-row">
-                            <span class="price">₹2,499</span>
-                            <span class="price-old">₹3,199</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(52)</span>
-                        </div>
-                        <button class="btn-add">Add to Cart</button>
-                    </div>
-                </div>
+                </a>
 
             </div>
         </div>
@@ -2275,7 +2031,9 @@
 
         // Add to cart buttons
         document.querySelectorAll('.btn-add').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                // Prevent navigation if inside a link
+                e.preventDefault();
                 const originalText = btn.textContent;
                 btn.textContent = '✓ Added!';
                 btn.style.background = '#7BA88E';

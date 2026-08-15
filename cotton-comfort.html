@@ -565,12 +565,15 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .category-hero-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
             transition: transform 0.7s ease;
         }
@@ -593,6 +596,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             border-left: 3px solid var(--gold);
+            z-index: 2;
         }
 
         .category-hero-image .floating-tag .emoji {

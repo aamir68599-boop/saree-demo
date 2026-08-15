@@ -569,12 +569,15 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .category-hero-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
             transition: transform 0.7s ease;
         }
@@ -597,6 +600,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             border-left: 3px solid var(--gold);
+            z-index: 2;
         }
 
         .category-hero-image .floating-tag .emoji {
@@ -706,7 +710,7 @@
             font-weight: 600;
         }
 
-        /* ===== PRODUCT GRID — SILK LUXE ===== */
+        /* ===== PRODUCT GRID — SILK LUXE (Single Product Centered) ===== */
         .category-products {
             padding: 48px 0 80px;
             background: var(--warm-white);
@@ -714,8 +718,29 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 1fr;
             gap: 28px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .product-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .product-card-link:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-card-link:hover .product-card {
+            border-color: var(--gold-light);
+            box-shadow: none;
+            transform: none;
         }
 
         .product-card {
@@ -741,12 +766,15 @@
             aspect-ratio: 3/4;
             overflow: hidden;
             background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s ease;
             display: block;
         }
@@ -786,11 +814,6 @@
 
         .product-image .tag.purple {
             background: var(--primary);
-            color: #fff;
-        }
-
-        .product-image .tag.rose {
-            background: #D4A0A0;
             color: #fff;
         }
 
@@ -1306,8 +1329,7 @@
             }
 
             .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                max-width: 360px;
             }
 
             .silk-benefits .container {
@@ -1360,7 +1382,7 @@
             }
 
             .product-grid {
-                gap: 16px;
+                max-width: 320px;
             }
 
             .product-info {
@@ -1520,8 +1542,7 @@
             }
 
             .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                max-width: 280px;
             }
 
             .product-info {
@@ -1649,7 +1670,7 @@
             }
 
             .product-grid {
-                gap: 10px;
+                max-width: 240px;
             }
             .product-info {
                 padding: 8px 10px 12px;
@@ -1742,8 +1763,8 @@
             <div class="category-hero-visual">
                 <div class="category-hero-image">
                     <img
-                    src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp"
-                    alt="Luxurious silk saree collection"
+                    src="https://saree-demo.aamir68599.workers.dev/Assam%20Silk%20Luxe%20Embroidered%20Kurti%20Set%20-%20Aazuri.jpg"
+                    alt="Assam Silk Luxe Embroidered Kurti Set — Aazuri"
                     />
                     <div class="floating-tag">
                         <span class="emoji">✨</span>
@@ -1784,293 +1805,42 @@
                 <button class="filter-btn">Designer</button>
             </div>
             <div class="results-count">
-                Showing <strong>12</strong> products
+                Showing <strong>1</strong> product
             </div>
         </div>
     </section>
 
     <!-- ================================================================
-    PRODUCT GRID — SILK LUXE
+    PRODUCT GRID — SILK LUXE (Single Product Centered)
     ================================================================ -->
     <section class="category-products">
         <div class="container">
             <div class="product-grid">
 
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Banarasi Silk — Wine Red" loading="lazy" />
-                        <span class="tag gold-tag">Banarasi</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Banarasi Silk</div>
-                        <div class="variant">Pure Silk · Wine Red</div>
-                        <div class="price-row">
-                            <span class="price">₹6,999</span>
-                            <span class="price-old">₹8,999</span>
+                <!-- Single Product — linked to mysore silk crepe burgundy wine product page -->
+                <a href="https://saree-demo.aamir68599.workers.dev/mysore-silk-crepe-burgundy-wine-saree" class="product-card-link">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp" alt="Mysore Silk Crepe — Burgundy Wine" loading="lazy" />
+                            <span class="tag gold-tag">Mysore</span>
+                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                            <button class="quick-view">Quick View</button>
                         </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(214)</span>
+                        <div class="product-info">
+                            <div class="name">Mysore Silk Crepe</div>
+                            <div class="variant">Pure Silk · Burgundy Wine</div>
+                            <div class="price-row">
+                                <span class="price">₹16,365</span>
+                                <span class="price-old">₹18,999</span>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="count">(214)</span>
+                            </div>
+                            <button class="btn-add gold-btn">Add to Cart</button>
                         </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
                     </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Kanchipuram Silk — Royal Blue" loading="lazy" />
-                        <span class="tag purple">Kanchipuram</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Kanchipuram Silk</div>
-                        <div class="variant">Pure Silk · Royal Blue</div>
-                        <div class="price-row">
-                            <span class="price">₹7,499</span>
-                            <span class="price-old">₹9,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(187)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Mysore Silk — Emerald Green" loading="lazy" />
-                        <span class="tag gold-tag">Mysore</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Mysore Silk</div>
-                        <div class="variant">Pure Silk · Emerald Green</div>
-                        <div class="price-row">
-                            <span class="price">₹5,499</span>
-                            <span class="price-old">₹6,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(156)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Tussar Silk — Mustard Gold" loading="lazy" />
-                        <span class="tag rose">Tussar</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Tussar Silk</div>
-                        <div class="variant">Tussar Silk · Mustard Gold</div>
-                        <div class="price-row">
-                            <span class="price">₹5,999</span>
-                            <span class="price-old">₹7,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(98)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Banarasi Silk — Blush Pink" loading="lazy" />
-                        <span class="tag gold-tag">Banarasi</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Banarasi Silk</div>
-                        <div class="variant">Pure Silk · Blush Pink</div>
-                        <div class="price-row">
-                            <span class="price">₹7,999</span>
-                            <span class="price-old">₹10,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(132)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Kanchipuram Silk — Coral" loading="lazy" />
-                        <span class="tag purple">Kanchipuram</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Kanchipuram Silk</div>
-                        <div class="variant">Pure Silk · Coral</div>
-                        <div class="price-row">
-                            <span class="price">₹8,499</span>
-                            <span class="price-old">₹11,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(104)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Designer Silk — Ivory & Gold" loading="lazy" />
-                        <span class="tag">Designer</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Designer Silk</div>
-                        <div class="variant">Pure Silk · Ivory &amp; Gold</div>
-                        <div class="price-row">
-                            <span class="price">₹9,999</span>
-                            <span class="price-old">₹13,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(89)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Mysore Silk — Plum" loading="lazy" />
-                        <span class="tag gold-tag">Mysore</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Mysore Silk</div>
-                        <div class="variant">Pure Silk · Plum</div>
-                        <div class="price-row">
-                            <span class="price">₹5,999</span>
-                            <span class="price-old">₹7,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(72)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Banarasi Silk — Teal" loading="lazy" />
-                        <span class="tag gold-tag">Banarasi</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Banarasi Silk</div>
-                        <div class="variant">Pure Silk · Teal</div>
-                        <div class="price-row">
-                            <span class="price">₹7,299</span>
-                            <span class="price-old">₹9,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(118)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Kanchipuram Silk — Deep Purple" loading="lazy" />
-                        <span class="tag purple">Kanchipuram</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Kanchipuram Silk</div>
-                        <div class="variant">Pure Silk · Deep Purple</div>
-                        <div class="price-row">
-                            <span class="price">₹8,999</span>
-                            <span class="price-old">₹12,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(95)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 11 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Tussar Silk — Ochre" loading="lazy" />
-                        <span class="tag rose">Tussar</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Tussar Silk</div>
-                        <div class="variant">Tussar Silk · Ochre</div>
-                        <div class="price-row">
-                            <span class="price">₹5,299</span>
-                            <span class="price-old">₹6,799</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(67)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 12 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Designer Silk — Rose Gold" loading="lazy" />
-                        <span class="tag">New</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Designer Silk</div>
-                        <div class="variant">Pure Silk · Rose Gold</div>
-                        <div class="price-row">
-                            <span class="price">₹10,999</span>
-                            <span class="price-old">₹14,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(44)</span>
-                        </div>
-                        <button class="btn-add gold-btn">Add to Cart</button>
-                    </div>
-                </div>
+                </a>
 
             </div>
         </div>
@@ -2282,7 +2052,9 @@
 
         // Add to cart buttons
         document.querySelectorAll('.btn-add').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                // Prevent navigation if inside a link
+                e.preventDefault();
                 const originalText = btn.textContent;
                 btn.textContent = '✓ Added!';
                 btn.style.background = '#7BA88E';

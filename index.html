@@ -732,12 +732,15 @@
             aspect-ratio: 4/5;
             overflow: hidden;
             background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cat-card .cat-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s ease;
             display: block;
         }
@@ -887,12 +890,15 @@
             aspect-ratio: 3/4;
             overflow: hidden;
             background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s ease;
             display: block;
         }
@@ -1095,12 +1101,15 @@
             box-shadow: var(--shadow-hover);
             background: var(--beige);
             aspect-ratio: 4/5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .craft-image-wrapper .craft-img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
             transition: transform 0.7s ease;
         }
@@ -3117,10 +3126,7 @@
         });
 
         // Add to cart buttons (only for non-linked product cards)
-        // Note: .btn-add inside .product-card-link have pointer-events: none, so they won't trigger.
-        // For completeness, we still target all .btn-add but we can keep the same logic.
         document.querySelectorAll('.btn-add').forEach(btn => {
-            // skip if inside a product-card-link (already have pointer-events: none)
             if (btn.closest('.product-card-link')) return;
             btn.addEventListener('click', function(e) {
                 e.preventDefault();

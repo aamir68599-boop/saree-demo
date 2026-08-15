@@ -571,12 +571,15 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .category-hero-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
             transition: transform 0.7s ease;
         }
@@ -599,6 +602,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             border-left: 3px solid var(--gold);
+            z-index: 2;
         }
 
         .category-hero-image .floating-tag .emoji {
@@ -708,7 +712,7 @@
             font-weight: 600;
         }
 
-        /* ===== PRODUCT GRID — GEORGETTE & CHIFFON ===== */
+        /* ===== PRODUCT GRID — GEORGETTE & CHIFFON (Single Product) ===== */
         .category-products {
             padding: 48px 0 80px;
             background: var(--warm-white);
@@ -716,8 +720,29 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 1fr;
             gap: 28px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .product-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .product-card-link:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-card-link:hover .product-card {
+            border-color: var(--gold-light);
+            box-shadow: none;
+            transform: none;
         }
 
         .product-card {
@@ -743,12 +768,15 @@
             aspect-ratio: 3/4;
             overflow: hidden;
             background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s ease;
             display: block;
         }
@@ -779,21 +807,6 @@
             letter-spacing: 0.8px;
             z-index: 2;
             box-shadow: 0 2px 8px rgba(201, 169, 110, 0.3);
-        }
-
-        .product-image .tag.soft {
-            background: #D4A0A0;
-            color: #fff;
-        }
-
-        .product-image .tag.blue {
-            background: #6B8FA7;
-            color: #fff;
-        }
-
-        .product-image .tag.green {
-            background: #7BA88E;
-            color: #fff;
         }
 
         .product-image .wishlist {
@@ -1307,8 +1320,7 @@
             }
 
             .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                max-width: 360px;
             }
 
             .fabric-benefits .container {
@@ -1361,7 +1373,7 @@
             }
 
             .product-grid {
-                gap: 16px;
+                max-width: 320px;
             }
 
             .product-info {
@@ -1521,8 +1533,7 @@
             }
 
             .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                max-width: 280px;
             }
 
             .product-info {
@@ -1650,7 +1661,7 @@
             }
 
             .product-grid {
-                gap: 10px;
+                max-width: 240px;
             }
             .product-info {
                 padding: 8px 10px 12px;
@@ -1743,7 +1754,7 @@
             <div class="category-hero-visual">
                 <div class="category-hero-image">
                     <img
-                    src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp"
+                    src="https://saree-demo.aamir68599.workers.dev/Georgette%20%26%20Chiffon%20saree.webp"
                     alt="Flowing georgette and chiffon saree collection"
                     />
                     <div class="floating-tag">
@@ -1785,293 +1796,42 @@
                 <button class="filter-btn">Solid</button>
             </div>
             <div class="results-count">
-                Showing <strong>12</strong> products
+                Showing <strong>1</strong> product
             </div>
         </div>
     </section>
 
     <!-- ================================================================
-    PRODUCT GRID — GEORGETTE & CHIFFON
+    PRODUCT GRID — GEORGETTE & CHIFFON (Single Product)
     ================================================================ -->
     <section class="category-products">
         <div class="container">
             <div class="product-grid">
 
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Drape — Dusty Rose" loading="lazy" />
-                        <span class="tag soft">Georgette</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Georgette Drape</div>
-                        <div class="variant">Pure Georgette · Dusty Rose</div>
-                        <div class="price-row">
-                            <span class="price">₹3,799</span>
-                            <span class="price-old">₹4,999</span>
+                <!-- Single Product — linked to georgette-chiffon product page -->
+                <a href="https://saree-demo.aamir68599.workers.dev/georgette-chiffon" class="product-card-link">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp" alt="Georgette Drape — Dusty Rose" loading="lazy" />
+                            <span class="tag">Georgette</span>
+                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                            <button class="quick-view">Quick View</button>
                         </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(142)</span>
+                        <div class="product-info">
+                            <div class="name">Georgette Drape</div>
+                            <div class="variant">Pure Georgette · Dusty Rose</div>
+                            <div class="price-row">
+                                <span class="price">₹3,799</span>
+                                <span class="price-old">₹4,999</span>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="count">(142)</span>
+                            </div>
+                            <button class="btn-add flow-btn">Add to Cart</button>
                         </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
                     </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Chiffon Floral — Mint Green" loading="lazy" />
-                        <span class="tag blue">Chiffon</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Chiffon Floral</div>
-                        <div class="variant">Pure Chiffon · Mint Green</div>
-                        <div class="price-row">
-                            <span class="price">₹2,999</span>
-                            <span class="price-old">₹3,899</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(98)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Embroidered — Ivory" loading="lazy" />
-                        <span class="tag">Embroidered</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Georgette Embroidered</div>
-                        <div class="variant">Georgette · Ivory</div>
-                        <div class="price-row">
-                            <span class="price">₹4,299</span>
-                            <span class="price-old">₹5,699</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(76)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Chiffon Solid — Lavender" loading="lazy" />
-                        <span class="tag soft">Chiffon</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Chiffon Solid</div>
-                        <div class="variant">Pure Chiffon · Lavender</div>
-                        <div class="price-row">
-                            <span class="price">₹2,499</span>
-                            <span class="price-old">₹3,199</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(63)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Printed — Teal" loading="lazy" />
-                        <span class="tag green">Printed</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Georgette Printed</div>
-                        <div class="variant">Georgette · Teal</div>
-                        <div class="price-row">
-                            <span class="price">₹3,299</span>
-                            <span class="price-old">₹4,299</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(112)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Chiffon Embroidered — Blush" loading="lazy" />
-                        <span class="tag">Embroidered</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Chiffon Embroidered</div>
-                        <div class="variant">Chiffon · Blush</div>
-                        <div class="price-row">
-                            <span class="price">₹3,899</span>
-                            <span class="price-old">₹5,199</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(87)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Solid — Sage" loading="lazy" />
-                        <span class="tag blue">Georgette</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Georgette Solid</div>
-                        <div class="variant">Pure Georgette · Sage</div>
-                        <div class="price-row">
-                            <span class="price">₹2,899</span>
-                            <span class="price-old">₹3,699</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(134)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Chiffon Printed — Coral" loading="lazy" />
-                        <span class="tag soft">Printed</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Chiffon Printed</div>
-                        <div class="variant">Chiffon · Coral</div>
-                        <div class="price-row">
-                            <span class="price">₹2,799</span>
-                            <span class="price-old">₹3,599</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(56)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Floral — Mustard" loading="lazy" />
-                        <span class="tag green">Floral</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Georgette Floral</div>
-                        <div class="variant">Georgette · Mustard</div>
-                        <div class="price-row">
-                            <span class="price">₹3,499</span>
-                            <span class="price-old">₹4,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(91)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Chiffon Solid — Charcoal" loading="lazy" />
-                        <span class="tag">Chiffon</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Chiffon Solid</div>
-                        <div class="variant">Pure Chiffon · Charcoal</div>
-                        <div class="price-row">
-                            <span class="price">₹2,699</span>
-                            <span class="price-old">₹3,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(68)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 11 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Embroidered — Navy" loading="lazy" />
-                        <span class="tag blue">Embroidered</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Georgette Embroidered</div>
-                        <div class="variant">Georgette · Navy</div>
-                        <div class="price-row">
-                            <span class="price">₹4,499</span>
-                            <span class="price-old">₹5,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(43)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 12 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Chiffon Floral — Rose Gold" loading="lazy" />
-                        <span class="tag soft">Floral</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Chiffon Floral</div>
-                        <div class="variant">Chiffon · Rose Gold</div>
-                        <div class="price-row">
-                            <span class="price">₹3,199</span>
-                            <span class="price-old">₹4,199</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(52)</span>
-                        </div>
-                        <button class="btn-add flow-btn">Add to Cart</button>
-                    </div>
-                </div>
+                </a>
 
             </div>
         </div>
@@ -2285,7 +2045,9 @@
 
         // Add to cart buttons
         document.querySelectorAll('.btn-add').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                // Prevent navigation if inside a link
+                e.preventDefault();
                 const originalText = btn.textContent;
                 btn.textContent = '✓ Added!';
                 btn.style.background = '#7BA88E';

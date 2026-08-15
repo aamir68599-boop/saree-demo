@@ -571,12 +571,15 @@
             border-radius: var(--radius);
             overflow: hidden;
             box-shadow: var(--shadow-hover);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .category-hero-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
             transition: transform 0.7s ease;
         }
@@ -599,6 +602,7 @@
             font-size: 0.85rem;
             font-weight: 500;
             border-left: 3px solid var(--gold);
+            z-index: 2;
         }
 
         .category-hero-image .floating-tag .emoji {
@@ -708,7 +712,7 @@
             font-weight: 600;
         }
 
-        /* ===== PRODUCT GRID — DESIGNER DRAPES ===== */
+        /* ===== PRODUCT GRID — DESIGNER DRAPES (Single Product) ===== */
         .category-products {
             padding: 48px 0 80px;
             background: var(--warm-white);
@@ -716,8 +720,29 @@
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 1fr;
             gap: 28px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .product-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+        .product-card-link:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .product-card-link:hover .product-card {
+            border-color: var(--gold-light);
+            box-shadow: none;
+            transform: none;
         }
 
         .product-card {
@@ -743,12 +768,15 @@
             aspect-ratio: 3/4;
             overflow: hidden;
             background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s ease;
             display: block;
         }
@@ -779,26 +807,6 @@
             letter-spacing: 0.8px;
             z-index: 2;
             box-shadow: 0 2px 8px rgba(201, 169, 110, 0.3);
-        }
-
-        .product-image .tag.purple {
-            background: var(--primary);
-            color: #fff;
-        }
-
-        .product-image .tag.rose {
-            background: #D4A0A0;
-            color: #fff;
-        }
-
-        .product-image .tag.teal {
-            background: #6B8FA7;
-            color: #fff;
-        }
-
-        .product-image .tag.gold-tag {
-            background: var(--gold);
-            color: var(--text-dark);
         }
 
         .product-image .wishlist {
@@ -1312,8 +1320,7 @@
             }
 
             .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
+                max-width: 360px;
             }
 
             .designer-benefits .container {
@@ -1366,7 +1373,7 @@
             }
 
             .product-grid {
-                gap: 16px;
+                max-width: 320px;
             }
 
             .product-info {
@@ -1526,8 +1533,7 @@
             }
 
             .product-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                max-width: 280px;
             }
 
             .product-info {
@@ -1655,7 +1661,7 @@
             }
 
             .product-grid {
-                gap: 10px;
+                max-width: 240px;
             }
             .product-info {
                 padding: 8px 10px 12px;
@@ -1748,7 +1754,7 @@
             <div class="category-hero-visual">
                 <div class="category-hero-image">
                     <img
-                    src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp"
+                    src="https://saree-demo.aamir68599.workers.dev/Designer%20Drapes%20saree.avif"
                     alt="Contemporary designer saree collection"
                     />
                     <div class="floating-tag">
@@ -1790,293 +1796,42 @@
                 <button class="filter-btn">Bold</button>
             </div>
             <div class="results-count">
-                Showing <strong>12</strong> products
+                Showing <strong>1</strong> product
             </div>
         </div>
     </section>
 
     <!-- ================================================================
-    PRODUCT GRID — DESIGNER DRAPES
+    PRODUCT GRID — DESIGNER DRAPES (Single Product)
     ================================================================ -->
     <section class="category-products">
         <div class="container">
             <div class="product-grid">
 
-                <!-- Product 1 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Fusion Drape — Abstract Art" loading="lazy" />
-                        <span class="tag gold-tag">Fusion</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Fusion Drape</div>
-                        <div class="variant">Abstract Art · Silk Blend</div>
-                        <div class="price-row">
-                            <span class="price">₹5,999</span>
-                            <span class="price-old">₹7,999</span>
+                <!-- Single Product — linked to designer-drapes product page -->
+                <a href="https://saree-demo.aamir68599.workers.dev/designer-drapes" class="product-card-link">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/Designer%20Drapes%20saree.avif" alt="Fusion Drape — Abstract Art" loading="lazy" />
+                            <span class="tag">Fusion</span>
+                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                            <button class="quick-view">Quick View</button>
                         </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(124)</span>
+                        <div class="product-info">
+                            <div class="name">Fusion Drape</div>
+                            <div class="variant">Abstract Art · Silk Blend</div>
+                            <div class="price-row">
+                                <span class="price">₹5,999</span>
+                                <span class="price-old">₹7,999</span>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="count">(124)</span>
+                            </div>
+                            <button class="btn-add designer-btn">Add to Cart</button>
                         </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
                     </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Modern Drape — Monochrome" loading="lazy" />
-                        <span class="tag purple">Modern</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Modern Drape</div>
-                        <div class="variant">Monochrome · Georgette</div>
-                        <div class="price-row">
-                            <span class="price">₹4,499</span>
-                            <span class="price-old">₹6,299</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(98)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Artistic Drape — Watercolor" loading="lazy" />
-                        <span class="tag teal">Artistic</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Artistic Drape</div>
-                        <div class="variant">Watercolor · Chiffon</div>
-                        <div class="price-row">
-                            <span class="price">₹5,299</span>
-                            <span class="price-old">₹6,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(76)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Minimalist Drape — Ivory" loading="lazy" />
-                        <span class="tag gold-tag">Minimalist</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Minimalist Drape</div>
-                        <div class="variant">Ivory · Pure Silk</div>
-                        <div class="price-row">
-                            <span class="price">₹6,799</span>
-                            <span class="price-old">₹8,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(63)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Bold Drape — Electric Blue" loading="lazy" />
-                        <span class="tag rose">Bold</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Bold Drape</div>
-                        <div class="variant">Electric Blue · Georgette</div>
-                        <div class="price-row">
-                            <span class="price">₹4,999</span>
-                            <span class="price-old">₹6,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(112)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Fusion Drape — Tribal Print" loading="lazy" />
-                        <span class="tag purple">Fusion</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Fusion Drape</div>
-                        <div class="variant">Tribal Print · Silk Blend</div>
-                        <div class="price-row">
-                            <span class="price">₹5,799</span>
-                            <span class="price-old">₹7,499</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(87)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Artistic Drape — Abstract Gold" loading="lazy" />
-                        <span class="tag gold-tag">Artistic</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Artistic Drape</div>
-                        <div class="variant">Abstract Gold · Chiffon</div>
-                        <div class="price-row">
-                            <span class="price">₹5,999</span>
-                            <span class="price-old">₹7,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(89)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 8 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Modern Drape — Pastel Fusion" loading="lazy" />
-                        <span class="tag teal">Modern</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Modern Drape</div>
-                        <div class="variant">Pastel Fusion · Georgette</div>
-                        <div class="price-row">
-                            <span class="price">₹4,299</span>
-                            <span class="price-old">₹5,799</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(72)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 9 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Bold Drape — Crimson" loading="lazy" />
-                        <span class="tag rose">Bold</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Bold Drape</div>
-                        <div class="variant">Crimson · Pure Silk</div>
-                        <div class="price-row">
-                            <span class="price">₹6,499</span>
-                            <span class="price-old">₹8,299</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(118)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 10 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Minimalist Drape — Sand" loading="lazy" />
-                        <span class="tag purple">Minimalist</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Minimalist Drape</div>
-                        <div class="variant">Sand · Linen Blend</div>
-                        <div class="price-row">
-                            <span class="price">₹5,299</span>
-                            <span class="price-old">₹6,999</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(95)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 11 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Fusion Drape — Indigo" loading="lazy" />
-                        <span class="tag gold-tag">Fusion</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Fusion Drape</div>
-                        <div class="variant">Indigo · Cotton Silk</div>
-                        <div class="price-row">
-                            <span class="price">₹4,799</span>
-                            <span class="price-old">₹6,299</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(67)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
-
-                <!-- Product 12 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Artistic Drape — Floral Abstract" loading="lazy" />
-                        <span class="tag teal">Artistic</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                        <button class="quick-view">Quick View</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Artistic Drape</div>
-                        <div class="variant">Floral Abstract · Georgette</div>
-                        <div class="price-row">
-                            <span class="price">₹5,499</span>
-                            <span class="price-old">₹7,199</span>
-                        </div>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="count">(44)</span>
-                        </div>
-                        <button class="btn-add designer-btn">Add to Cart</button>
-                    </div>
-                </div>
+                </a>
 
             </div>
         </div>
@@ -2289,7 +2044,9 @@
 
         // Add to cart buttons
         document.querySelectorAll('.btn-add').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', (e) => {
+                // Prevent navigation if inside a link
+                e.preventDefault();
                 const originalText = btn.textContent;
                 btn.textContent = '✓ Added!';
                 btn.style.background = '#7BA88E';

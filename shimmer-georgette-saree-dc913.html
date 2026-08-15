@@ -818,10 +818,10 @@
         }
 
         /* ================================================================
-           RELATED PRODUCTS
+           RELATED PRODUCTS — Same Category (Single Product)
            ================================================================ */
         .related-products {
-            padding: 60px 0 80px;
+            padding: 60px 0 40px;
             background: var(--cream);
         }
 
@@ -862,8 +862,13 @@
 
         .related-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
+        }
+
+        .related-grid.single-product {
+            grid-template-columns: 1fr;
+            max-width: 360px;
+            margin: 0 auto;
         }
 
         .related-card {
@@ -896,7 +901,7 @@
         .related-card .rel-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             transition: transform 0.6s ease;
         }
 
@@ -949,6 +954,80 @@
             background: var(--primary-dark);
             transform: translateY(-2px);
             box-shadow: 0 4px 16px rgba(123, 45, 78, 0.25);
+        }
+
+        /* ================================================================
+           RECENTLY VIEWED SECTION
+           ================================================================ */
+        .recently-viewed {
+            padding: 40px 0 80px;
+            background: var(--warm-white);
+        }
+
+        .recently-viewed .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .recently-viewed .section-header .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .recently-viewed .section-header .view-all {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 2px;
+        }
+
+        .recently-viewed .section-header .view-all:hover {
+            gap: 10px;
+            border-bottom-color: var(--gold);
+            color: var(--primary-dark);
+        }
+
+        .recently-viewed .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+
+        .recently-viewed .empty-state .icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .recently-viewed .empty-state h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .recently-viewed .empty-state p {
+            font-size: 0.95rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .recently-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
         }
 
         /* ================================================================
@@ -1085,9 +1164,8 @@
             .product-info-detail .product-title {
                 font-size: 1.8rem;
             }
-            .related-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
+            .related-grid.single-product {
+                max-width: 360px;
             }
             .footer .container {
                 grid-template-columns: 1fr 1fr;
@@ -1136,12 +1214,18 @@
                 flex-direction: column;
                 gap: 6px;
             }
-            .related-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
+            .related-grid.single-product {
+                max-width: 320px;
             }
             .related-products .section-header .section-title {
                 font-size: 1.5rem;
+            }
+            .recently-viewed .section-header .section-title {
+                font-size: 1.5rem;
+            }
+            .recently-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 16px;
             }
             .footer .container {
                 grid-template-columns: 1fr;
@@ -1178,9 +1262,8 @@
                 font-size: 0.5rem;
                 padding: 3px 10px;
             }
-            .related-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
+            .related-grid.single-product {
+                max-width: 280px;
             }
             .related-card .rel-info .rel-name {
                 font-size: 0.85rem;
@@ -1218,18 +1301,31 @@
             .care-warranty-section .accordion-content .inner {
                 font-size: 0.8rem;
             }
+            .recently-viewed .empty-state .icon {
+                font-size: 2.4rem;
+            }
+            .recently-viewed .empty-state h3 {
+                font-size: 1.2rem;
+            }
+            .recently-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 12px;
+            }
         }
 
         @media (max-width: 375px) {
-            .related-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
+            .related-grid.single-product {
+                max-width: 240px;
             }
             .product-info-detail .product-title {
                 font-size: 1.05rem;
             }
             .product-info-detail .price-block .current-price {
                 font-size: 1.2rem;
+            }
+            .recently-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 10px;
             }
         }
     </style>
@@ -1445,7 +1541,7 @@
     </section>
 
     <!-- ================================================================
-    RELATED PRODUCTS
+    RELATED PRODUCTS — Same Category (Single Product)
     ================================================================ -->
     <section class="related-products">
         <div class="container">
@@ -1454,56 +1550,40 @@
                 <a href="#" class="view-all">View All →</a>
             </div>
 
-            <div class="related-grid">
-
+            <div class="related-grid single-product">
+                <!-- Only one product from the same category (Georgette) -->
                 <div class="related-card">
                     <div class="rel-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Mysore Silk Royal Blue" loading="lazy" />
+                        <img src="https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp" alt="Shimmer Georgette Saree" loading="lazy" />
                     </div>
                     <div class="rel-info">
-                        <div class="rel-name">Mysore Silk</div>
-                        <div class="rel-variant">Pure Silk · Royal Blue</div>
-                        <div class="rel-price">₹15,999</div>
-                        <button class="rel-btn">View Product</button>
+                        <div class="rel-name">Shimmer Georgette</div>
+                        <div class="rel-variant">Georgette · Dusty Pink</div>
+                        <div class="rel-price">Rs 1,400</div>
+                        <button class="rel-btn" onclick="window.location.href='#'">View Product</button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="related-card">
-                    <div class="rel-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp" alt="Pure Handloom Cotton" loading="lazy" />
-                    </div>
-                    <div class="rel-info">
-                        <div class="rel-name">Cotton Handloom</div>
-                        <div class="rel-variant">Pure Cotton · Teal Blue</div>
-                        <div class="rel-price">₹2,299</div>
-                        <button class="rel-btn">View Product</button>
-                    </div>
+    <!-- ================================================================
+    RECENTLY VIEWED PRODUCTS — Dynamic via localStorage
+    ================================================================ -->
+    <section class="recently-viewed" id="recentlyViewed">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">🕐 Recently Viewed</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+
+            <div id="recentlyViewedContainer">
+                <!-- Dynamically populated by JavaScript -->
+                <div class="empty-state">
+                    <span class="icon">👀</span>
+                    <h3>No recently viewed items</h3>
+                    <p>Start exploring our collection and the products you view will appear here.</p>
                 </div>
-
-                <div class="related-card">
-                    <div class="rel-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image.webp" alt="Georgette Drape Dusty Rose" loading="lazy" />
-                    </div>
-                    <div class="rel-info">
-                        <div class="rel-name">Georgette Drape</div>
-                        <div class="rel-variant">Georgette · Dusty Rose</div>
-                        <div class="rel-price">₹3,799</div>
-                        <button class="rel-btn">View Product</button>
-                    </div>
-                </div>
-
-                <div class="related-card">
-                    <div class="rel-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Tussar Silk Mustard Gold" loading="lazy" />
-                    </div>
-                    <div class="rel-info">
-                        <div class="rel-name">Tussar Silk</div>
-                        <div class="rel-variant">Tussar Silk · Mustard Gold</div>
-                        <div class="rel-price">₹5,499</div>
-                        <button class="rel-btn">View Product</button>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -1562,7 +1642,9 @@
     SCRIPTS
     ================================================================ -->
     <script>
-        // Mobile toggle
+        // ============================================================
+        // MOBILE TOGGLE
+        // ============================================================
         const toggle = document.getElementById('mobileToggle');
         const nav = document.getElementById('mainNav');
         const header = document.getElementById('header');
@@ -1588,7 +1670,9 @@
             }
         });
 
-        // Quantity selector
+        // ============================================================
+        // QUANTITY SELECTOR
+        // ============================================================
         let qty = 1;
         const qtyDisplay = document.getElementById('qtyDisplay');
         const qtyDec = document.getElementById('qtyDec');
@@ -1608,7 +1692,9 @@
             }
         });
 
-        // Add to cart
+        // ============================================================
+        // ADD TO CART & BUY NOW
+        // ============================================================
         document.getElementById('addToCartBtn').addEventListener('click', function() {
             const original = this.textContent;
             this.textContent = '✓ Added!';
@@ -1621,7 +1707,6 @@
             }, 2000);
         });
 
-        // Buy it now
         document.getElementById('buyNowBtn').addEventListener('click', function() {
             const original = this.textContent;
             this.textContent = '✓ Proceeding...';
@@ -1636,7 +1721,9 @@
             }, 2000);
         });
 
-        // Related product buttons
+        // ============================================================
+        // RELATED PRODUCT BUTTONS
+        // ============================================================
         document.querySelectorAll('.rel-btn').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1650,7 +1737,9 @@
             });
         });
 
-        // Wishlist buttons
+        // ============================================================
+        // WISHLIST BUTTONS
+        // ============================================================
         document.querySelectorAll('.icon-btn[aria-label="Wishlist"]').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1659,7 +1748,9 @@
             });
         });
 
-        // Thumbnail click - change main image
+        // ============================================================
+        // THUMBNAIL & COLOR SELECTOR
+        // ============================================================
         document.querySelectorAll('.thumb').forEach(thumb => {
             thumb.addEventListener('click', function() {
                 const imgSrc = this.dataset.image;
@@ -1669,7 +1760,6 @@
             });
         });
 
-        // Color selector
         document.querySelectorAll('.color-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
@@ -1678,12 +1768,13 @@
             });
         });
 
-        // Accordion toggle
+        // ============================================================
+        // ACCORDION TOGGLE
+        // ============================================================
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
             const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
 
-            // Close all accordions in the same section
             const parent = header.closest('.care-warranty-section');
             parent.querySelectorAll('.accordion-content').forEach(c => {
                 c.style.maxHeight = '0px';
@@ -1703,6 +1794,135 @@
             const content = header.nextElementSibling;
             content.style.maxHeight = content.scrollHeight + 'px';
         });
+
+        // ============================================================
+        // RECENTLY VIEWED — localStorage
+        // ============================================================
+        (function() {
+            const STORAGE_KEY = 'silkandsoul_recently_viewed';
+            const MAX_ITEMS = 8;
+
+            // Current product data
+            const currentProduct = {
+                id: 'dc913-shimmer-georgette',
+                name: 'Shimmer Georgette',
+                variant: 'Georgette · Dusty Pink',
+                price: 'Rs 1,400',
+                image: 'https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp',
+                url: '#'
+            };
+
+            // Get existing recently viewed from localStorage
+            function getRecentlyViewed() {
+                try {
+                    const data = localStorage.getItem(STORAGE_KEY);
+                    return data ? JSON.parse(data) : [];
+                } catch {
+                    return [];
+                }
+            }
+
+            // Save recently viewed to localStorage
+            function saveRecentlyViewed(items) {
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+                } catch (e) {
+                    // ignore
+                }
+            }
+
+            // Add current product to recently viewed (avoid duplicates)
+            function addToRecentlyViewed(product) {
+                let items = getRecentlyViewed();
+
+                // Remove if already exists (to move to top)
+                items = items.filter(item => item.id !== product.id);
+
+                // Add to front
+                items.unshift(product);
+
+                // Limit max items
+                if (items.length > MAX_ITEMS) {
+                    items = items.slice(0, MAX_ITEMS);
+                }
+
+                saveRecentlyViewed(items);
+                return items;
+            }
+
+            // Render recently viewed products
+            function renderRecentlyViewed() {
+                const container = document.getElementById('recentlyViewedContainer');
+                const items = getRecentlyViewed();
+
+                if (!items || items.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <span class="icon">👀</span>
+                            <h3>No recently viewed items</h3>
+                            <p>Start exploring our collection and the products you view will appear here.</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Build grid
+                let gridHTML = `<div class="recently-grid">`;
+                items.forEach(item => {
+                    gridHTML += `
+                        <div class="related-card">
+                            <div class="rel-image">
+                                <img src="${item.image}" alt="${item.name}" loading="lazy" />
+                            </div>
+                            <div class="rel-info">
+                                <div class="rel-name">${item.name}</div>
+                                <div class="rel-variant">${item.variant}</div>
+                                <div class="rel-price">${item.price}</div>
+                                <button class="rel-btn" onclick="window.location.href='${item.url}'">View Product</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                gridHTML += `</div>`;
+
+                container.innerHTML = gridHTML;
+            }
+
+            // Add current product to recently viewed and render
+            addToRecentlyViewed(currentProduct);
+            renderRecentlyViewed();
+
+            // Expose function to add other products from other pages (if needed)
+            window.addRecentlyViewed = function(product) {
+                addToRecentlyViewed(product);
+                renderRecentlyViewed();
+            };
+
+            // For demo: if user clicks on any product card in "You May Also Like", add it to recently viewed
+            document.querySelectorAll('.related-card .rel-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const card = this.closest('.related-card');
+                    if (!card) return;
+                    const name = card.querySelector('.rel-name')?.textContent || 'Product';
+                    const variant = card.querySelector('.rel-variant')?.textContent || '';
+                    const price = card.querySelector('.rel-price')?.textContent || '';
+                    const img = card.querySelector('.rel-image img')?.src || '';
+                    const id = 'prod_' + name.replace(/\s/g, '_').toLowerCase();
+
+                    const productData = {
+                        id: id,
+                        name: name,
+                        variant: variant,
+                        price: price,
+                        image: img,
+                        url: '#'
+                    };
+                    addToRecentlyViewed(productData);
+                    renderRecentlyViewed();
+                });
+            });
+
+        })();
     </script>
 
 </body>

@@ -1040,7 +1040,7 @@
             transform: translateY(0);
         }
 
-        /* product-card link wrapper for first product */
+        /* product-card link wrapper */
         .product-card-link {
             display: block;
             text-decoration: none;
@@ -2888,25 +2888,28 @@
                     </div>
                 </a>
 
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://saree-demo.aamir68599.workers.dev/banarasi%20image%201.webp" alt="Tussar Silk — Mustard Gold" loading="lazy" />
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
-                    </div>
-                    <div class="product-info">
-                        <div class="name">Tussar Silk</div>
-                        <div class="variant">Tussar Silk · Mustard Gold</div>
-                        <div class="price-row">
-                            <span class="price">₹5,499</span>
-                            <span class="price-old">₹6,999</span>
+                <!-- Product 4 — linked to golden yellow tussar silk product page -->
+                <a href="https://saree-demo.aamir68599.workers.dev/golden-yellow-tussar-silk-saree-b592" class="product-card-link">
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp" alt="Tussar Silk — Mustard Gold" loading="lazy" />
+                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
                         </div>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="count">(98)</span>
+                        <div class="product-info">
+                            <div class="name">Tussar Silk</div>
+                            <div class="variant">Tussar Silk · Mustard Gold</div>
+                            <div class="price-row">
+                                <span class="price">₹5,499</span>
+                                <span class="price-old">₹6,999</span>
+                            </div>
+                            <div class="rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="count">(98)</span>
+                            </div>
+                            <button class="btn-add">Add to Cart</button>
                         </div>
-                        <button class="btn-add">Add to Cart</button>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -3114,7 +3117,11 @@
         });
 
         // Add to cart buttons (only for non-linked product cards)
-        document.querySelectorAll('.product-card:not(.product-card-link .product-card) .btn-add').forEach(btn => {
+        // Note: .btn-add inside .product-card-link have pointer-events: none, so they won't trigger.
+        // For completeness, we still target all .btn-add but we can keep the same logic.
+        document.querySelectorAll('.btn-add').forEach(btn => {
+            // skip if inside a product-card-link (already have pointer-events: none)
+            if (btn.closest('.product-card-link')) return;
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 const original = this.textContent;

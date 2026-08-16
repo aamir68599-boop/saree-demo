@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart – Silk & Soul</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #7B2D4E;
+            --primary-light: #9E4168;
+            --primary-dark: #5A1E38;
+            --gold: #C9A96E;
+            --gold-light: #DFC896;
+            --gold-pale: #F4EDE0;
+            --cream: #FCF8F3;
+            --beige: #F0E8DE;
+            --warm-white: #FFFCF9;
+            --text-dark: #2D1B1A;
+            --text-soft: #4A3A38;
+            --text-muted: #7A6A68;
+            --shadow: 0 8px 40px rgba(45, 27, 26, 0.08);
+            --shadow-hover: 0 16px 56px rgba(45, 27, 26, 0.14);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --max-width: 1280px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 20px rgba(123, 45, 78, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(123, 45, 78, 0.4);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--primary);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--gold);
+            color: var(--text-dark);
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(201, 169, 110, 0.35);
+        }
+
+        .btn-gold:hover {
+            background: #BF9E5E;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.45);
+        }
+
+        /* ================================================================
+           HEADER — REFINED PREMIUM ✦
+           ================================================================ */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 252, 249, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(45, 27, 26, 0.05);
+            padding: 0;
+            transition: box-shadow 0.4s ease, background 0.4s ease;
+        }
+
+        .header.scrolled {
+            box-shadow: 0 4px 30px rgba(45, 27, 26, 0.06);
+            background: rgba(255, 252, 249, 0.97);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            opacity: 0.85;
+        }
+
+        .logo .logo-icon {
+            font-size: 1.3rem;
+            color: var(--gold);
+            display: inline-block;
+            margin-right: 2px;
+            transition: var(--transition);
+        }
+
+        .logo .logo-silk {
+            color: var(--primary);
+        }
+
+        .logo .logo-amp {
+            color: var(--gold);
+            font-weight: 400;
+            font-style: italic;
+            margin: 0 1px;
+        }
+
+        .logo .logo-soul {
+            color: var(--primary);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .nav a {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-soft);
+            transition: var(--transition);
+            position: relative;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            padding: 4px 0;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav a.active {
+            color: var(--primary);
+        }
+
+        .nav a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-actions .icon-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(45, 27, 26, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text-soft);
+            position: relative;
+            line-height: 1;
+        }
+
+        .nav-actions .icon-btn:hover {
+            background: var(--gold-pale);
+            border-color: var(--gold-light);
+            color: var(--primary);
+            transform: translateY(-1px);
+        }
+
+        .nav-actions .icon-btn .badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: var(--primary);
+            color: #fff;
+            font-size: 0.6rem;
+            font-weight: 600;
+            width: 19px;
+            height: 19px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 0.3px;
+            box-shadow: 0 2px 8px rgba(123, 45, 78, 0.25);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            line-height: 1;
+        }
+
+        .mobile-toggle:hover {
+            background: var(--gold-pale);
+        }
+
+        @media (max-width: 1024px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--warm-white);
+                padding: 28px 24px 32px;
+                box-shadow: 0 20px 40px rgba(45, 27, 26, 0.08);
+                border-bottom: 1px solid rgba(45, 27, 26, 0.04);
+                gap: 20px;
+            }
+
+            .nav.open {
+                display: flex;
+            }
+
+            .nav a {
+                font-size: 1rem;
+                letter-spacing: 0.8px;
+                padding: 6px 0;
+                width: 100%;
+                border-bottom: 1px solid rgba(45, 27, 26, 0.04);
+            }
+
+            .nav a:last-child {
+                border-bottom: none;
+            }
+
+            .nav a::after {
+                display: none;
+            }
+
+            .nav a:hover {
+                color: var(--primary);
+                padding-left: 4px;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-inner {
+                height: 60px;
+            }
+            .logo {
+                font-size: 1.3rem;
+            }
+            .logo .logo-icon {
+                font-size: 1rem;
+            }
+            .nav-actions {
+                gap: 4px;
+            }
+            .nav-actions .icon-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            .nav-actions .icon-btn .badge {
+                width: 17px;
+                height: 17px;
+                font-size: 0.5rem;
+                top: -3px;
+                right: -3px;
+            }
+            .nav {
+                top: 60px;
+                padding: 20px 20px 24px;
+                gap: 16px;
+            }
+            .nav a {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ================================================================
+           CART PAGE
+           ================================================================ */
+        .cart-hero {
+            padding: 40px 0 32px;
+            background: linear-gradient(165deg, var(--cream) 0%, var(--warm-white) 100%);
+            border-bottom: 1px solid rgba(45, 27, 26, 0.04);
+        }
+
+        .cart-hero .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .cart-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .cart-hero h1 .highlight {
+            color: var(--primary);
+            font-style: italic;
+        }
+
+        .cart-hero .cart-count {
+            font-size: 1rem;
+            color: var(--text-muted);
+            background: var(--cream);
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(45, 27, 26, 0.05);
+        }
+
+        .cart-hero .cart-count strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* ===== CART LAYOUT ===== */
+        .cart-main {
+            padding: 48px 0 80px;
+            background: var(--warm-white);
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 48px;
+            align-items: start;
+        }
+
+        /* --- Cart Items --- */
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .cart-items-header {
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr 0.5fr;
+            gap: 16px;
+            padding: 12px 0 14px;
+            border-bottom: 1px solid rgba(45, 27, 26, 0.06);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-muted);
+        }
+
+        .cart-items-header span:last-child {
+            text-align: right;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 3fr 1fr 1fr 0.5fr;
+            gap: 16px;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(45, 27, 26, 0.05);
+            transition: var(--transition);
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .cart-item .item-info {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .cart-item .item-image {
+            width: 80px;
+            height: 100px;
+            flex-shrink: 0;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            background: var(--beige);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-item .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cart-item .item-details .name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+            letter-spacing: -0.01em;
+        }
+
+        .cart-item .item-details .variant {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .cart-item .item-details .price-mobile {
+            display: none;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+
+        .cart-item .item-price {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.05rem;
+        }
+
+        .cart-item .item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cart-item .item-quantity button {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid rgba(45, 27, 26, 0.08);
+            background: var(--warm-white);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-soft);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .cart-item .item-quantity button:hover {
+            background: var(--gold-pale);
+            border-color: var(--gold-light);
+            color: var(--primary);
+        }
+
+        .cart-item .item-quantity .qty-num {
+            min-width: 28px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .cart-item .item-remove {
+            justify-self: end;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            line-height: 1;
+        }
+
+        .cart-item .item-remove:hover {
+            color: #D32F2F;
+            background: rgba(211, 47, 47, 0.06);
+        }
+
+        /* --- Cart Summary --- */
+        .cart-summary {
+            background: var(--cream);
+            border-radius: var(--radius);
+            padding: 32px 28px;
+            border: 1px solid rgba(45, 27, 26, 0.04);
+            position: sticky;
+            top: 100px;
+        }
+
+        .cart-summary h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            letter-spacing: -0.01em;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            font-size: 0.95rem;
+            color: var(--text-soft);
+            border-bottom: 1px solid rgba(45, 27, 26, 0.04);
+        }
+
+        .summary-row:last-of-type {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .summary-row .label {
+            font-weight: 400;
+        }
+
+        .summary-row .value {
+            font-weight: 500;
+        }
+
+        .summary-row.total {
+            padding-top: 16px;
+            margin-top: 8px;
+            border-top: 2px solid rgba(45, 27, 26, 0.08);
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .summary-row.total .value {
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .cart-summary .btn-checkout {
+            width: 100%;
+            margin-top: 24px;
+            padding: 16px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 20px rgba(123, 45, 78, 0.25);
+        }
+
+        .cart-summary .btn-checkout:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(123, 45, 78, 0.35);
+        }
+
+        .cart-summary .continue-shop {
+            display: inline-block;
+            margin-top: 16px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+            text-align: center;
+            width: 100%;
+        }
+
+        .cart-summary .continue-shop:hover {
+            color: var(--primary);
+        }
+
+        /* --- Empty Cart --- */
+        .cart-empty {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+            grid-column: 1 / -1;
+        }
+
+        .cart-empty.show {
+            display: flex;
+        }
+
+        .cart-empty .icon {
+            font-size: 3.6rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .cart-empty h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .cart-empty p {
+            color: var(--text-muted);
+            max-width: 400px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .cart-empty .btn-primary {
+            padding: 14px 40px;
+        }
+
+        /* ================================================================
+           FOOTER — REFINED PREMIUM ✦
+           ================================================================ */
+        .footer {
+            padding: 56px 0 32px;
+            background: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            border-top: 3px solid var(--gold);
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-brand .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
+            transition: var(--transition);
+        }
+
+        .footer-brand .logo:hover {
+            opacity: 0.85;
+        }
+
+        .footer-brand .logo .logo-icon {
+            color: var(--gold);
+            font-size: 1.3rem;
+        }
+
+        .footer-brand .logo .logo-amp {
+            color: var(--gold);
+            font-weight: 400;
+            font-style: italic;
+            margin: 0 1px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            max-width: 280px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 0;
+            font-weight: 300;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 28px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 10px;
+            transition: var(--transition);
+            font-weight: 300;
+            letter-spacing: 0.2px;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+            transform: translateX(3px);
+        }
+
+        .footer-divider {
+            grid-column: 1 / -1;
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.2), transparent);
+            margin: 28px 0 24px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+            grid-column: 1 / -1;
+            padding-top: 4px;
+            letter-spacing: 0.3px;
+            font-weight: 300;
+        }
+
+        .footer-bottom .heart {
+            color: var(--gold);
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .footer-bottom .heart:hover {
+            transform: scale(1.2);
+        }
+
+        /* ================================================================
+           RESPONSIVE
+           ================================================================ */
+
+        @media (max-width: 1024px) {
+            .cart-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cart-summary {
+                position: relative;
+                top: 0;
+            }
+
+            .footer .container {
+                gap: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .cart-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .cart-items-header {
+                display: none;
+            }
+
+            .cart-item {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 18px 0;
+                position: relative;
+            }
+
+            .cart-item .item-info {
+                gap: 14px;
+            }
+
+            .cart-item .item-image {
+                width: 64px;
+                height: 80px;
+            }
+
+            .cart-item .item-details .price-mobile {
+                display: block;
+            }
+
+            .cart-item .item-price {
+                display: none;
+            }
+
+            .cart-item .item-quantity {
+                justify-self: start;
+                margin-left: 78px;
+            }
+
+            .cart-item .item-remove {
+                position: absolute;
+                top: 18px;
+                right: 0;
+                font-size: 1.1rem;
+            }
+
+            .cart-summary {
+                padding: 24px 20px;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .cart-hero {
+                padding: 28px 0 20px;
+            }
+
+            .cart-hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .cart-hero .cart-count {
+                font-size: 0.85rem;
+                padding: 6px 14px;
+            }
+
+            .cart-main {
+                padding: 28px 0 56px;
+            }
+
+            .cart-item {
+                padding: 14px 0;
+            }
+
+            .cart-item .item-image {
+                width: 54px;
+                height: 68px;
+            }
+
+            .cart-item .item-details .name {
+                font-size: 0.9rem;
+            }
+
+            .cart-item .item-details .variant {
+                font-size: 0.75rem;
+            }
+
+            .cart-item .item-details .price-mobile {
+                font-size: 0.9rem;
+            }
+
+            .cart-item .item-quantity {
+                margin-left: 0;
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .cart-item .item-quantity button {
+                width: 28px;
+                height: 28px;
+                font-size: 0.85rem;
+            }
+
+            .cart-item .item-quantity .qty-num {
+                min-width: 24px;
+                font-size: 0.9rem;
+            }
+
+            .cart-item .item-remove {
+                top: 14px;
+                font-size: 1rem;
+            }
+
+            .cart-summary h3 {
+                font-size: 1.2rem;
+            }
+
+            .summary-row {
+                font-size: 0.88rem;
+                padding: 10px 0;
+            }
+
+            .summary-row.total {
+                font-size: 1.05rem;
+            }
+
+            .summary-row.total .value {
+                font-size: 1.15rem;
+            }
+
+            .cart-summary .btn-checkout {
+                font-size: 0.95rem;
+                padding: 14px;
+            }
+
+            .footer {
+                padding: 36px 0 20px;
+            }
+
+            .footer .container {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .footer-brand .logo {
+                font-size: 1.3rem;
+            }
+
+            .footer-brand p {
+                font-size: 0.85rem;
+            }
+
+            .footer-col h4 {
+                font-size: 0.8rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-col a {
+                font-size: 0.8rem;
+                margin-bottom: 6px;
+            }
+
+            .footer-divider {
+                margin: 16px 0 14px;
+            }
+
+            .footer-bottom {
+                font-size: 0.7rem;
+            }
+        }
+
+        /* --- Toast notification --- */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--text-dark);
+            color: #fff;
+            padding: 16px 28px;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 8px 40px rgba(45, 27, 26, 0.2);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.4s ease;
+            z-index: 999;
+            border-left: 4px solid var(--gold);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast .toast-icon {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================================================================
+    HEADER — REFINED ✦
+    ================================================================ -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">✦</span>
+                <span class="logo-silk">Silk</span>
+                <span class="logo-amp">&amp;</span>
+                <span class="logo-soul">Soul</span>
+            </a>
+
+            <nav class="nav" id="mainNav">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="index.html#best-sellers">Best Sellers</a>
+                <a href="index.html#testimonials">Reviews</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="icon-btn" aria-label="Search">🔍</button>
+                <button class="icon-btn" aria-label="Wishlist">♡</button>
+                <button class="icon-btn" aria-label="Cart" id="cartIconBtn">
+                    🛒
+                    <span class="badge" id="cartBadge">0</span>
+                </button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================================================================
+    CART HERO
+    ================================================================ -->
+    <section class="cart-hero">
+        <div class="container">
+            <h1>
+                Your <span class="highlight">Cart</span>
+            </h1>
+            <div class="cart-count">
+                <strong id="cartItemCount">0</strong> items in your cart
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+    CART MAIN
+    ================================================================ -->
+    <section class="cart-main">
+        <div class="container">
+            <div class="cart-layout">
+
+                <!-- ===== CART ITEMS ===== -->
+                <div class="cart-items" id="cartItemsContainer">
+                    <div class="cart-items-header">
+                        <span>Product</span>
+                        <span>Price</span>
+                        <span>Quantity</span>
+                        <span></span>
+                    </div>
+
+                    <!-- Cart items will be rendered by JS -->
+                    <div id="cartItemsList"></div>
+
+                    <!-- Empty cart message -->
+                    <div class="cart-empty" id="cartEmpty">
+                        <div class="icon">🛒</div>
+                        <h2>Your cart is empty</h2>
+                        <p>Looks like you haven't added any sarees to your cart yet. Explore our collection and find your perfect drape.</p>
+                        <a href="index.html#categories" class="btn-primary">✦ Start Shopping</a>
+                    </div>
+                </div>
+
+                <!-- ===== CART SUMMARY ===== -->
+                <div class="cart-summary" id="cartSummary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-row">
+                        <span class="label">Subtotal</span>
+                        <span class="value" id="subtotal">₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="label">Shipping</span>
+                        <span class="value" id="shipping">₹0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span class="label">Total</span>
+                        <span class="value" id="total">₹0</span>
+                    </div>
+                    <button class="btn-checkout" id="checkoutBtn">Proceed to Checkout →</button>
+                    <a href="index.html#categories" class="continue-shop">⟵ Continue Shopping</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================
+    FOOTER — REFINED ✦
+    ================================================================ -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-icon">✦</span>
+                    <span class="logo-silk">Silk</span>
+                    <span class="logo-amp">&amp;</span>
+                    <span class="logo-soul">Soul</span>
+                </div>
+                <p>
+                    Sarees designed for real life — where elegance meets
+                    everyday comfort. Made with love for women who move.
+                </p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <a href="#">Cotton Sarees</a>
+                <a href="#">Silk Sarees</a>
+                <a href="#">Georgette</a>
+                <a href="#">Designer Drapes</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Support</h4>
+                <a href="#">Shipping Info</a>
+                <a href="#">Returns &amp; Exchanges</a>
+                <a href="#">Size Guide</a>
+                <a href="#">Contact Us</a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Our Story</a>
+                <a href="#">Sustainability</a>
+                <a href="#">Careers</a>
+            </div>
+
+            <hr class="footer-divider" />
+
+            <div class="footer-bottom">
+                © 2026 Silk &amp; Soul. Made with <span class="heart">♥</span> for women who move the world.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== TOAST NOTIFICATION ===== -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <!-- ================================================================
+    SCRIPT
+    ================================================================ -->
+    <script>
+        // ================================================================
+        // PRODUCT DATA (matches homepage)
+        // ================================================================
+        const PRODUCTS = [{
+            id: 1,
+            name: 'Mysore Silk Crepe',
+            variant: 'Pure Silk · Burgundy Wine',
+            category: 'silk',
+            price: 16365,
+            priceOld: 18999,
+            rating: 5,
+            reviews: 214,
+            tag: 'Bestseller',
+            tagClass: 'bestseller',
+            image: 'https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp',
+            link: 'https://saree-demo.aamir68599.workers.dev/mysore-silk-crepe-burgundy-wine-saree',
+            popular: 214
+        }, {
+            id: 2,
+            name: 'Cotton Handloom',
+            variant: 'Pure Cotton · Teal Blue',
+            category: 'cotton',
+            price: 2299,
+            priceOld: 2999,
+            rating: 5,
+            reviews: 187,
+            tag: 'New',
+            tagClass: 'new',
+            image: 'https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp',
+            link: 'https://saree-demo.aamir68599.workers.dev/pure-handloom-cotton-saree',
+            popular: 187
+        }, {
+            id: 3,
+            name: 'Georgette Drape',
+            variant: 'Georgette · Dusty Rose',
+            category: 'georgette',
+            price: 3799,
+            priceOld: 4499,
+            rating: 5,
+            reviews: 156,
+            tag: 'Top Rated',
+            tagClass: 'top-rated',
+            image: 'https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp',
+            link: 'https://saree-demo.aamir68599.workers.dev/shimmer-georgette-saree',
+            popular: 156
+        }, {
+            id: 4,
+            name: 'Tussar Silk',
+            variant: 'Tussar Silk · Mustard Gold',
+            category: 'tussar',
+            price: 5499,
+            priceOld: 6999,
+            rating: 4,
+            reviews: 98,
+            tag: null,
+            tagClass: null,
+            image: 'https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp',
+            link: 'https://saree-demo.aamir68599.workers.dev/golden-yellow-tussar-silk-saree-b592',
+            popular: 98
+        }];
+
+        // ================================================================
+        // CART STATE
+        // ================================================================
+        let cart = [];
+
+        // Load cart from localStorage
+        function loadCart() {
+            const stored = localStorage.getItem('silkSoulCart');
+            if (stored) {
+                try {
+                    cart = JSON.parse(stored);
+                } catch (e) {
+                    cart = [];
+                }
+            } else {
+                // Seed with sample items so cart isn't empty on first visit
+                // (but only if we want to show items by default)
+                // Let's keep it empty by default — user adds items.
+                cart = [];
+            }
+            // Ensure each item has quantity
+            cart = cart.map(item => ({
+                ...item,
+                quantity: item.quantity || 1
+            }));
+            saveCart();
+        }
+
+        function saveCart() {
+            localStorage.setItem('silkSoulCart', JSON.stringify(cart));
+            updateUI();
+        }
+
+        // ================================================================
+        // CART OPERATIONS
+        // ================================================================
+        function addToCart(productId, quantity = 1) {
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += quantity;
+            } else {
+                const product = PRODUCTS.find(p => p.id === productId);
+                if (product) {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        variant: product.variant,
+                        price: product.price,
+                        image: product.image,
+                        link: product.link,
+                        quantity: quantity
+                    });
+                } else {
+                    console.warn('Product not found:', productId);
+                    return;
+                }
+            }
+            saveCart();
+            showToast(`${quantity > 1 ? quantity + ' × ' : ''}${productId === 1 ? 'Mysore Silk Crepe' : productId === 2 ? 'Cotton Handloom' : productId === 3 ? 'Georgette Drape' : 'Tussar Silk'} added to cart!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+        }
+
+        function updateQuantity(productId, newQty) {
+            if (newQty <= 0) {
+                removeFromCart(productId);
+                return;
+            }
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity = newQty;
+                saveCart();
+            }
+        }
+
+        function clearCart() {
+            cart = [];
+            saveCart();
+        }
+
+        function getCartTotal() {
+            return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        }
+
+        function getCartCount() {
+            return cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        // ================================================================
+        // RENDER UI
+        // ================================================================
+        function renderCartItems() {
+            const list = document.getElementById('cartItemsList');
+            const empty = document.getElementById('cartEmpty');
+            const summary = document.getElementById('cartSummary');
+            const countEl = document.getElementById('cartItemCount');
+            const badge = document.getElementById('cartBadge');
+
+            const count = getCartCount();
+            countEl.textContent = count;
+            badge.textContent = count;
+
+            if (cart.length === 0) {
+                empty.classList.add('show');
+                list.innerHTML = '';
+                // Hide summary when empty
+                summary.style.display = 'block'; // keep visible but show zeroes
+                updateSummary();
+                return;
+            }
+
+            empty.classList.remove('show');
+            summary.style.display = 'block';
+
+            list.innerHTML = cart.map(item => {
+                const product = PRODUCTS.find(p => p.id === item.id);
+                const tagHtml = product && product.tag ?
+                    `<span class="tag" style="display:inline-block;background:var(--gold);color:var(--text-dark);font-size:0.5rem;font-weight:600;padding:2px 8px;border-radius:50px;text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;">${product.tag}</span>` :
+                    '';
+
+                return `
+                    <div class="cart-item" data-id="${item.id}">
+                        <div class="item-info">
+                            <div class="item-image">
+                                <img src="${item.image}" alt="${item.name}" loading="lazy" />
+                            </div>
+                            <div class="item-details">
+                                <div class="name">${item.name}</div>
+                                <div class="variant">${item.variant}</div>
+                                ${tagHtml}
+                                <div class="price-mobile">₹${(item.price * item.quantity).toLocaleString()}</div>
+                            </div>
+                        </div>
+                        <div class="item-price">₹${item.price.toLocaleString()}</div>
+                        <div class="item-quantity">
+                            <button class="qty-decr" data-id="${item.id}">−</button>
+                            <span class="qty-num">${item.quantity}</span>
+                            <button class="qty-incr" data-id="${item.id}">+</button>
+                        </div>
+                        <button class="item-remove" data-id="${item.id}" aria-label="Remove item">✕</button>
+                    </div>
+                `;
+            }).join('');
+
+            // Bind events
+            document.querySelectorAll('.qty-decr').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.dataset.id);
+                    const item = cart.find(i => i.id === id);
+                    if (item) {
+                        updateQuantity(id, item.quantity - 1);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.qty-incr').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.dataset.id);
+                    const item = cart.find(i => i.id === id);
+                    if (item) {
+                        updateQuantity(id, item.quantity + 1);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.item-remove').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.dataset.id);
+                    const item = cart.find(i => i.id === id);
+                    if (item && confirm(`Remove "${item.name}" from your cart?`)) {
+                        removeFromCart(id);
+                    }
+                });
+            });
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const subtotal = getCartTotal();
+            const shipping = subtotal > 0 && subtotal < 1000 ? 99 : 0;
+            const total = subtotal + shipping;
+
+            document.getElementById('subtotal').textContent = `₹${subtotal.toLocaleString()}`;
+            document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
+            document.getElementById('total').textContent = `₹${total.toLocaleString()}`;
+        }
+
+        function updateUI() {
+            renderCartItems();
+            // Update badge in header (already done in renderCartItems)
+        }
+
+        // ================================================================
+        // TOAST
+        // ================================================================
+        let toastTimer;
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const msgEl = document.getElementById('toastMessage');
+            msgEl.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
+        // ================================================================
+        // CHECKOUT
+        // ================================================================
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (cart.length === 0) {
+                showToast('Your cart is empty!');
+                return;
+            }
+            const count = getCartCount();
+            const total = getCartTotal();
+            showToast(`Proceeding to checkout with ${count} item${count > 1 ? 's' : ''} (₹${total.toLocaleString()})`);
+            // In a real site, redirect to checkout page
+            // window.location.href = 'checkout.html';
+        });
+
+        // ================================================================
+        // MOBILE TOGGLE
+        // ================================================================
+        const toggle = document.getElementById('mobileToggle');
+        const nav = document.getElementById('mainNav');
+        const header = document.getElementById('header');
+
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                toggle.textContent = '☰';
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ================================================================
+        // CART ICON CLICK — scroll to cart
+        // ================================================================
+        document.getElementById('cartIconBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            // If already on cart page, scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ================================================================
+        // INIT
+        // ================================================================
+        loadCart();
+
+        // ================================================================
+        // LISTEN FOR CART UPDATES FROM OTHER TABS (optional)
+        // ================================================================
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'silkSoulCart') {
+                loadCart();
+            }
+        });
+
+        // Expose addToCart globally so homepage can use it if needed
+        window.silkSoulCart = {
+            add: addToCart,
+            remove: removeFromCart,
+            update: updateQuantity,
+            clear: clearCart,
+            getItems: () => cart,
+            getTotal: getCartTotal,
+            getCount: getCartCount
+        };
+
+        console.log('🛒 Silk & Soul Cart ready!');
+        console.log('📦 Items:', cart);
+        console.log('💡 Use window.silkSoulCart.add(productId, qty) to add items.');
+    </script>
+
+</body>
+</html>

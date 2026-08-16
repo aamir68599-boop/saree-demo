@@ -1046,11 +1046,6 @@
             transform: translateY(0);
         }
 
-        /* ---- REMOVED pointer-events: none so Add to Cart works ---- */
-        .product-card-link .product-card .btn-add {
-            /* pointer-events: none;  REMOVED — now clickable */
-        }
-
         /* ================================================================
            WHY SILK & SOUL — PREMIUM REFINED
            ================================================================ */
@@ -2550,7 +2545,7 @@
                 <button class="icon-btn" aria-label="Wishlist">♡</button>
                 <button class="icon-btn" aria-label="Cart">
                     🛒
-                    <span class="badge" id="cartBadge">2</span>
+                    <span class="badge" id="cartBadge">0</span>
                 </button>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
             </div>
@@ -2764,7 +2759,7 @@
         </div>
     </section>
 
-    <!-- ===== BEST SELLERS ===== -->
+    <!-- ===== BEST SELLERS — 4 Products with Add to Cart ===== -->
     <section class="best-sellers" id="best-sellers">
         <div class="container">
             <div class="section-header">
@@ -2776,114 +2771,106 @@
             </div>
 
             <div class="product-grid">
-                <!-- Product 1 — Mysore Silk Crepe (id: 1) -->
-                <div class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <a href="https://saree-demo.aamir68599.workers.dev/mysore-silk-crepe-burgundy-wine-saree">
-                                <img src="https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp" alt="Mysore Silk Crepe Burgundy Wine Saree" loading="lazy" />
-                            </a>
-                            <span class="tag">Bestseller</span>
-                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                <!-- Product 1 — Mysore Silk Crepe (ID: 1) -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="https://saree-demo.aamir68599.workers.dev/mysore-silk-crepe-burgundy-wine-saree">
+                            <img src="https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp" alt="Mysore Silk Crepe" loading="lazy" />
+                        </a>
+                        <span class="tag">Bestseller</span>
+                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <a href="https://saree-demo.aamir68599.workers.dev/mysore-silk-crepe-burgundy-wine-saree" style="text-decoration:none;color:inherit;">
+                            <div class="name">Mysore Silk Crepe</div>
+                            <div class="variant">Pure Silk · Burgundy Wine</div>
+                        </a>
+                        <div class="price-row">
+                            <span class="price">₹16,365</span>
+                            <span class="price-old">₹18,999</span>
                         </div>
-                        <div class="product-info">
-                            <a href="https://saree-demo.aamir68599.workers.dev/mysore-silk-crepe-burgundy-wine-saree" style="text-decoration:none;color:inherit;">
-                                <div class="name">Mysore Silk Crepe</div>
-                                <div class="variant">Pure Silk · Burgundy Wine</div>
-                            </a>
-                            <div class="price-row">
-                                <span class="price">₹16,365</span>
-                                <span class="price-old">₹18,999</span>
-                            </div>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="count">(214)</span>
-                            </div>
-                            <button class="btn-add" data-product-id="1">Add to Cart</button>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="count">(214)</span>
                         </div>
+                        <button class="btn-add" data-product-id="1" data-name="Mysore Silk Crepe" data-variant="Pure Silk · Burgundy Wine" data-price="16365" data-image="https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp">Add to Cart</button>
                     </div>
                 </div>
 
-                <!-- Product 2 — Cotton Handloom (id: 2) -->
-                <div class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <a href="https://saree-demo.aamir68599.workers.dev/pure-handloom-cotton-saree">
-                                <img src="https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp" alt="Pure Handloom Cotton Saree" loading="lazy" />
-                            </a>
-                            <span class="tag">New</span>
-                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                <!-- Product 2 — Cotton Handloom (ID: 2) -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="https://saree-demo.aamir68599.workers.dev/pure-handloom-cotton-saree">
+                            <img src="https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp" alt="Cotton Handloom" loading="lazy" />
+                        </a>
+                        <span class="tag">New</span>
+                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <a href="https://saree-demo.aamir68599.workers.dev/pure-handloom-cotton-saree" style="text-decoration:none;color:inherit;">
+                            <div class="name">Cotton Handloom</div>
+                            <div class="variant">Pure Cotton · Teal Blue</div>
+                        </a>
+                        <div class="price-row">
+                            <span class="price">₹2,299</span>
+                            <span class="price-old">₹2,999</span>
                         </div>
-                        <div class="product-info">
-                            <a href="https://saree-demo.aamir68599.workers.dev/pure-handloom-cotton-saree" style="text-decoration:none;color:inherit;">
-                                <div class="name">Cotton Handloom</div>
-                                <div class="variant">Pure Cotton · Teal Blue</div>
-                            </a>
-                            <div class="price-row">
-                                <span class="price">₹2,299</span>
-                                <span class="price-old">₹2,999</span>
-                            </div>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="count">(187)</span>
-                            </div>
-                            <button class="btn-add" data-product-id="2">Add to Cart</button>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="count">(187)</span>
                         </div>
+                        <button class="btn-add" data-product-id="2" data-name="Cotton Handloom" data-variant="Pure Cotton · Teal Blue" data-price="2299" data-image="https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp">Add to Cart</button>
                     </div>
                 </div>
 
-                <!-- Product 3 — Georgette Drape (id: 3) -->
-                <div class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <a href="https://saree-demo.aamir68599.workers.dev/shimmer-georgette-saree">
-                                <img src="https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp" alt="Georgette Drape — Dusty Rose" loading="lazy" />
-                            </a>
-                            <span class="tag">Top Rated</span>
-                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                <!-- Product 3 — Georgette Drape (ID: 3) -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="https://saree-demo.aamir68599.workers.dev/shimmer-georgette-saree">
+                            <img src="https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp" alt="Georgette Drape" loading="lazy" />
+                        </a>
+                        <span class="tag">Top Rated</span>
+                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <a href="https://saree-demo.aamir68599.workers.dev/shimmer-georgette-saree" style="text-decoration:none;color:inherit;">
+                            <div class="name">Georgette Drape</div>
+                            <div class="variant">Georgette · Dusty Rose</div>
+                        </a>
+                        <div class="price-row">
+                            <span class="price">₹3,799</span>
+                            <span class="price-old">₹4,499</span>
                         </div>
-                        <div class="product-info">
-                            <a href="https://saree-demo.aamir68599.workers.dev/shimmer-georgette-saree" style="text-decoration:none;color:inherit;">
-                                <div class="name">Georgette Drape</div>
-                                <div class="variant">Georgette · Dusty Rose</div>
-                            </a>
-                            <div class="price-row">
-                                <span class="price">₹3,799</span>
-                                <span class="price-old">₹4,499</span>
-                            </div>
-                            <div class="rating">
-                                <span class="stars">★★★★★</span>
-                                <span class="count">(156)</span>
-                            </div>
-                            <button class="btn-add" data-product-id="3">Add to Cart</button>
+                        <div class="rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="count">(156)</span>
                         </div>
+                        <button class="btn-add" data-product-id="3" data-name="Georgette Drape" data-variant="Georgette · Dusty Rose" data-price="3799" data-image="https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp">Add to Cart</button>
                     </div>
                 </div>
 
-                <!-- Product 4 — Tussar Silk (id: 4) -->
-                <div class="product-card-link">
-                    <div class="product-card">
-                        <div class="product-image">
-                            <a href="https://saree-demo.aamir68599.workers.dev/golden-yellow-tussar-silk-saree-b592">
-                                <img src="https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp" alt="Tussar Silk — Mustard Gold" loading="lazy" />
-                            </a>
-                            <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                <!-- Product 4 — Tussar Silk (ID: 4) -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <a href="https://saree-demo.aamir68599.workers.dev/golden-yellow-tussar-silk-saree-b592">
+                            <img src="https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp" alt="Tussar Silk" loading="lazy" />
+                        </a>
+                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <a href="https://saree-demo.aamir68599.workers.dev/golden-yellow-tussar-silk-saree-b592" style="text-decoration:none;color:inherit;">
+                            <div class="name">Tussar Silk</div>
+                            <div class="variant">Tussar Silk · Mustard Gold</div>
+                        </a>
+                        <div class="price-row">
+                            <span class="price">₹5,499</span>
+                            <span class="price-old">₹6,999</span>
                         </div>
-                        <div class="product-info">
-                            <a href="https://saree-demo.aamir68599.workers.dev/golden-yellow-tussar-silk-saree-b592" style="text-decoration:none;color:inherit;">
-                                <div class="name">Tussar Silk</div>
-                                <div class="variant">Tussar Silk · Mustard Gold</div>
-                            </a>
-                            <div class="price-row">
-                                <span class="price">₹5,499</span>
-                                <span class="price-old">₹6,999</span>
-                            </div>
-                            <div class="rating">
-                                <span class="stars">★★★★☆</span>
-                                <span class="count">(98)</span>
-                            </div>
-                            <button class="btn-add" data-product-id="4">Add to Cart</button>
+                        <div class="rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="count">(98)</span>
                         </div>
+                        <button class="btn-add" data-product-id="4" data-name="Tussar Silk" data-variant="Tussar Silk · Mustard Gold" data-price="5499" data-image="https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -3053,7 +3040,9 @@
         </div>
     </footer>
 
-    <!-- ===== MOBILE TOGGLE SCRIPT ===== -->
+    <!-- ================================================================
+    SCRIPT — Add to Cart for Bestsellers (4 Products)
+    ================================================================ -->
     <script>
         const toggle = document.getElementById('mobileToggle');
         const nav = document.getElementById('mainNav');
@@ -3084,14 +3073,20 @@
         });
 
         // ================================================================
-        // ADD TO CART — BESTSELLERS ONLY
+        // ADD TO CART — For ALL 4 Bestseller Products
         // ================================================================
         document.querySelectorAll('.best-sellers .btn-add').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
 
+                // Get product data from data attributes
                 const productId = parseInt(this.getAttribute('data-product-id'));
+                const productName = this.getAttribute('data-name');
+                const productVariant = this.getAttribute('data-variant');
+                const productPrice = parseFloat(this.getAttribute('data-price'));
+                const productImage = this.getAttribute('data-image');
+
                 if (!productId) return;
 
                 // Get existing cart
@@ -3102,14 +3097,23 @@
                     cart = [];
                 }
 
-                // Check if product already exists
+                // Check if product already exists in cart
                 const existing = cart.find(item => item.id === productId);
                 if (existing) {
                     existing.quantity = (existing.quantity || 1) + 1;
                 } else {
-                    cart.push({ id: productId, quantity: 1 });
+                    // Store full product info in cart
+                    cart.push({
+                        id: productId,
+                        name: productName,
+                        variant: productVariant,
+                        price: productPrice,
+                        image: productImage,
+                        quantity: 1
+                    });
                 }
 
+                // Save to localStorage
                 localStorage.setItem('silkSoulCart', JSON.stringify(cart));
                 updateCartBadge();
 
@@ -3154,26 +3158,8 @@
             });
         });
 
-        // ================================================================
-        // ADD TO CART — FOR OTHER BUTTONS (outside bestsellers)
-        // ================================================================
-        document.querySelectorAll('.btn-add:not(.best-sellers .btn-add)').forEach(btn => {
-            if (btn.closest('.product-card-link')) return;
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const original = this.textContent;
-                this.textContent = '✓ Added!';
-                this.style.background = '#2E7D32';
-                this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
-                setTimeout(() => {
-                    this.textContent = original;
-                    this.style.background = '';
-                    this.style.boxShadow = '';
-                }, 2000);
-            });
-        });
-
-        console.log('🛒 Add to Cart → Cart page redirect enabled for BESTSELLERS!');
+        console.log('🛒 Add to Cart — All 4 Bestseller products are ready!');
+        console.log('📦 Products will be saved with full details (name, variant, price, image)');
     </script>
 
 </body>

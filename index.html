@@ -172,6 +172,7 @@
             height: 70px;
         }
 
+        /* --- Logo --- */
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.7rem;
@@ -212,6 +213,7 @@
             color: var(--primary);
         }
 
+        /* --- Navigation --- */
         .nav {
             display: flex;
             align-items: center;
@@ -258,6 +260,7 @@
             width: 100%;
         }
 
+        /* --- Right Actions --- */
         .nav-actions {
             display: flex;
             align-items: center;
@@ -306,6 +309,7 @@
             box-shadow: 0 2px 8px rgba(123, 45, 78, 0.25);
         }
 
+        /* --- Mobile toggle --- */
         .mobile-toggle {
             display: none;
             background: none;
@@ -323,6 +327,7 @@
             background: var(--gold-pale);
         }
 
+        /* --- Mobile navigation --- */
         @media (max-width: 1024px) {
             .nav {
                 display: none;
@@ -2521,7 +2526,7 @@
     ================================================================ -->
     <header class="header" id="header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
                 <span class="logo-icon">✦</span>
                 <span class="logo-silk">Silk</span>
                 <span class="logo-amp">&amp;</span>
@@ -2538,10 +2543,10 @@
             <div class="nav-actions">
                 <button class="icon-btn" aria-label="Search">🔍</button>
                 <button class="icon-btn" aria-label="Wishlist">♡</button>
-                <a href="cart.html" class="icon-btn" aria-label="Cart" style="text-decoration:none;">
+                <button class="icon-btn" aria-label="Cart">
                     🛒
                     <span class="badge" id="cartBadge">0</span>
-                </a>
+                </button>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
             </div>
         </div>
@@ -2561,7 +2566,7 @@
                     and all-day comfort so you can own every moment.
                 </p>
                 <div class="hero-actions">
-                    <a href="#best-sellers" class="btn-primary">✦ Shop Now</a>
+                    <a href="https://saree-demo.aamir68599.workers.dev/shop" class="btn-primary">✦ Shop Now</a>
                     <a href="#categories" class="btn-secondary">Explore Collection</a>
                 </div>
                 <div class="hero-trust">
@@ -2973,7 +2978,7 @@
                 Shop now and experience comfort like never before.
             </p>
             <div class="cta-group">
-                <a href="#best-sellers" class="btn-primary">✦ Shop Now — Buy Now</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/shop" class="btn-primary">✦ Shop Now — Buy Now</a>
                 <a href="#" class="btn-secondary">Explore Collection</a>
             </div>
             <div class="trust-badges">
@@ -3113,7 +3118,7 @@
                 updateCartBadge();
 
                 // Redirect to cart page
-                window.location.href = 'cart.html';
+                window.location.href = 'https://saree-demo.aamir68599.workers.dev/cart';
             });
         });
 

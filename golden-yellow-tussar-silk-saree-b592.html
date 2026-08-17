@@ -1471,7 +1471,7 @@
     ================================================================ -->
     <header class="header" id="header">
         <div class="container header-inner">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <span class="logo-icon">✦</span>
                 <span class="logo-silk">Silk</span>
                 <span class="logo-amp">&amp;</span>
@@ -1479,19 +1479,22 @@
             </a>
 
             <nav class="nav" id="mainNav">
-                <a href="#">Sarees</a>
-                <a href="#">Best Sellers</a>
-                <a href="#">Reviews</a>
-                <a href="#">Shop</a>
+                <a href="index.html#categories">Sarees</a>
+                <a href="index.html#best-sellers">Best Sellers</a>
+                <a href="index.html#testimonials">Reviews</a>
+                <a href="index.html#final-cta">Shop</a>
             </nav>
 
             <div class="nav-actions">
                 <button class="icon-btn" aria-label="Search">🔍</button>
-                <button class="icon-btn" aria-label="Wishlist">♡</button>
-                <button class="icon-btn" aria-label="Cart">
+                <a href="wishlist.html" class="icon-btn" aria-label="Wishlist" style="text-decoration:none;color:var(--text-soft);">
+                    ♡
+                    <span class="badge" id="wishlistBadge">0</span>
+                </a>
+                <a href="cart.html" class="icon-btn" aria-label="Cart" style="text-decoration:none;color:var(--text-soft);">
                     🛒
-                    <span class="badge">2</span>
-                </button>
+                    <span class="badge" id="cartBadge">0</span>
+                </a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
             </div>
         </div>
@@ -1536,7 +1539,7 @@
 
                     <!-- Breadcrumb -->
                     <div class="breadcrumb">
-                        <a href="#">Home</a> &nbsp;›&nbsp; <a href="#">Tussar Silk Sarees</a> &nbsp;›&nbsp; <span style="color:var(--text-soft);">Golden Yellow Tussar Silk Saree - B592</span>
+                        <a href="index.html">Home</a> &nbsp;›&nbsp; <a href="index.html#categories">Tussar Silk Sarees</a> &nbsp;›&nbsp; <span style="color:var(--text-soft);">Golden Yellow Tussar Silk Saree - B592</span>
                     </div>
 
                     <!-- Title -->
@@ -1563,7 +1566,7 @@
 
                     <!-- Action Links -->
                     <div class="action-links">
-                        <a href="#"><span>♡</span> Add to Wishlist</a>
+                        <a href="#" id="wishlistLink"><span>♡</span> Add to Wishlist</a>
                         <a href="#"><span>✉</span> Enquiry</a>
                     </div>
 
@@ -1579,7 +1582,8 @@
 
                     <!-- Action Buttons -->
                     <div class="action-row">
-                        <button class="btn-primary" id="buyNowBtn">BUY IT NOW</button>
+                        <button class="btn-primary" id="addToCartBtn">🛒 Add to Cart</button>
+                        <button class="btn-secondary" id="buyNowBtn">Buy it now</button>
                     </div>
 
                     <!-- Delivery Info -->
@@ -1684,11 +1688,10 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">You May Also Like</h2>
-                <a href="#" class="view-all">View All →</a>
+                <a href="index.html#best-sellers" class="view-all">View All →</a>
             </div>
 
             <div class="related-grid single-product">
-                <!-- Only one product from the same category (Tussar Silk) -->
                 <div class="related-card">
                     <div class="rel-image">
                         <img src="https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp" alt="Golden Yellow Tussar Silk Saree" loading="lazy" />
@@ -1745,10 +1748,10 @@
 
             <div class="footer-col">
                 <h4>Shop</h4>
-                <a href="#">Cotton Sarees</a>
-                <a href="#">Silk Sarees</a>
-                <a href="#">Georgette</a>
-                <a href="#">Designer Drapes</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/cotton-comfort">Cotton Sarees</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/silk-luxe">Silk Sarees</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/georgette-chiffon">Georgette</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/designer-drapes">Designer Drapes</a>
             </div>
 
             <div class="footer-col">
@@ -1779,41 +1782,36 @@
     SCRIPTS
     ================================================================ -->
     <script>
-        // ============================================================
-        // MOBILE TOGGLE
-        // ============================================================
+        // ================================================================
+        // PRODUCT DATA (ID: 7)
+        // ================================================================
+        const PRODUCT = {
+            id: 7,
+            name: 'Golden Yellow Tussar Silk',
+            variant: 'Tussar Silk · Golden Yellow',
+            price: 6850,
+            image: 'https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp'
+        };
+
+        // ================================================================
+        // DOM REFS
+        // ================================================================
         const toggle = document.getElementById('mobileToggle');
         const nav = document.getElementById('mainNav');
         const header = document.getElementById('header');
-
-        toggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-            toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
-        });
-
-        document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('open');
-                toggle.textContent = '☰';
-            });
-        });
-
-        // Sticky header shadow
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // ============================================================
-        // QUANTITY SELECTOR
-        // ============================================================
-        let qty = 1;
+        const cartBadge = document.getElementById('cartBadge');
+        const wishlistBadge = document.getElementById('wishlistBadge');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const buyNowBtn = document.getElementById('buyNowBtn');
+        const wishlistLink = document.getElementById('wishlistLink');
         const qtyDisplay = document.getElementById('qtyDisplay');
         const qtyDec = document.getElementById('qtyDec');
         const qtyInc = document.getElementById('qtyInc');
+
+        // ================================================================
+        // QUANTITY SELECTOR
+        // ================================================================
+        let qty = 1;
 
         qtyDec.addEventListener('click', () => {
             if (qty > 1) {
@@ -1829,51 +1827,178 @@
             }
         });
 
-        // ============================================================
-        // BUY IT NOW
-        // ============================================================
-        document.getElementById('buyNowBtn').addEventListener('click', function() {
+        // ================================================================
+        // CART FUNCTIONS
+        // ================================================================
+        function getCart() {
+            try {
+                return JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
+            } catch { return []; }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('silkSoulCart', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const cart = getCart();
+            const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartBadge.textContent = count;
+        }
+
+        function addProductToCart(product, quantity) {
+            let cart = getCart();
+            const existing = cart.find(item => item.id === product.id);
+            if (existing) {
+                existing.quantity = (existing.quantity || 1) + quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    variant: product.variant,
+                    price: product.price,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+            saveCart(cart);
+        }
+
+        // ================================================================
+        // WISHLIST FUNCTIONS
+        // ================================================================
+        function getWishlist() {
+            try {
+                return JSON.parse(localStorage.getItem('silkSoulWishlist') || '[]');
+            } catch { return []; }
+        }
+
+        function saveWishlist(wishlist) {
+            localStorage.setItem('silkSoulWishlist', JSON.stringify(wishlist));
+            updateWishlistBadge();
+            updateWishlistLink();
+        }
+
+        function updateWishlistBadge() {
+            const wishlist = getWishlist();
+            wishlistBadge.textContent = wishlist.length;
+        }
+
+        function isInWishlist(productId) {
+            return getWishlist().includes(productId);
+        }
+
+        function toggleWishlist(productId) {
+            let wishlist = getWishlist();
+            const index = wishlist.indexOf(productId);
+            if (index > -1) {
+                wishlist.splice(index, 1);
+            } else {
+                wishlist.push(productId);
+            }
+            saveWishlist(wishlist);
+        }
+
+        function updateWishlistLink() {
+            if (isInWishlist(PRODUCT.id)) {
+                wishlistLink.innerHTML = '<span>♥</span> Added to Wishlist';
+                wishlistLink.style.color = '#E74C3C';
+            } else {
+                wishlistLink.innerHTML = '<span>♡</span> Add to Wishlist';
+                wishlistLink.style.color = '';
+            }
+        }
+
+        // ================================================================
+        // ADD TO CART — redirect to cart
+        // ================================================================
+        addToCartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const quantity = parseInt(qtyDisplay.textContent) || 1;
+            addProductToCart(PRODUCT, quantity);
+
             const original = this.textContent;
-            this.textContent = '✓ Proceeding...';
+            this.textContent = '✓ Added!';
             this.style.background = '#2E7D32';
             this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
+
             setTimeout(() => {
-                this.textContent = original;
-                this.style.background = '';
-                this.style.boxShadow = '';
-            }, 2000);
+                window.location.href = 'cart.html';
+            }, 500);
         });
 
-        // ============================================================
-        // RELATED PRODUCT BUTTONS
-        // ============================================================
-        document.querySelectorAll('.rel-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const original = this.textContent;
-                this.textContent = '✓ Added!';
-                this.style.background = '#2E7D32';
-                setTimeout(() => {
-                    this.textContent = original;
-                    this.style.background = '';
-                }, 2000);
+        // ================================================================
+        // BUY IT NOW — add to cart and go to checkout
+        // ================================================================
+        buyNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const quantity = parseInt(qtyDisplay.textContent) || 1;
+            addProductToCart(PRODUCT, quantity);
+
+            const original = this.textContent;
+            this.textContent = '✓ Added!';
+            this.style.background = '#2E7D32';
+            this.style.color = '#fff';
+            this.style.borderColor = '#2E7D32';
+
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 500);
+        });
+
+        // ================================================================
+        // WISHLIST LINK
+        // ================================================================
+        wishlistLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleWishlist(PRODUCT.id);
+            const original = this.innerHTML;
+            this.innerHTML = '✓ Saved!';
+            setTimeout(() => {
+                updateWishlistLink();
+            }, 800);
+        });
+
+        // ================================================================
+        // MOBILE TOGGLE
+        // ================================================================
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                toggle.textContent = '☰';
             });
         });
 
-        // ============================================================
-        // WISHLIST BUTTONS
-        // ============================================================
-        document.querySelectorAll('.icon-btn[aria-label="Wishlist"]').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.textContent = this.textContent === '♡' ? '♥' : '♡';
-                this.style.color = this.textContent === '♥' ? '#E74C3C' : '';
-            });
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
-        // ============================================================
+        // ================================================================
+        // STORAGE LISTENER (sync across tabs)
+        // ================================================================
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'silkSoulCart') {
+                updateCartBadge();
+            }
+            if (e.key === 'silkSoulWishlist') {
+                updateWishlistBadge();
+                updateWishlistLink();
+            }
+        });
+
+        // ================================================================
         // THUMBNAIL CLICK
-        // ============================================================
+        // ================================================================
         document.querySelectorAll('.thumb').forEach(thumb => {
             thumb.addEventListener('click', function() {
                 const imgSrc = this.dataset.image;
@@ -1883,9 +2008,9 @@
             });
         });
 
-        // ============================================================
+        // ================================================================
         // ACCORDION TOGGLES
-        // ============================================================
+        // ================================================================
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
             const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
@@ -1926,20 +2051,19 @@
             }
         }
 
-        // Open first accordion by default (disclaimer)
+        // Open first accordion by default
         document.querySelectorAll('.accordion-header.open').forEach(header => {
             const content = header.nextElementSibling;
             content.style.maxHeight = content.scrollHeight + 'px';
         });
 
-        // ============================================================
+        // ================================================================
         // RECENTLY VIEWED — localStorage
-        // ============================================================
+        // ================================================================
         (function() {
             const STORAGE_KEY = 'silkandsoul_recently_viewed';
             const MAX_ITEMS = 8;
 
-            // Current product data
             const currentProduct = {
                 id: 'b592-tussar-silk',
                 name: 'Golden Yellow Tussar Silk',
@@ -1949,45 +2073,30 @@
                 url: '#'
             };
 
-            // Get existing recently viewed from localStorage
             function getRecentlyViewed() {
                 try {
                     const data = localStorage.getItem(STORAGE_KEY);
                     return data ? JSON.parse(data) : [];
-                } catch {
-                    return [];
-                }
+                } catch { return []; }
             }
 
-            // Save recently viewed to localStorage
             function saveRecentlyViewed(items) {
                 try {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-                } catch (e) {
-                    // ignore
-                }
+                } catch (e) { /* ignore */ }
             }
 
-            // Add current product to recently viewed (avoid duplicates)
             function addToRecentlyViewed(product) {
                 let items = getRecentlyViewed();
-
-                // Remove if already exists (to move to top)
                 items = items.filter(item => item.id !== product.id);
-
-                // Add to front
                 items.unshift(product);
-
-                // Limit max items
                 if (items.length > MAX_ITEMS) {
                     items = items.slice(0, MAX_ITEMS);
                 }
-
                 saveRecentlyViewed(items);
                 return items;
             }
 
-            // Render recently viewed products
             function renderRecentlyViewed() {
                 const container = document.getElementById('recentlyViewedContainer');
                 const items = getRecentlyViewed();
@@ -2003,7 +2112,6 @@
                     return;
                 }
 
-                // Build grid
                 let gridHTML = `<div class="recently-grid">`;
                 items.forEach(item => {
                     gridHTML += `
@@ -2021,21 +2129,12 @@
                     `;
                 });
                 gridHTML += `</div>`;
-
                 container.innerHTML = gridHTML;
             }
 
-            // Add current product to recently viewed and render
             addToRecentlyViewed(currentProduct);
             renderRecentlyViewed();
 
-            // Expose function to add other products from other pages (if needed)
-            window.addRecentlyViewed = function(product) {
-                addToRecentlyViewed(product);
-                renderRecentlyViewed();
-            };
-
-            // For demo: if user clicks on any product card in "You May Also Like", add it to recently viewed
             document.querySelectorAll('.related-card .rel-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     const card = this.closest('.related-card');
@@ -2058,8 +2157,17 @@
                     renderRecentlyViewed();
                 });
             });
-
         })();
+
+        // ================================================================
+        // INIT
+        // ================================================================
+        updateCartBadge();
+        updateWishlistBadge();
+        updateWishlistLink();
+
+        console.log('🛒 Tussar Silk product page ready — Add to Cart → Cart → Checkout flow active.');
+        console.log('📦 Product ID:', PRODUCT.id, '| Name:', PRODUCT.name);
     </script>
 
 </body>

@@ -794,6 +794,252 @@
         }
 
         /* ================================================================
+           PAYMENT MODAL
+           ================================================================ */
+        .payment-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .payment-modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .payment-modal {
+            background: var(--warm-white);
+            border-radius: var(--radius);
+            max-width: 480px;
+            width: 100%;
+            padding: 40px 36px 36px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .payment-modal .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            line-height: 1;
+        }
+
+        .payment-modal .modal-close:hover {
+            color: var(--text-dark);
+            transform: rotate(90deg);
+        }
+
+        .payment-modal .modal-icon {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .payment-modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        .payment-modal .modal-sub {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 24px;
+        }
+
+        .payment-modal .modal-sub .amount {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* UPI QR Code */
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin: 8px 0 20px;
+        }
+
+        .qr-container .qr-box {
+            width: 180px;
+            height: 180px;
+            background: #fff;
+            border: 2px solid var(--gold-light);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .qr-container .qr-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .qr-container .upi-id {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            background: var(--gold-pale);
+            padding: 4px 16px;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+        }
+
+        .qr-container .upi-hint {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        /* Card Form */
+        .card-form {
+            margin: 8px 0 16px;
+        }
+
+        .card-form .card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .card-form .card-group {
+            margin-bottom: 14px;
+        }
+
+        .card-form .card-group label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-soft);
+            margin-bottom: 4px;
+            letter-spacing: 0.3px;
+        }
+
+        .card-form .card-group input {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid rgba(45, 27, 26, 0.08);
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.92rem;
+            background: var(--warm-white);
+            color: var(--text-dark);
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .card-form .card-group input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.12);
+        }
+
+        .card-form .card-group input::placeholder {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .card-icons {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .card-icons span {
+            font-size: 1.4rem;
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+
+        .card-icons span:hover {
+            opacity: 1;
+        }
+
+        .pay-now-btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+            margin-top: 8px;
+            box-shadow: 0 4px 20px rgba(123, 45, 78, 0.25);
+        }
+
+        .pay-now-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(123, 45, 78, 0.35);
+        }
+
+        .pay-now-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .pay-now-btn .btn-loader {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ================================================================
            FOOTER — REFINED PREMIUM ✦
            ================================================================ */
         .footer {
@@ -913,37 +1159,6 @@
         }
 
         /* ================================================================
-           TOAST
-           ================================================================ */
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--text-dark);
-            color: #fff;
-            padding: 16px 28px;
-            border-radius: var(--radius-sm);
-            box-shadow: 0 8px 40px rgba(45, 27, 26, 0.2);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s ease;
-            z-index: 999;
-            border-left: 4px solid var(--gold);
-            max-width: 420px;
-        }
-
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .toast .toast-icon {
-            margin-right: 10px;
-        }
-
-        /* ================================================================
            RESPONSIVE
            ================================================================ */
 
@@ -996,6 +1211,29 @@
 
             .footer-brand p {
                 max-width: 100%;
+            }
+
+            .payment-modal {
+                padding: 28px 20px 24px;
+                margin: 12px;
+            }
+
+            .payment-modal .modal-icon {
+                font-size: 2.2rem;
+            }
+
+            .payment-modal h3 {
+                font-size: 1.3rem;
+            }
+
+            .qr-container .qr-box {
+                width: 150px;
+                height: 150px;
+            }
+
+            .card-form .card-row {
+                grid-template-columns: 1fr;
+                gap: 0;
             }
         }
 
@@ -1114,12 +1352,36 @@
                 font-size: 0.7rem;
             }
 
-            .toast {
-                left: 16px;
-                right: 16px;
-                bottom: 16px;
-                font-size: 0.88rem;
-                padding: 14px 20px;
+            .payment-modal {
+                padding: 20px 14px 20px;
+            }
+
+            .payment-modal .modal-icon {
+                font-size: 2rem;
+            }
+
+            .payment-modal h3 {
+                font-size: 1.1rem;
+            }
+
+            .payment-modal .modal-sub {
+                font-size: 0.82rem;
+            }
+
+            .qr-container .qr-box {
+                width: 130px;
+                height: 130px;
+                padding: 8px;
+            }
+
+            .qr-container .upi-id {
+                font-size: 0.8rem;
+                padding: 2px 12px;
+            }
+
+            .pay-now-btn {
+                font-size: 0.95rem;
+                padding: 12px;
             }
         }
     </style>
@@ -1306,6 +1568,70 @@
     </section>
 
     <!-- ================================================================
+    PAYMENT MODAL
+    ================================================================ -->
+    <div class="payment-modal-overlay" id="paymentModal">
+        <div class="payment-modal">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
+
+            <!-- UPI Content -->
+            <div id="upiContent">
+                <div class="modal-icon">📱</div>
+                <h3>Pay with UPI</h3>
+                <p class="modal-sub">
+                    Scan the QR code below using <strong>GPay, PhonePe, or Paytm</strong><br />
+                    Amount: <span class="amount" id="upiAmount">₹0</span>
+                </p>
+                <div class="qr-container">
+                    <div class="qr-box">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=SilkSoul@upi&pn=Silk%20%26%20Soul&am=0&cu=INR" alt="UPI QR Code" id="upiQrImage" />
+                    </div>
+                    <span class="upi-id">SilkSoul@upi</span>
+                    <p class="upi-hint">Scan this QR code with any UPI app to pay</p>
+                </div>
+                <button class="pay-now-btn" id="upiPayBtn">✅ I have paid — Confirm Order</button>
+            </div>
+
+            <!-- Card Content -->
+            <div id="cardContent" style="display:none;">
+                <div class="modal-icon">💳</div>
+                <h3>Pay with Card</h3>
+                <p class="modal-sub">
+                    Enter your card details to complete payment<br />
+                    Amount: <span class="amount" id="cardAmount">₹0</span>
+                </p>
+                <div class="card-form">
+                    <div class="card-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" />
+                    </div>
+                    <div class="card-row">
+                        <div class="card-group">
+                            <label for="cardExpiry">Expiry Date</label>
+                            <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" />
+                        </div>
+                        <div class="card-group">
+                            <label for="cardCvv">CVV</label>
+                            <input type="text" id="cardCvv" placeholder="123" maxlength="4" />
+                        </div>
+                    </div>
+                    <div class="card-group">
+                        <label for="cardName">Cardholder Name</label>
+                        <input type="text" id="cardName" placeholder="Full name on card" />
+                    </div>
+                    <div class="card-icons">
+                        <span>💳</span>
+                        <span>🏦</span>
+                        <span>🔷</span>
+                        <span style="font-size:0.7rem;color:var(--text-muted);margin-left:auto;">Visa · Mastercard · RuPay</span>
+                    </div>
+                </div>
+                <button class="pay-now-btn" id="cardPayBtn">💳 Pay Now — Confirm Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================================================
     FOOTER — REFINED ✦
     ================================================================ -->
     <footer class="footer">
@@ -1409,12 +1735,10 @@
                 ];
                 localStorage.setItem('silkSoulCart', JSON.stringify(cart));
             }
-            // Ensure each item has quantity
             cart = cart.map(item => ({
                 ...item,
                 quantity: item.quantity || 1
             }));
-            // Remove items that don't exist in PRODUCTS
             cart = cart.filter(item => PRODUCTS.some(p => p.id === item.id));
             saveCart();
         }
@@ -1453,13 +1777,9 @@
             const shipping = total > 0 && total < 1000 ? 99 : 0;
             const grandTotal = total + shipping;
 
-            // Update badge
             document.getElementById('cartBadge').textContent = count;
-
-            // Update order count badge
             document.getElementById('orderCountBadge').textContent = count + ' item' + (count !== 1 ? 's' : '');
 
-            // Render order items
             const list = document.getElementById('orderItemsList');
             if (items.length === 0) {
                 list.innerHTML =
@@ -1481,7 +1801,6 @@
                 `).join('');
             }
 
-            // Update summary
             document.getElementById('checkoutSubtotal').textContent = `₹${total.toLocaleString()}`;
             document.getElementById('checkoutShipping').textContent = shipping === 0 ? 'FREE' : `₹${shipping}`;
             document.getElementById('checkoutTotal').textContent = `₹${grandTotal.toLocaleString()}`;
@@ -1499,18 +1818,9 @@
         });
 
         // ================================================================
-        // PLACE ORDER — REDIRECT TO WHATSAPP
+        // GET ORDER DATA (shared across flows)
         // ================================================================
-        document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-
-            const items = getCartItems();
-            if (items.length === 0) {
-                alert('Your cart is empty. Add some sarees first!');
-                return;
-            }
-
-            // Validation
+        function getOrderData() {
             const firstName = document.getElementById('firstName').value.trim();
             const lastName = document.getElementById('lastName').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -1520,55 +1830,238 @@
             const state = document.getElementById('state').value.trim();
             const pincode = document.getElementById('pincode').value.trim();
 
-            if (!firstName || !lastName || !email || !phone || !address || !city || !state || !pincode) {
-                alert('Please fill in all required fields.');
-                return;
-            }
-
-            if (!email.includes('@') || !email.includes('.')) {
-                alert('Please enter a valid email address.');
-                return;
-            }
-
-            if (phone.replace(/\s/g, '').length < 10) {
-                alert('Please enter a valid phone number.');
-                return;
-            }
-
-            // Get selected payment method
             const selectedPayment = document.querySelector('input[name="payment"]:checked');
             const paymentMethod = selectedPayment ? selectedPayment.value : 'Cash on Delivery';
 
-            // Calculate totals
+            const items = getCartItems();
             const total = getCartTotal();
             const shipping = total > 0 && total < 1000 ? 99 : 0;
             const grandTotal = total + shipping;
 
-            // Build order details message
             const fullName = `${firstName} ${lastName}`;
             const itemList = items.map(item =>
                 `${item.name} (${item.variant}) × ${item.quantity} = ₹${(item.price * item.quantity).toLocaleString()}`
             ).join('\n');
 
+            return {
+                firstName,
+                lastName,
+                fullName,
+                email,
+                phone,
+                address,
+                city,
+                state,
+                pincode,
+                paymentMethod,
+                items,
+                total,
+                shipping,
+                grandTotal,
+                itemList,
+                isValid: firstName && lastName && email && phone && address && city && state && pincode &&
+                    email.includes('@') && email.includes('.') && phone.replace(/\s/g, '').length >= 10
+            };
+        }
+
+        // ================================================================
+        // REDIRECT TO WHATSAPP with order details
+        // ================================================================
+        function redirectToWhatsApp(orderData) {
             const message =
                 `🛍️ *New Order from Silk & Soul* 🛍️\n\n` +
-                `👤 *Customer:* ${fullName}\n` +
-                `📧 *Email:* ${email}\n` +
-                `📞 *Phone:* ${phone}\n\n` +
-                `📦 *Order Details:*\n${itemList}\n\n` +
-                `💰 *Subtotal:* ₹${total.toLocaleString()}\n` +
-                `🚚 *Shipping:* ${shipping === 0 ? 'FREE' : '₹' + shipping.toLocaleString()}\n` +
-                `💳 *Payment Method:* ${paymentMethod}\n` +
-                `🔢 *Total:* ₹${grandTotal.toLocaleString()}\n\n` +
-                `📍 *Shipping Address:*\n${address},\n${city}, ${state} - ${pincode}\n\n` +
+                `👤 *Customer:* ${orderData.fullName}\n` +
+                `📧 *Email:* ${orderData.email}\n` +
+                `📞 *Phone:* ${orderData.phone}\n\n` +
+                `📦 *Order Details:*\n${orderData.itemList}\n\n` +
+                `💰 *Subtotal:* ₹${orderData.total.toLocaleString()}\n` +
+                `🚚 *Shipping:* ${orderData.shipping === 0 ? 'FREE' : '₹' + orderData.shipping.toLocaleString()}\n` +
+                `💳 *Payment Method:* ${orderData.paymentMethod}\n` +
+                `🔢 *Total:* ₹${orderData.grandTotal.toLocaleString()}\n\n` +
+                `📍 *Shipping Address:*\n${orderData.address},\n${orderData.city}, ${orderData.state} - ${orderData.pincode}\n\n` +
                 `🙏 Thank you for your order!`;
 
-            // Encode for WhatsApp URL
             const encoded = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/918979401469?text=${encoded}`;
-
-            // Redirect to WhatsApp
             window.location.href = whatsappUrl;
+        }
+
+        // ================================================================
+        // PLACE ORDER — Main handler
+        // ================================================================
+        document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const orderData = getOrderData();
+
+            if (!orderData.isValid) {
+                alert('Please fill in all required fields correctly.');
+                return;
+            }
+
+            const items = getCartItems();
+            if (items.length === 0) {
+                alert('Your cart is empty. Add some sarees first!');
+                return;
+            }
+
+            // Check payment method
+            if (orderData.paymentMethod === 'Cash on Delivery') {
+                // COD: directly go to WhatsApp
+                redirectToWhatsApp(orderData);
+                return;
+            }
+
+            // For UPI or Card: show payment modal
+            const modal = document.getElementById('paymentModal');
+            const upiContent = document.getElementById('upiContent');
+            const cardContent = document.getElementById('cardContent');
+
+            // Update amount in modal
+            document.getElementById('upiAmount').textContent = `₹${orderData.grandTotal.toLocaleString()}`;
+            document.getElementById('cardAmount').textContent = `₹${orderData.grandTotal.toLocaleString()}`;
+
+            // Update QR code with amount
+            const qrImg = document.getElementById('upiQrImage');
+            const upiUrl = `upi://pay?pa=SilkSoul@upi&pn=Silk%20%26%20Soul&am=${orderData.grandTotal}&cu=INR`;
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+
+            if (orderData.paymentMethod === 'UPI') {
+                upiContent.style.display = 'block';
+                cardContent.style.display = 'none';
+            } else if (orderData.paymentMethod === 'Credit/Debit Card') {
+                upiContent.style.display = 'none';
+                cardContent.style.display = 'block';
+                // Reset card form
+                document.getElementById('cardNumber').value = '';
+                document.getElementById('cardExpiry').value = '';
+                document.getElementById('cardCvv').value = '';
+                document.getElementById('cardName').value = '';
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        // ================================================================
+        // MODAL CLOSE
+        // ================================================================
+        function closeModal() {
+            document.getElementById('paymentModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+        document.getElementById('paymentModal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // ================================================================
+        // UPI PAY — Confirm payment
+        // ================================================================
+        document.getElementById('upiPayBtn').addEventListener('click', function() {
+            const btn = this;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="btn-loader"></span> Verifying payment...';
+
+            setTimeout(() => {
+                btn.innerHTML = '✅ Payment Confirmed — Redirecting...';
+                const orderData = getOrderData();
+                if (orderData.isValid) {
+                    // Clear cart
+                    localStorage.removeItem('silkSoulCart');
+                    cart = [];
+                    updateUI();
+                    redirectToWhatsApp(orderData);
+                } else {
+                    alert('Something went wrong. Please try again.');
+                    btn.disabled = false;
+                    btn.textContent = '✅ I have paid — Confirm Order';
+                }
+            }, 1500);
+        });
+
+        // ================================================================
+        // CARD PAY — Process card payment
+        // ================================================================
+        document.getElementById('cardPayBtn').addEventListener('click', function() {
+            const cardNumber = document.getElementById('cardNumber').value.trim();
+            const expiry = document.getElementById('cardExpiry').value.trim();
+            const cvv = document.getElementById('cardCvv').value.trim();
+            const cardName = document.getElementById('cardName').value.trim();
+
+            // Simple validation
+            const numClean = cardNumber.replace(/\s/g, '');
+            if (numClean.length < 15 || numClean.length > 16) {
+                alert('Please enter a valid 15-16 digit card number.');
+                return;
+            }
+            if (!expiry.match(/^\d{2}\/\d{2}$/)) {
+                alert('Please enter expiry date in MM/YY format.');
+                return;
+            }
+            if (cvv.length < 3 || cvv.length > 4) {
+                alert('Please enter a valid CVV (3-4 digits).');
+                return;
+            }
+            if (!cardName || cardName.length < 2) {
+                alert('Please enter the cardholder name.');
+                return;
+            }
+
+            const btn = this;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="btn-loader"></span> Processing payment...';
+
+            setTimeout(() => {
+                btn.innerHTML = '✅ Payment Successful — Redirecting...';
+                const orderData = getOrderData();
+                if (orderData.isValid) {
+                    localStorage.removeItem('silkSoulCart');
+                    cart = [];
+                    updateUI();
+                    redirectToWhatsApp(orderData);
+                } else {
+                    alert('Something went wrong. Please try again.');
+                    btn.disabled = false;
+                    btn.textContent = '💳 Pay Now — Confirm Order';
+                }
+            }, 1800);
+        });
+
+        // ================================================================
+        // CARD INPUT FORMATTING
+        // ================================================================
+        document.getElementById('cardNumber').addEventListener('input', function(e) {
+            let val = this.value.replace(/\s/g, '').replace(/\D/g, '');
+            if (val.length > 16) val = val.slice(0, 16);
+            let formatted = '';
+            for (let i = 0; i < val.length; i++) {
+                if (i > 0 && i % 4 === 0) formatted += ' ';
+                formatted += val[i];
+            }
+            this.value = formatted;
+        });
+
+        document.getElementById('cardExpiry').addEventListener('input', function(e) {
+            let val = this.value.replace(/\D/g, '');
+            if (val.length > 4) val = val.slice(0, 4);
+            if (val.length >= 2) {
+                const month = parseInt(val.slice(0, 2));
+                if (month > 12) {
+                    val = '12' + val.slice(2);
+                }
+            }
+            let formatted = '';
+            for (let i = 0; i < val.length; i++) {
+                if (i === 2) formatted += '/';
+                formatted += val[i];
+            }
+            this.value = formatted;
+        });
+
+        document.getElementById('cardCvv').addEventListener('input', function(e) {
+            this.value = this.value.replace(/\D/g, '').slice(0, 4);
         });
 
         // ================================================================
@@ -1620,7 +2113,7 @@
         // ================================================================
         loadCart();
 
-        console.log('🧾 Silk & Soul Checkout ready — WhatsApp redirect enabled.');
+        console.log('🧾 Silk & Soul Checkout ready — Payment modal enabled.');
         console.log('📦 Cart items:', getCartItems());
         console.log('💰 Total:', getCartTotal());
     </script>

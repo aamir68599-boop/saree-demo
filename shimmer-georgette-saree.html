@@ -1241,7 +1241,7 @@
     ================================================================ -->
     <header class="header" id="header">
         <div class="container header-inner">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <span class="logo-icon">✦</span>
                 <span class="logo-silk">Silk</span>
                 <span class="logo-amp">&amp;</span>
@@ -1249,19 +1249,22 @@
             </a>
 
             <nav class="nav" id="mainNav">
-                <a href="#">Sarees</a>
-                <a href="#">Best Sellers</a>
-                <a href="#">Reviews</a>
-                <a href="#">Shop</a>
+                <a href="index.html#categories">Sarees</a>
+                <a href="index.html#best-sellers">Best Sellers</a>
+                <a href="index.html#testimonials">Reviews</a>
+                <a href="index.html#final-cta">Shop</a>
             </nav>
 
             <div class="nav-actions">
                 <button class="icon-btn" aria-label="Search">🔍</button>
-                <button class="icon-btn" aria-label="Wishlist">♡</button>
-                <button class="icon-btn" aria-label="Cart">
+                <a href="wishlist.html" class="icon-btn" aria-label="Wishlist" style="text-decoration:none;color:var(--text-soft);">
+                    ♡
+                    <span class="badge" id="wishlistBadge">0</span>
+                </a>
+                <a href="cart.html" class="icon-btn" aria-label="Cart" style="text-decoration:none;color:var(--text-soft);">
                     🛒
-                    <span class="badge">2</span>
-                </button>
+                    <span class="badge" id="cartBadge">0</span>
+                </a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
             </div>
         </div>
@@ -1305,7 +1308,7 @@
 
                     <!-- Breadcrumb -->
                     <div class="breadcrumb">
-                        <a href="#">Home</a> &nbsp;›&nbsp; <a href="#">Georgette Sarees</a> &nbsp;›&nbsp; <span style="color:var(--text-soft);">Shimmer Georgette Saree | DC913</span>
+                        <a href="index.html">Home</a> &nbsp;›&nbsp; <a href="index.html#categories">Georgette Sarees</a> &nbsp;›&nbsp; <span style="color:var(--text-soft);">Shimmer Georgette Saree | DC913</span>
                     </div>
 
                     <!-- Title -->
@@ -1451,7 +1454,7 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">You May Also Like</h2>
-                <a href="#" class="view-all">View All →</a>
+                <a href="index.html#best-sellers" class="view-all">View All →</a>
             </div>
 
             <div class="related-grid">
@@ -1464,7 +1467,7 @@
                         <div class="rel-name">Mysore Silk</div>
                         <div class="rel-variant">Pure Silk · Royal Blue</div>
                         <div class="rel-price">₹15,999</div>
-                        <button class="rel-btn">View Product</button>
+                        <button class="rel-btn" onclick="window.location.href='#'">View Product</button>
                     </div>
                 </div>
 
@@ -1476,7 +1479,7 @@
                         <div class="rel-name">Cotton Handloom</div>
                         <div class="rel-variant">Pure Cotton · Teal Blue</div>
                         <div class="rel-price">₹2,299</div>
-                        <button class="rel-btn">View Product</button>
+                        <button class="rel-btn" onclick="window.location.href='#'">View Product</button>
                     </div>
                 </div>
 
@@ -1488,7 +1491,7 @@
                         <div class="rel-name">Georgette Drape</div>
                         <div class="rel-variant">Georgette · Dusty Rose</div>
                         <div class="rel-price">₹3,799</div>
-                        <button class="rel-btn">View Product</button>
+                        <button class="rel-btn" onclick="window.location.href='#'">View Product</button>
                     </div>
                 </div>
 
@@ -1500,7 +1503,7 @@
                         <div class="rel-name">Tussar Silk</div>
                         <div class="rel-variant">Tussar Silk · Mustard Gold</div>
                         <div class="rel-price">₹5,499</div>
-                        <button class="rel-btn">View Product</button>
+                        <button class="rel-btn" onclick="window.location.href='#'">View Product</button>
                     </div>
                 </div>
 
@@ -1528,10 +1531,10 @@
 
             <div class="footer-col">
                 <h4>Shop</h4>
-                <a href="#">Cotton Sarees</a>
-                <a href="#">Silk Sarees</a>
-                <a href="#">Georgette</a>
-                <a href="#">Designer Drapes</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/cotton-comfort">Cotton Sarees</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/silk-luxe">Silk Sarees</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/georgette-chiffon">Georgette</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/designer-drapes">Designer Drapes</a>
             </div>
 
             <div class="footer-col">
@@ -1562,37 +1565,35 @@
     SCRIPTS
     ================================================================ -->
     <script>
-        // Mobile toggle
+        // ================================================================
+        // PRODUCT DATA (ID: 6)
+        // ================================================================
+        const PRODUCT = {
+            id: 6,
+            name: 'Shimmer Georgette Saree | DC913',
+            variant: 'Shimmer Georgette · Dusty Pink',
+            price: 1400,
+            image: 'https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp'
+        };
+
+        // ================================================================
+        // DOM REFS
+        // ================================================================
         const toggle = document.getElementById('mobileToggle');
         const nav = document.getElementById('mainNav');
         const header = document.getElementById('header');
-
-        toggle.addEventListener('click', () => {
-            nav.classList.toggle('open');
-            toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
-        });
-
-        document.querySelectorAll('.nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('open');
-                toggle.textContent = '☰';
-            });
-        });
-
-        // Sticky header shadow
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 10) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Quantity selector
-        let qty = 1;
+        const cartBadge = document.getElementById('cartBadge');
+        const wishlistBadge = document.getElementById('wishlistBadge');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const buyNowBtn = document.getElementById('buyNowBtn');
         const qtyDisplay = document.getElementById('qtyDisplay');
         const qtyDec = document.getElementById('qtyDec');
         const qtyInc = document.getElementById('qtyInc');
+
+        // ================================================================
+        // QUANTITY SELECTOR
+        // ================================================================
+        let qty = 1;
 
         qtyDec.addEventListener('click', () => {
             if (qty > 1) {
@@ -1608,58 +1609,134 @@
             }
         });
 
-        // Add to cart
-        document.getElementById('addToCartBtn').addEventListener('click', function() {
+        // ================================================================
+        // CART FUNCTIONS
+        // ================================================================
+        function getCart() {
+            try {
+                return JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
+            } catch { return []; }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('silkSoulCart', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const cart = getCart();
+            const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartBadge.textContent = count;
+        }
+
+        function addProductToCart(product, quantity) {
+            let cart = getCart();
+            const existing = cart.find(item => item.id === product.id);
+            if (existing) {
+                existing.quantity = (existing.quantity || 1) + quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    variant: product.variant,
+                    price: product.price,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+            saveCart(cart);
+        }
+
+        // ================================================================
+        // WISHLIST (kept for badge sync)
+        // ================================================================
+        function getWishlist() {
+            try {
+                return JSON.parse(localStorage.getItem('silkSoulWishlist') || '[]');
+            } catch { return []; }
+        }
+
+        function updateWishlistBadge() {
+            const wishlist = getWishlist();
+            wishlistBadge.textContent = wishlist.length;
+        }
+
+        // ================================================================
+        // ADD TO CART — redirect to cart
+        // ================================================================
+        addToCartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const quantity = parseInt(qtyDisplay.textContent) || 1;
+            addProductToCart(PRODUCT, quantity);
+
+            // Visual feedback
             const original = this.textContent;
             this.textContent = '✓ Added!';
             this.style.background = '#2E7D32';
             this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
+
             setTimeout(() => {
-                this.textContent = original;
-                this.style.background = '';
-                this.style.boxShadow = '';
-            }, 2000);
+                window.location.href = 'cart.html';
+            }, 500);
         });
 
-        // Buy it now
-        document.getElementById('buyNowBtn').addEventListener('click', function() {
+        // ================================================================
+        // BUY IT NOW — add to cart and go to checkout
+        // ================================================================
+        buyNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const quantity = parseInt(qtyDisplay.textContent) || 1;
+            addProductToCart(PRODUCT, quantity);
+
             const original = this.textContent;
-            this.textContent = '✓ Proceeding...';
+            this.textContent = '✓ Added!';
             this.style.background = '#2E7D32';
             this.style.color = '#fff';
             this.style.borderColor = '#2E7D32';
+
             setTimeout(() => {
-                this.textContent = original;
-                this.style.background = '';
-                this.style.color = '';
-                this.style.borderColor = '';
-            }, 2000);
+                window.location.href = 'checkout.html';
+            }, 500);
         });
 
-        // Related product buttons
-        document.querySelectorAll('.rel-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const original = this.textContent;
-                this.textContent = '✓ Added!';
-                this.style.background = '#2E7D32';
-                setTimeout(() => {
-                    this.textContent = original;
-                    this.style.background = '';
-                }, 2000);
+        // ================================================================
+        // MOBILE TOGGLE & SCROLL
+        // ================================================================
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
+        });
+
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                toggle.textContent = '☰';
             });
         });
 
-        // Wishlist buttons
-        document.querySelectorAll('.icon-btn[aria-label="Wishlist"]').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.textContent = this.textContent === '♡' ? '♥' : '♡';
-                this.style.color = this.textContent === '♥' ? '#E74C3C' : '';
-            });
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
-        // Thumbnail click - change main image
+        // ================================================================
+        // STORAGE LISTENER (sync badges across tabs)
+        // ================================================================
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'silkSoulCart') {
+                updateCartBadge();
+            }
+            if (e.key === 'silkSoulWishlist') {
+                updateWishlistBadge();
+            }
+        });
+
+        // ================================================================
+        // THUMBNAIL CLICK — change main image
+        // ================================================================
         document.querySelectorAll('.thumb').forEach(thumb => {
             thumb.addEventListener('click', function() {
                 const imgSrc = this.dataset.image;
@@ -1669,21 +1746,26 @@
             });
         });
 
-        // Color selector
+        // ================================================================
+        // COLOR SELECTOR
+        // ================================================================
         document.querySelectorAll('.color-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 document.getElementById('selectedColor').textContent = this.dataset.color;
+                // Also update product variant for cart (optional)
+                PRODUCT.variant = 'Shimmer Georgette · ' + this.dataset.color;
             });
         });
 
-        // Accordion toggle
+        // ================================================================
+        // ACCORDION TOGGLE
+        // ================================================================
         function toggleAccordion(header) {
             const content = header.nextElementSibling;
             const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
 
-            // Close all accordions in the same section
             const parent = header.closest('.care-warranty-section');
             parent.querySelectorAll('.accordion-content').forEach(c => {
                 c.style.maxHeight = '0px';
@@ -1703,6 +1785,26 @@
             const content = header.nextElementSibling;
             content.style.maxHeight = content.scrollHeight + 'px';
         });
+
+        // ================================================================
+        // RELATED PRODUCT BUTTONS — redirect to product pages (dummy)
+        // ================================================================
+        document.querySelectorAll('.rel-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Could redirect to specific product pages, but keep as placeholder
+                alert('View product page coming soon!');
+            });
+        });
+
+        // ================================================================
+        // INIT
+        // ================================================================
+        updateCartBadge();
+        updateWishlistBadge();
+
+        console.log('🛒 Shimmer Georgette product page ready — Add to Cart → Cart → Checkout flow active.');
+        console.log('📦 Product ID:', PRODUCT.id, '| Name:', PRODUCT.name);
     </script>
 
 </body>

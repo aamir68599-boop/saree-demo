@@ -1,3 +1,6 @@
+<!-- ============================================================
+index.html — HOME PAGE (unchanged except redirect URL)
+============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2526,7 +2529,7 @@
     ================================================================ -->
     <header class="header" id="header">
         <div class="container header-inner">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <span class="logo-icon">✦</span>
                 <span class="logo-silk">Silk</span>
                 <span class="logo-amp">&amp;</span>
@@ -2534,19 +2537,19 @@
             </a>
 
             <nav class="nav" id="mainNav">
-                <a href="#categories">Sarees</a>
-                <a href="#best-sellers">Best Sellers</a>
-                <a href="#testimonials">Reviews</a>
-                <a href="#final-cta">Shop</a>
+                <a href="index.html#categories">Sarees</a>
+                <a href="index.html#best-sellers">Best Sellers</a>
+                <a href="index.html#testimonials">Reviews</a>
+                <a href="index.html#final-cta">Shop</a>
             </nav>
 
             <div class="nav-actions">
                 <button class="icon-btn" aria-label="Search">🔍</button>
                 <button class="icon-btn" aria-label="Wishlist">♡</button>
-                <button class="icon-btn" aria-label="Cart">
+                <a href="cart.html" class="icon-btn" aria-label="Cart" style="text-decoration:none;color:var(--text-soft);">
                     🛒
                     <span class="badge" id="cartBadge">0</span>
-                </button>
+                </a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
             </div>
         </div>
@@ -2566,7 +2569,7 @@
                     and all-day comfort so you can own every moment.
                 </p>
                 <div class="hero-actions">
-                    <a href="https://saree-demo.aamir68599.workers.dev/shop" class="btn-primary">✦ Shop Now</a>
+                    <a href="cart.html" class="btn-primary">✦ Shop Now</a>
                     <a href="#categories" class="btn-secondary">Explore Collection</a>
                 </div>
                 <div class="hero-trust">
@@ -2767,7 +2770,7 @@
                     <span class="section-label">✦ Bestsellers</span>
                     <h2 class="section-title">Most loved by women like you</h2>
                 </div>
-                <a href="#" class="view-all">View All →</a>
+                <a href="cart.html" class="view-all">View All →</a>
             </div>
 
             <div class="product-grid">
@@ -2958,7 +2961,7 @@
                 We're so confident you'll love the comfort and quality of our sarees
                 that we offer a 7-day, no-questions-asked return policy.
             </p>
-            <a href="#final-cta" class="btn-gold">✦ Shop with Confidence</a>
+            <a href="cart.html" class="btn-gold">✦ Shop with Confidence</a>
         </div>
     </section>
 
@@ -2978,8 +2981,8 @@
                 Shop now and experience comfort like never before.
             </p>
             <div class="cta-group">
-                <a href="https://saree-demo.aamir68599.workers.dev/shop" class="btn-primary">✦ Shop Now — Buy Now</a>
-                <a href="#" class="btn-secondary">Explore Collection</a>
+                <a href="cart.html" class="btn-primary">✦ Shop Now — Buy Now</a>
+                <a href="#categories" class="btn-secondary">Explore Collection</a>
             </div>
             <div class="trust-badges">
                 <span>Free Shipping</span>
@@ -3118,7 +3121,7 @@
                 updateCartBadge();
 
                 // Redirect to cart page
-                window.location.href = 'https://saree-demo.aamir68599.workers.dev/cart';
+                window.location.href = 'cart.html';
             });
         });
 

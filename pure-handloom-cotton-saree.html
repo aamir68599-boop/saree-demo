@@ -1291,7 +1291,7 @@
     ================================================================ -->
     <header class="header" id="header">
         <div class="container header-inner">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <span class="logo-icon">✦</span>
                 <span class="logo-silk">Silk</span>
                 <span class="logo-amp">&amp;</span>
@@ -1299,19 +1299,22 @@
             </a>
 
             <nav class="nav" id="mainNav">
-                <a href="#">Sarees</a>
-                <a href="#">Best Sellers</a>
-                <a href="#">Reviews</a>
-                <a href="#">Shop</a>
+                <a href="index.html#categories">Sarees</a>
+                <a href="index.html#best-sellers">Best Sellers</a>
+                <a href="index.html#testimonials">Reviews</a>
+                <a href="index.html#final-cta">Shop</a>
             </nav>
 
             <div class="nav-actions">
                 <button class="icon-btn" aria-label="Search">🔍</button>
-                <button class="icon-btn" aria-label="Wishlist">♡</button>
-                <button class="icon-btn" aria-label="Cart">
+                <a href="wishlist.html" class="icon-btn" aria-label="Wishlist" style="text-decoration:none;color:var(--text-soft);">
+                    ♡
+                    <span class="badge" id="wishlistBadge">0</span>
+                </a>
+                <a href="cart.html" class="icon-btn" aria-label="Cart" style="text-decoration:none;color:var(--text-soft);">
                     🛒
-                    <span class="badge">2</span>
-                </button>
+                    <span class="badge" id="cartBadge">0</span>
+                </a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
             </div>
         </div>
@@ -1344,7 +1347,7 @@
 
                     <!-- Breadcrumb -->
                     <div class="breadcrumb">
-                        <a href="#">Home</a> &nbsp;›&nbsp; <a href="#">Cotton Sarees</a> &nbsp;›&nbsp; <span style="color:var(--text-soft);">Pure Handloom Cotton Saree</span>
+                        <a href="index.html">Home</a> &nbsp;›&nbsp; <a href="index.html#categories">Cotton Sarees</a> &nbsp;›&nbsp; <span style="color:var(--text-soft);">Pure Handloom Cotton Saree</span>
                     </div>
 
                     <!-- Title -->
@@ -1460,11 +1463,10 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">You May Also Like</h2>
-                <a href="#" class="view-all">View All →</a>
+                <a href="index.html#best-sellers" class="view-all">View All →</a>
             </div>
 
             <div class="related-grid single-product">
-                <!-- Only one product from the same category (Cotton Sarees) -->
                 <div class="related-card">
                     <div class="rel-image">
                         <img src="https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp" alt="Pure Handloom Cotton Saree" loading="lazy" />
@@ -1521,10 +1523,10 @@
 
             <div class="footer-col">
                 <h4>Shop</h4>
-                <a href="#">Cotton Sarees</a>
-                <a href="#">Silk Sarees</a>
-                <a href="#">Georgette</a>
-                <a href="#">Designer Drapes</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/cotton-comfort">Cotton Sarees</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/silk-luxe">Silk Sarees</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/georgette-chiffon">Georgette</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/designer-drapes">Designer Drapes</a>
             </div>
 
             <div class="footer-col">
@@ -1555,13 +1557,151 @@
     SCRIPTS
     ================================================================ -->
     <script>
-        // ============================================================
-        // MOBILE TOGGLE
-        // ============================================================
+        // ================================================================
+        // PRODUCT DATA (ID: 5)
+        // ================================================================
+        const PRODUCT = {
+            id: 5,
+            name: 'Pure Handloom Cotton',
+            variant: 'Pure Cotton · Teal Blue',
+            price: 4950,
+            image: 'https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp'
+        };
+
+        // ================================================================
+        // DOM REFS
+        // ================================================================
         const toggle = document.getElementById('mobileToggle');
         const nav = document.getElementById('mainNav');
         const header = document.getElementById('header');
+        const cartBadge = document.getElementById('cartBadge');
+        const wishlistBadge = document.getElementById('wishlistBadge');
+        const addToCartBtn = document.getElementById('addToCartBtn');
+        const buyNowBtn = document.getElementById('buyNowBtn');
+        const qtyDisplay = document.getElementById('qtyDisplay');
+        const qtyDec = document.getElementById('qtyDec');
+        const qtyInc = document.getElementById('qtyInc');
 
+        // ================================================================
+        // QUANTITY SELECTOR
+        // ================================================================
+        let qty = 1;
+
+        qtyDec.addEventListener('click', () => {
+            if (qty > 1) {
+                qty--;
+                qtyDisplay.textContent = qty;
+            }
+        });
+
+        qtyInc.addEventListener('click', () => {
+            if (qty < 10) {
+                qty++;
+                qtyDisplay.textContent = qty;
+            }
+        });
+
+        // ================================================================
+        // CART FUNCTIONS
+        // ================================================================
+        function getCart() {
+            try {
+                return JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
+            } catch { return []; }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('silkSoulCart', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            const cart = getCart();
+            const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartBadge.textContent = count;
+        }
+
+        // ================================================================
+        // WISHLIST FUNCTIONS (keep for consistency)
+        // ================================================================
+        function getWishlist() {
+            try {
+                return JSON.parse(localStorage.getItem('silkSoulWishlist') || '[]');
+            } catch { return []; }
+        }
+
+        function updateWishlistBadge() {
+            const wishlist = getWishlist();
+            wishlistBadge.textContent = wishlist.length;
+        }
+
+        // ================================================================
+        // ADD TO CART — with quantity
+        // ================================================================
+        function addProductToCart(product, quantity) {
+            let cart = getCart();
+            const existing = cart.find(item => item.id === product.id);
+
+            if (existing) {
+                existing.quantity = (existing.quantity || 1) + quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    variant: product.variant,
+                    price: product.price,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+            saveCart(cart);
+            updateCartBadge();
+        }
+
+        // ================================================================
+        // ADD TO CART BUTTON — redirect to cart
+        // ================================================================
+        addToCartBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const quantity = parseInt(qtyDisplay.textContent) || 1;
+            addProductToCart(PRODUCT, quantity);
+
+            // Visual feedback
+            const original = this.textContent;
+            this.textContent = '✓ Added!';
+            this.style.background = '#2E7D32';
+            this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
+
+            setTimeout(() => {
+                window.location.href = 'cart.html';
+            }, 500);
+        });
+
+        // ================================================================
+        // BUY IT NOW — add to cart and go to checkout
+        // ================================================================
+        buyNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            const quantity = parseInt(qtyDisplay.textContent) || 1;
+            addProductToCart(PRODUCT, quantity);
+
+            // Visual feedback
+            const original = this.textContent;
+            this.textContent = '✓ Added!';
+            this.style.background = '#2E7D32';
+            this.style.color = '#fff';
+            this.style.borderColor = '#2E7D32';
+
+            setTimeout(() => {
+                window.location.href = 'checkout.html';
+            }, 500);
+        });
+
+        // ================================================================
+        // MOBILE MENU
+        // ================================================================
         toggle.addEventListener('click', () => {
             nav.classList.toggle('open');
             toggle.textContent = nav.classList.contains('open') ? '✕' : '☰';
@@ -1583,92 +1723,25 @@
             }
         });
 
-        // ============================================================
-        // QUANTITY SELECTOR
-        // ============================================================
-        let qty = 1;
-        const qtyDisplay = document.getElementById('qtyDisplay');
-        const qtyDec = document.getElementById('qtyDec');
-        const qtyInc = document.getElementById('qtyInc');
-
-        qtyDec.addEventListener('click', () => {
-            if (qty > 1) {
-                qty--;
-                qtyDisplay.textContent = qty;
+        // ================================================================
+        // STORAGE LISTENER (sync across tabs)
+        // ================================================================
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'silkSoulCart') {
+                updateCartBadge();
+            }
+            if (e.key === 'silkSoulWishlist') {
+                updateWishlistBadge();
             }
         });
 
-        qtyInc.addEventListener('click', () => {
-            if (qty < 10) {
-                qty++;
-                qtyDisplay.textContent = qty;
-            }
-        });
-
-        // ============================================================
-        // ADD TO CART & BUY NOW
-        // ============================================================
-        document.getElementById('addToCartBtn').addEventListener('click', function() {
-            const original = this.textContent;
-            this.textContent = '✓ Added!';
-            this.style.background = '#2E7D32';
-            this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
-            setTimeout(() => {
-                this.textContent = original;
-                this.style.background = '';
-                this.style.boxShadow = '';
-            }, 2000);
-        });
-
-        document.getElementById('buyNowBtn').addEventListener('click', function() {
-            const original = this.textContent;
-            this.textContent = '✓ Proceeding...';
-            this.style.background = '#2E7D32';
-            this.style.color = '#fff';
-            this.style.borderColor = '#2E7D32';
-            setTimeout(() => {
-                this.textContent = original;
-                this.style.background = '';
-                this.style.color = '';
-                this.style.borderColor = '';
-            }, 2000);
-        });
-
-        // ============================================================
-        // RELATED PRODUCT BUTTONS
-        // ============================================================
-        document.querySelectorAll('.rel-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const original = this.textContent;
-                this.textContent = '✓ Added!';
-                this.style.background = '#2E7D32';
-                setTimeout(() => {
-                    this.textContent = original;
-                    this.style.background = '';
-                }, 2000);
-            });
-        });
-
-        // ============================================================
-        // WISHLIST BUTTONS
-        // ============================================================
-        document.querySelectorAll('.icon-btn[aria-label="Wishlist"]').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                this.textContent = this.textContent === '♡' ? '♥' : '♡';
-                this.style.color = this.textContent === '♥' ? '#E74C3C' : '';
-            });
-        });
-
-        // ============================================================
+        // ================================================================
         // RECENTLY VIEWED — localStorage
-        // ============================================================
+        // ================================================================
         (function() {
             const STORAGE_KEY = 'silkandsoul_recently_viewed';
             const MAX_ITEMS = 8;
 
-            // Current product data
             const currentProduct = {
                 id: 'pure-handloom-cotton',
                 name: 'Pure Handloom Cotton',
@@ -1678,45 +1751,30 @@
                 url: '#'
             };
 
-            // Get existing recently viewed from localStorage
             function getRecentlyViewed() {
                 try {
                     const data = localStorage.getItem(STORAGE_KEY);
                     return data ? JSON.parse(data) : [];
-                } catch {
-                    return [];
-                }
+                } catch { return []; }
             }
 
-            // Save recently viewed to localStorage
             function saveRecentlyViewed(items) {
                 try {
                     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-                } catch (e) {
-                    // ignore
-                }
+                } catch (e) { /* ignore */ }
             }
 
-            // Add current product to recently viewed (avoid duplicates)
             function addToRecentlyViewed(product) {
                 let items = getRecentlyViewed();
-
-                // Remove if already exists (to move to top)
                 items = items.filter(item => item.id !== product.id);
-
-                // Add to front
                 items.unshift(product);
-
-                // Limit max items
                 if (items.length > MAX_ITEMS) {
                     items = items.slice(0, MAX_ITEMS);
                 }
-
                 saveRecentlyViewed(items);
                 return items;
             }
 
-            // Render recently viewed products
             function renderRecentlyViewed() {
                 const container = document.getElementById('recentlyViewedContainer');
                 const items = getRecentlyViewed();
@@ -1732,7 +1790,6 @@
                     return;
                 }
 
-                // Build grid
                 let gridHTML = `<div class="recently-grid">`;
                 items.forEach(item => {
                     gridHTML += `
@@ -1750,21 +1807,13 @@
                     `;
                 });
                 gridHTML += `</div>`;
-
                 container.innerHTML = gridHTML;
             }
 
-            // Add current product to recently viewed and render
             addToRecentlyViewed(currentProduct);
             renderRecentlyViewed();
 
-            // Expose function to add other products from other pages (if needed)
-            window.addRecentlyViewed = function(product) {
-                addToRecentlyViewed(product);
-                renderRecentlyViewed();
-            };
-
-            // For demo: if user clicks on any product card in "You May Also Like", add it to recently viewed
+            // Click on related product "View Product" adds to recently viewed
             document.querySelectorAll('.related-card .rel-btn').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     const card = this.closest('.related-card');
@@ -1787,8 +1836,16 @@
                     renderRecentlyViewed();
                 });
             });
-
         })();
+
+        // ================================================================
+        // INIT
+        // ================================================================
+        updateCartBadge();
+        updateWishlistBadge();
+
+        console.log('🛒 Product page ready — Add to Cart → Cart → Checkout flow active.');
+        console.log('📦 Product ID:', PRODUCT.id, '| Name:', PRODUCT.name);
     </script>
 
 </body>

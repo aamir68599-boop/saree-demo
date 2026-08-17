@@ -1,5 +1,5 @@
 <!-- ============================================================
-index.html — HOME PAGE
+index.html — HOME PAGE (with wishlist link)
 ============================================================ -->
 <!DOCTYPE html>
 <html lang="en">
@@ -934,7 +934,7 @@ index.html — HOME PAGE
             box-shadow: 0 2px 8px rgba(201, 169, 110, 0.3);
         }
 
-        .product-image .wishlist {
+        .product-image .wishlist-btn {
             position: absolute;
             top: 14px;
             right: 14px;
@@ -955,10 +955,15 @@ index.html — HOME PAGE
             z-index: 2;
         }
 
-        .product-image .wishlist:hover {
+        .product-image .wishlist-btn:hover {
             background: #fff;
             color: var(--primary);
             transform: scale(1.08);
+        }
+
+        .product-image .wishlist-btn.active {
+            color: #E74C3C;
+            background: rgba(231, 76, 60, 0.1);
         }
 
         .product-info {
@@ -1998,7 +2003,7 @@ index.html — HOME PAGE
                 top: 10px;
                 left: 10px;
             }
-            .product-image .wishlist {
+            .product-image .wishlist-btn {
                 width: 32px;
                 height: 32px;
                 font-size: 0.95rem;
@@ -2302,7 +2307,7 @@ index.html — HOME PAGE
                 top: 6px;
                 left: 6px;
             }
-            .product-image .wishlist {
+            .product-image .wishlist-btn {
                 width: 28px;
                 height: 28px;
                 font-size: 0.8rem;
@@ -2545,7 +2550,10 @@ index.html — HOME PAGE
 
             <div class="nav-actions">
                 <button class="icon-btn" aria-label="Search">🔍</button>
-                <button class="icon-btn" aria-label="Wishlist">♡</button>
+                <a href="wishlist.html" class="icon-btn" aria-label="Wishlist" style="text-decoration:none;color:var(--text-soft);">
+                    ♡
+                    <span class="badge" id="wishlistBadge">0</span>
+                </a>
                 <a href="cart.html" class="icon-btn" aria-label="Cart" style="text-decoration:none;color:var(--text-soft);">
                     🛒
                     <span class="badge" id="cartBadge">0</span>
@@ -2762,7 +2770,7 @@ index.html — HOME PAGE
         </div>
     </section>
 
-    <!-- ===== BEST SELLERS — 4 Products with Add to Cart ===== -->
+    <!-- ===== BEST SELLERS — 4 Products with Add to Cart & Wishlist ===== -->
     <section class="best-sellers" id="best-sellers">
         <div class="container">
             <div class="section-header">
@@ -2781,7 +2789,7 @@ index.html — HOME PAGE
                             <img src="https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp" alt="Mysore Silk Crepe" loading="lazy" />
                         </a>
                         <span class="tag">Bestseller</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                        <button class="wishlist-btn" data-product-id="1" aria-label="Add to wishlist">♡</button>
                     </div>
                     <div class="product-info">
                         <a href="https://saree-demo.aamir68599.workers.dev/mysore-silk-crepe-burgundy-wine-saree" style="text-decoration:none;color:inherit;">
@@ -2807,7 +2815,7 @@ index.html — HOME PAGE
                             <img src="https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp" alt="Cotton Handloom" loading="lazy" />
                         </a>
                         <span class="tag">New</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                        <button class="wishlist-btn" data-product-id="2" aria-label="Add to wishlist">♡</button>
                     </div>
                     <div class="product-info">
                         <a href="https://saree-demo.aamir68599.workers.dev/pure-handloom-cotton-saree" style="text-decoration:none;color:inherit;">
@@ -2833,7 +2841,7 @@ index.html — HOME PAGE
                             <img src="https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp" alt="Georgette Drape" loading="lazy" />
                         </a>
                         <span class="tag">Top Rated</span>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                        <button class="wishlist-btn" data-product-id="3" aria-label="Add to wishlist">♡</button>
                     </div>
                     <div class="product-info">
                         <a href="https://saree-demo.aamir68599.workers.dev/shimmer-georgette-saree" style="text-decoration:none;color:inherit;">
@@ -2858,7 +2866,7 @@ index.html — HOME PAGE
                         <a href="https://saree-demo.aamir68599.workers.dev/golden-yellow-tussar-silk-saree-b592">
                             <img src="https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp" alt="Tussar Silk" loading="lazy" />
                         </a>
-                        <button class="wishlist" aria-label="Add to wishlist">♡</button>
+                        <button class="wishlist-btn" data-product-id="4" aria-label="Add to wishlist">♡</button>
                     </div>
                     <div class="product-info">
                         <a href="https://saree-demo.aamir68599.workers.dev/golden-yellow-tussar-silk-saree-b592" style="text-decoration:none;color:inherit;">
@@ -3044,68 +3052,136 @@ index.html — HOME PAGE
     </footer>
 
     <!-- ================================================================
-    SCRIPT — Add to Cart for Bestsellers (4 Products)
+    SCRIPT
     ================================================================ -->
     <script>
+        // ================================================================
+        // PRODUCT DATA
+        // ================================================================
+        const PRODUCTS = [{
+            id: 1,
+            name: 'Mysore Silk Crepe',
+            variant: 'Pure Silk · Burgundy Wine',
+            price: 16365,
+            image: 'https://saree-demo.aamir68599.workers.dev/mysore%20image%201.webp',
+        }, {
+            id: 2,
+            name: 'Cotton Handloom',
+            variant: 'Pure Cotton · Teal Blue',
+            price: 2299,
+            image: 'https://saree-demo.aamir68599.workers.dev/Pure%20Handloom%20Cotton%20Saree%201.webp',
+        }, {
+            id: 3,
+            name: 'Georgette Drape',
+            variant: 'Georgette · Dusty Rose',
+            price: 3799,
+            image: 'https://saree-demo.aamir68599.workers.dev/Shimmer%20Georgette%20Saree.webp',
+        }, {
+            id: 4,
+            name: 'Tussar Silk',
+            variant: 'Tussar Silk · Mustard Gold',
+            price: 5499,
+            image: 'https://saree-demo.aamir68599.workers.dev/Golden%20Yellow%20Tussar%20Silk%20Saree.webp',
+        }];
+
+        // ================================================================
+        // DOM REFS
+        // ================================================================
         const toggle = document.getElementById('mobileToggle');
         const nav = document.getElementById('mainNav');
         const header = document.getElementById('header');
         const cartBadge = document.getElementById('cartBadge');
+        const wishlistBadge = document.getElementById('wishlistBadge');
 
         // ================================================================
-        // UPDATE CART BADGE COUNT
+        // CART FUNCTIONS
         // ================================================================
-        function updateCartBadge() {
+        function getCart() {
             try {
-                const cart = JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
-                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-                cartBadge.textContent = count;
-            } catch (e) {
-                cartBadge.textContent = '0';
-            }
+                return JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
+            } catch { return []; }
         }
 
-        // Initial badge update
-        updateCartBadge();
+        function saveCart(cart) {
+            localStorage.setItem('silkSoulCart', JSON.stringify(cart));
+            updateCartBadge();
+        }
 
-        // Listen for storage changes from other tabs
-        window.addEventListener('storage', function(e) {
-            if (e.key === 'silkSoulCart') {
-                updateCartBadge();
-            }
-        });
+        function updateCartBadge() {
+            const cart = getCart();
+            const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            cartBadge.textContent = count;
+        }
 
         // ================================================================
-        // ADD TO CART — For ALL 4 Bestseller Products
+        // WISHLIST FUNCTIONS
+        // ================================================================
+        function getWishlist() {
+            try {
+                return JSON.parse(localStorage.getItem('silkSoulWishlist') || '[]');
+            } catch { return []; }
+        }
+
+        function saveWishlist(wishlist) {
+            localStorage.setItem('silkSoulWishlist', JSON.stringify(wishlist));
+            updateWishlistBadge();
+            updateWishlistButtons();
+        }
+
+        function updateWishlistBadge() {
+            const wishlist = getWishlist();
+            wishlistBadge.textContent = wishlist.length;
+        }
+
+        function toggleWishlist(productId) {
+            let wishlist = getWishlist();
+            const index = wishlist.indexOf(productId);
+            if (index > -1) {
+                wishlist.splice(index, 1);
+            } else {
+                wishlist.push(productId);
+            }
+            saveWishlist(wishlist);
+        }
+
+        function isInWishlist(productId) {
+            return getWishlist().includes(productId);
+        }
+
+        function updateWishlistButtons() {
+            document.querySelectorAll('.wishlist-btn').forEach(btn => {
+                const id = parseInt(btn.dataset.productId);
+                if (isInWishlist(id)) {
+                    btn.textContent = '♥';
+                    btn.classList.add('active');
+                } else {
+                    btn.textContent = '♡';
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // ================================================================
+        // ADD TO CART — Bestseller Products
         // ================================================================
         document.querySelectorAll('.best-sellers .btn-add').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
 
-                // Get product data from data attributes
-                const productId = parseInt(this.getAttribute('data-product-id'));
-                const productName = this.getAttribute('data-name');
-                const productVariant = this.getAttribute('data-variant');
-                const productPrice = parseFloat(this.getAttribute('data-price'));
-                const productImage = this.getAttribute('data-image');
+                const productId = parseInt(this.dataset.productId);
+                const productName = this.dataset.name;
+                const productVariant = this.dataset.variant;
+                const productPrice = parseFloat(this.dataset.price);
+                const productImage = this.dataset.image;
 
                 if (!productId) return;
 
-                // Get existing cart
-                let cart = [];
-                try {
-                    cart = JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
-                } catch (e) {
-                    cart = [];
-                }
-
-                // Check if product already exists in cart
+                let cart = getCart();
                 const existing = cart.find(item => item.id === productId);
                 if (existing) {
                     existing.quantity = (existing.quantity || 1) + 1;
                 } else {
-                    // Store full product info in cart
                     cart.push({
                         id: productId,
                         name: productName,
@@ -3116,12 +3192,20 @@ index.html — HOME PAGE
                     });
                 }
 
-                // Save to localStorage
-                localStorage.setItem('silkSoulCart', JSON.stringify(cart));
-                updateCartBadge();
-
-                // Redirect to cart page
+                saveCart(cart);
                 window.location.href = 'cart.html';
+            });
+        });
+
+        // ================================================================
+        // WISHLIST BUTTONS — Bestseller Products
+        // ================================================================
+        document.querySelectorAll('.wishlist-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const id = parseInt(this.dataset.productId);
+                toggleWishlist(id);
             });
         });
 
@@ -3150,19 +3234,27 @@ index.html — HOME PAGE
         });
 
         // ================================================================
-        // WISHLIST BUTTONS
+        // STORAGE LISTENER (sync across tabs)
         // ================================================================
-        document.querySelectorAll('.wishlist').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                this.textContent = this.textContent === '♡' ? '♥' : '♡';
-                this.style.color = this.textContent === '♥' ? '#E74C3C' : '';
-            });
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'silkSoulCart') {
+                updateCartBadge();
+            }
+            if (e.key === 'silkSoulWishlist') {
+                updateWishlistBadge();
+                updateWishlistButtons();
+            }
         });
 
-        console.log('🛒 Add to Cart — All 4 Bestseller products are ready!');
-        console.log('📦 Products will be saved with full details (name, variant, price, image)');
+        // ================================================================
+        // INIT
+        // ================================================================
+        updateCartBadge();
+        updateWishlistBadge();
+        updateWishlistButtons();
+
+        console.log('🛒 Silk & Soul — Home with Wishlist ready!');
+        console.log('❤️ Wishlist items:', getWishlist().length);
     </script>
 
 </body>

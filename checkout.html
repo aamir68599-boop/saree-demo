@@ -1241,7 +1241,7 @@
                         <h3>Payment Method</h3>
 
                         <label class="payment-option selected">
-                            <input type="radio" name="payment" value="cod" checked />
+                            <input type="radio" name="payment" value="Cash on Delivery" checked />
                             <span class="payment-label">
                                 <span class="icon">💵</span>
                                 Cash on Delivery
@@ -1250,7 +1250,7 @@
                         </label>
 
                         <label class="payment-option">
-                            <input type="radio" name="payment" value="upi" />
+                            <input type="radio" name="payment" value="UPI" />
                             <span class="payment-label">
                                 <span class="icon">📱</span>
                                 UPI
@@ -1259,7 +1259,7 @@
                         </label>
 
                         <label class="payment-option">
-                            <input type="radio" name="payment" value="card" />
+                            <input type="radio" name="payment" value="Credit/Debit Card" />
                             <span class="payment-label">
                                 <span class="icon">💳</span>
                                 Credit / Debit Card
@@ -1354,12 +1354,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- ===== TOAST ===== -->
-    <div class="toast" id="toast">
-        <span class="toast-icon">✓</span>
-        <span id="toastMessage">Order placed successfully!</span>
-    </div>
 
     <!-- ================================================================
     SCRIPT
@@ -1505,18 +1499,18 @@
         });
 
         // ================================================================
-        // PLACE ORDER
+        // PLACE ORDER — REDIRECT TO WHATSAPP
         // ================================================================
         document.getElementById('placeOrderBtn').addEventListener('click', function(e) {
             e.preventDefault();
 
             const items = getCartItems();
             if (items.length === 0) {
-                showToast('Your cart is empty. Add some sarees first!');
+                alert('Your cart is empty. Add some sarees first!');
                 return;
             }
 
-            // Basic validation
+            // Validation
             const firstName = document.getElementById('firstName').value.trim();
             const lastName = document.getElementById('lastName').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -1527,74 +1521,55 @@
             const pincode = document.getElementById('pincode').value.trim();
 
             if (!firstName || !lastName || !email || !phone || !address || !city || !state || !pincode) {
-                showToast('Please fill in all required fields.');
+                alert('Please fill in all required fields.');
                 return;
             }
 
-            // Email validation
             if (!email.includes('@') || !email.includes('.')) {
-                showToast('Please enter a valid email address.');
+                alert('Please enter a valid email address.');
                 return;
             }
 
-            // Phone validation (basic)
-            if (phone.length < 10) {
-                showToast('Please enter a valid phone number.');
+            if (phone.replace(/\s/g, '').length < 10) {
+                alert('Please enter a valid phone number.');
                 return;
             }
 
             // Get selected payment method
             const selectedPayment = document.querySelector('input[name="payment"]:checked');
-            const paymentMethod = selectedPayment ? selectedPayment.value : 'cod';
-            const paymentLabels = {
-                cod: 'Cash on Delivery',
-                upi: 'UPI',
-                card: 'Credit / Debit Card'
-            };
+            const paymentMethod = selectedPayment ? selectedPayment.value : 'Cash on Delivery';
 
-            const total = getCartTotal() + (total > 0 && getCartTotal() < 1000 ? 99 : 0);
+            // Calculate totals
+            const total = getCartTotal();
+            const shipping = total > 0 && total < 1000 ? 99 : 0;
+            const grandTotal = total + shipping;
 
-            // Simulate order placement
-            this.disabled = true;
-            this.textContent = '⏳ Placing Order...';
+            // Build order details message
+            const fullName = `${firstName} ${lastName}`;
+            const itemList = items.map(item =>
+                `${item.name} (${item.variant}) × ${item.quantity} = ₹${(item.price * item.quantity).toLocaleString()}`
+            ).join('\n');
 
-            setTimeout(() => {
-                // Success
-                showToast(`✅ Order placed successfully! (₹${total.toLocaleString()})`);
-                this.textContent = '✓ Order Placed!';
-                this.style.background = '#2E7D32';
+            const message =
+                `🛍️ *New Order from Silk & Soul* 🛍️\n\n` +
+                `👤 *Customer:* ${fullName}\n` +
+                `📧 *Email:* ${email}\n` +
+                `📞 *Phone:* ${phone}\n\n` +
+                `📦 *Order Details:*\n${itemList}\n\n` +
+                `💰 *Subtotal:* ₹${total.toLocaleString()}\n` +
+                `🚚 *Shipping:* ${shipping === 0 ? 'FREE' : '₹' + shipping.toLocaleString()}\n` +
+                `💳 *Payment Method:* ${paymentMethod}\n` +
+                `🔢 *Total:* ₹${grandTotal.toLocaleString()}\n\n` +
+                `📍 *Shipping Address:*\n${address},\n${city}, ${state} - ${pincode}\n\n` +
+                `🙏 Thank you for your order!`;
 
-                // Clear cart after a moment
-                setTimeout(() => {
-                    localStorage.removeItem('silkSoulCart');
-                    cart = [];
-                    updateUI();
-                    this.textContent = '✦ Place Order';
-                    this.style.background = '';
-                    this.disabled = false;
-                    // Reset form
-                    document.getElementById('checkoutForm').querySelectorAll('input, textarea').forEach(el => {
-                        if (el.id !== 'country') el.value = '';
-                    });
-                }, 3000);
-            }, 1800);
+            // Encode for WhatsApp URL
+            const encoded = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/918979401469?text=${encoded}`;
+
+            // Redirect to WhatsApp
+            window.location.href = whatsappUrl;
         });
-
-        // ================================================================
-        // TOAST
-        // ================================================================
-        let toastTimer;
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const msgEl = document.getElementById('toastMessage');
-            msgEl.textContent = message;
-            toast.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3500);
-        }
 
         // ================================================================
         // MOBILE TOGGLE
@@ -1645,7 +1620,7 @@
         // ================================================================
         loadCart();
 
-        console.log('🧾 Silk & Soul Checkout ready!');
+        console.log('🧾 Silk & Soul Checkout ready — WhatsApp redirect enabled.');
         console.log('📦 Cart items:', getCartItems());
         console.log('💰 Total:', getCartTotal());
     </script>

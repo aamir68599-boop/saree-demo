@@ -1828,7 +1828,7 @@
         });
 
         // ================================================================
-        // CART FUNCTIONS
+        // CART FUNCTIONS — uses localStorage for persistence
         // ================================================================
         function getCart() {
             try {
@@ -1911,37 +1911,41 @@
         }
 
         // ================================================================
-        // ADD TO CART — redirect to cart
+        // ADD TO CART — redirect to cart.html
         // ================================================================
         addToCartBtn.addEventListener('click', function(e) {
             e.preventDefault();
             const quantity = parseInt(qtyDisplay.textContent) || 1;
             addProductToCart(PRODUCT, quantity);
 
+            // Visual feedback
             const original = this.textContent;
             this.textContent = '✓ Added!';
             this.style.background = '#2E7D32';
             this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
 
+            // Redirect to cart page after short delay
             setTimeout(() => {
                 window.location.href = 'cart.html';
             }, 500);
         });
 
         // ================================================================
-        // BUY IT NOW — add to cart and go to checkout
+        // BUY IT NOW — add to cart and redirect to checkout.html
         // ================================================================
         buyNowBtn.addEventListener('click', function(e) {
             e.preventDefault();
             const quantity = parseInt(qtyDisplay.textContent) || 1;
             addProductToCart(PRODUCT, quantity);
 
+            // Visual feedback
             const original = this.textContent;
             this.textContent = '✓ Added!';
             this.style.background = '#2E7D32';
             this.style.color = '#fff';
             this.style.borderColor = '#2E7D32';
 
+            // Redirect to checkout page after short delay
             setTimeout(() => {
                 window.location.href = 'checkout.html';
             }, 500);
@@ -2166,8 +2170,9 @@
         updateWishlistBadge();
         updateWishlistLink();
 
-        console.log('🛒 Tussar Silk product page ready — Add to Cart → Cart → Checkout flow active.');
+        console.log('🛒 Tussar Silk product page ready — Add to Cart → cart.html | Buy it now → checkout.html');
         console.log('📦 Product ID:', PRODUCT.id, '| Name:', PRODUCT.name);
+        console.log('📌 Product data saved to localStorage and passed automatically.');
     </script>
 
 </body>

@@ -118,7 +118,7 @@
         }
 
         /* ================================================================
-           HEADER — REFINED PREMIUM ✦ (same as product page)
+           HEADER — REFINED PREMIUM ✦
            ================================================================ */
         .header {
             position: sticky;
@@ -951,6 +951,11 @@
             letter-spacing: 0.3px;
             margin-top: auto;
             box-shadow: 0 2px 16px rgba(123, 45, 78, 0.15);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .product-info .btn-add:hover {
@@ -961,6 +966,11 @@
 
         .product-info .btn-add:active {
             transform: translateY(0);
+        }
+
+        .product-info .btn-add.added {
+            background: #2E7D32;
+            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
         }
 
         /* --- Empty state --- */
@@ -1668,6 +1678,58 @@
         const clearFiltersBtn = document.getElementById('clearFiltersBtn');
 
         // ================================================================
+        // CART FUNCTIONS (same as product page)
+        // ================================================================
+        function getCart() {
+            try {
+                return JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
+            } catch { return []; }
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('silkSoulCart', JSON.stringify(cart));
+            updateCartBadge();
+        }
+
+        function updateCartBadge() {
+            try {
+                const cart = getCart();
+                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                const badge = document.getElementById('cartBadge');
+                if (badge) badge.textContent = count;
+            } catch { /* ignore */ }
+        }
+
+        function updateWishlistBadge() {
+            try {
+                const wishlist = JSON.parse(localStorage.getItem('silkSoulWishlist') || '[]');
+                const badge = document.getElementById('wishlistBadge');
+                if (badge) badge.textContent = wishlist.length;
+            } catch { /* ignore */ }
+        }
+
+        function addToCart(product, quantity) {
+            quantity = quantity || 1;
+            let cart = getCart();
+            const existing = cart.find(item => item.id === product.id);
+
+            if (existing) {
+                existing.quantity = (existing.quantity || 1) + quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    variant: product.variant,
+                    price: product.price,
+                    image: product.image,
+                    quantity: quantity
+                });
+            }
+
+            saveCart(cart);
+        }
+
+        // ================================================================
         // RENDER
         // ================================================================
         function renderProducts() {
@@ -1736,7 +1798,7 @@
                             <span class="stars">${starStr}</span>
                             <span class="count">(${p.reviews})</span>
                         </div>
-                        <a href="${p.link}" class="btn-add" style="display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;">Add to Cart</a>
+                        <button class="btn-add" data-product-id="${p.id}">🛒 Add to Cart</button>
                     </div>
                 </div>
             `;
@@ -1752,19 +1814,28 @@
                 });
             });
 
-            // Re-bind "Add to Cart" clicks inside product cards (the anchor)
+            // Re-bind "Add to Cart" clicks
             document.querySelectorAll('.product-card .btn-add').forEach(btn => {
                 btn.addEventListener('click', function(e) {
-                    // Let the anchor navigate, but we show a quick feedback
-                    const original = this.textContent;
+                    const productId = parseInt(this.dataset.productId);
+                    const product = products.find(p => p.id === productId);
+                    if (!product) return;
+
+                    // Add to cart
+                    addToCart(product, 1);
+
+                    // Visual feedback
+                    const originalText = this.textContent;
                     this.textContent = '✓ Added!';
-                    this.style.background = '#2E7D32';
-                    this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
+                    this.classList.add('added');
+
+                    // Update cart badge
+                    updateCartBadge();
+
+                    // Redirect to cart page after a short delay
                     setTimeout(() => {
-                        this.textContent = original;
-                        this.style.background = '';
-                        this.style.boxShadow = '';
-                    }, 2000);
+                        window.location.href = 'cart.html';
+                    }, 500);
                 });
             });
         }
@@ -1809,7 +1880,6 @@
         // Price slider
         priceSlider.addEventListener('input', function() {
             priceMaxInput.value = this.value;
-            // Don't auto-apply — wait for Apply button
         });
 
         priceMinInput.addEventListener('change', updateFilters);
@@ -1817,7 +1887,6 @@
 
         // Apply button
         applyBtn.addEventListener('click', function() {
-            // Sync slider with max input
             const maxVal = parseInt(priceMaxInput.value) || 20000;
             priceSlider.value = Math.min(maxVal, 20000);
             updateFilters();
@@ -1828,15 +1897,12 @@
 
         // Reset
         resetBtn.addEventListener('click', function() {
-            // Reset category checkboxes
             document.querySelectorAll('[data-filter="category"]').forEach(cb => {
                 cb.checked = cb.value === 'all';
             });
-            // Reset price
             priceMinInput.value = 0;
             priceMaxInput.value = 20000;
             priceSlider.value = 20000;
-            // Reset sort
             sortSelect.value = 'popular';
             updateFilters();
         });
@@ -1858,26 +1924,6 @@
                 }
             });
         });
-
-        // ================================================================
-        // CART / WISHLIST BADGE SYNC (from localStorage)
-        // ================================================================
-        function updateCartBadge() {
-            try {
-                const cart = JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
-                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-                const badge = document.getElementById('cartBadge');
-                if (badge) badge.textContent = count;
-            } catch { /* ignore */ }
-        }
-
-        function updateWishlistBadge() {
-            try {
-                const wishlist = JSON.parse(localStorage.getItem('silkSoulWishlist') || '[]');
-                const badge = document.getElementById('wishlistBadge');
-                if (badge) badge.textContent = wishlist.length;
-            } catch { /* ignore */ }
-        }
 
         // ================================================================
         // MOBILE TOGGLE
@@ -1919,7 +1965,7 @@
         updateCartBadge();
         updateWishlistBadge();
 
-        console.log('🛍️ Shop page loaded — Header matches product page.');
+        console.log('🛍️ Shop page loaded — Add to Cart now redirects to cart page.');
     </script>
 
 </body>

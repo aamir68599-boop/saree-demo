@@ -1814,7 +1814,7 @@
                 });
             });
 
-            // Re-bind "Add to Cart" clicks
+            // Re-bind "Add to Cart" clicks — redirects to cart.html immediately
             document.querySelectorAll('.product-card .btn-add').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     const productId = parseInt(this.dataset.productId);
@@ -1832,10 +1832,8 @@
                     // Update cart badge
                     updateCartBadge();
 
-                    // Redirect to cart page after a short delay
-                    setTimeout(() => {
-                        window.location.href = 'cart.html';
-                    }, 500);
+                    // Redirect to cart page immediately (not product page)
+                    window.location.href = 'cart.html';
                 });
             });
         }
@@ -1965,7 +1963,7 @@
         updateCartBadge();
         updateWishlistBadge();
 
-        console.log('🛍️ Shop page loaded — Add to Cart now redirects to cart page.');
+        console.log('🛍️ Shop page loaded — Add to Cart redirects to cart.html immediately.');
     </script>
 
 </body>

@@ -118,7 +118,7 @@
         }
 
         /* ================================================================
-           HEADER — REFINED PREMIUM ✦
+           HEADER — REFINED PREMIUM ✦ (same as product page)
            ================================================================ */
         .header {
             position: sticky;
@@ -1378,7 +1378,7 @@
 <body>
 
     <!-- ================================================================
-    HEADER — REFINED ✦
+    HEADER — SAME AS PRODUCT PAGE
     ================================================================ -->
     <header class="header" id="header">
         <div class="container header-inner">
@@ -1390,19 +1390,22 @@
             </a>
 
             <nav class="nav" id="mainNav">
-                <a href="index.html">Home</a>
-                <a href="shop.html" class="active">Shop</a>
+                <a href="index.html#categories">Sarees</a>
                 <a href="index.html#best-sellers">Best Sellers</a>
                 <a href="index.html#testimonials">Reviews</a>
+                <a href="https://saree-demo.aamir68599.workers.dev/shop">Shop</a>
             </nav>
 
             <div class="nav-actions">
                 <button class="icon-btn" aria-label="Search">🔍</button>
-                <button class="icon-btn" aria-label="Wishlist">♡</button>
-                <button class="icon-btn" aria-label="Cart">
+                <a href="wishlist.html" class="icon-btn" aria-label="Wishlist" style="text-decoration:none;color:var(--text-soft);">
+                    ♡
+                    <span class="badge" id="wishlistBadge">0</span>
+                </a>
+                <a href="cart.html" class="icon-btn" aria-label="Cart" style="text-decoration:none;color:var(--text-soft);">
                     🛒
-                    <span class="badge">2</span>
-                </button>
+                    <span class="badge" id="cartBadge">0</span>
+                </a>
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">☰</button>
             </div>
         </div>
@@ -1857,6 +1860,26 @@
         });
 
         // ================================================================
+        // CART / WISHLIST BADGE SYNC (from localStorage)
+        // ================================================================
+        function updateCartBadge() {
+            try {
+                const cart = JSON.parse(localStorage.getItem('silkSoulCart') || '[]');
+                const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+                const badge = document.getElementById('cartBadge');
+                if (badge) badge.textContent = count;
+            } catch { /* ignore */ }
+        }
+
+        function updateWishlistBadge() {
+            try {
+                const wishlist = JSON.parse(localStorage.getItem('silkSoulWishlist') || '[]');
+                const badge = document.getElementById('wishlistBadge');
+                if (badge) badge.textContent = wishlist.length;
+            } catch { /* ignore */ }
+        }
+
+        // ================================================================
         // MOBILE TOGGLE
         // ================================================================
         const toggle = document.getElementById('mobileToggle');
@@ -1883,10 +1906,20 @@
             }
         });
 
+        // Storage listener for cart/wishlist sync
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'silkSoulCart') updateCartBadge();
+            if (e.key === 'silkSoulWishlist') updateWishlistBadge();
+        });
+
         // ================================================================
         // INIT
         // ================================================================
         updateFilters();
+        updateCartBadge();
+        updateWishlistBadge();
+
+        console.log('🛍️ Shop page loaded — Header matches product page.');
     </script>
 
 </body>

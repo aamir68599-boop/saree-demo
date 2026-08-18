@@ -140,6 +140,31 @@
             box-shadow: 0 8px 32px rgba(201, 169, 110, 0.45);
         }
 
+        /* ===== NEW: Buy it now button ===== */
+        .btn-buy-now {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #1A1A1A;
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-buy-now:hover {
+            background: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        }
+
         /* ================================================================
            HEADER
            ================================================================ */
@@ -442,7 +467,6 @@
             color: var(--text-dark);
         }
 
-        /* --- Second image in gallery --- */
         .product-gallery .secondary-image {
             margin-top: 16px;
             border-radius: var(--radius);
@@ -575,30 +599,100 @@
             margin-right: 4px;
         }
 
-        .product-info-detail .action-row {
+        /* ===== NEW: Action Row with Quantity + Buttons ===== */
+        .action-row-main {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+            margin: 12px 0 10px;
+        }
+
+        /* --- Quantity Selector --- */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1.5px solid #DCD5CF;
+            border-radius: 50px;
+            overflow: hidden;
+            background: #fff;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(45, 27, 26, 0.04);
+        }
+
+        .quantity-selector .qty-btn {
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: transparent;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .quantity-selector .qty-btn:hover {
+            background: var(--gold-pale);
+            color: var(--primary);
+        }
+
+        .quantity-selector .qty-btn:active {
+            transform: scale(0.92);
+        }
+
+        .quantity-selector .qty-number {
+            min-width: 40px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            padding: 0 4px;
+            font-family: 'Inter', sans-serif;
+            line-height: 44px;
+            user-select: none;
+        }
+
+        /* --- Action buttons --- */
+        .action-row-main .btn-primary {
+            padding: 12px 32px;
+            font-size: 1rem;
+            flex: 1 1 auto;
+            min-width: 140px;
+        }
+
+        .action-row-main .btn-buy-now {
+            padding: 12px 32px;
+            font-size: 1rem;
+            flex: 1 1 auto;
+            min-width: 140px;
+        }
+
+        /* --- Secondary action row (Wishlist + Live) --- */
+        .action-row-secondary {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin: 12px 0 16px;
+            margin: 6px 0 12px;
         }
 
-        .product-info-detail .action-row .btn-primary {
-            padding: 14px 36px;
-            font-size: 1rem;
+        .action-row-secondary .btn-secondary {
+            padding: 12px 28px;
+            font-size: 0.95rem;
         }
 
-        .product-info-detail .action-row .btn-secondary {
-            padding: 12px 32px;
-            font-size: 1rem;
-        }
-
-        .product-info-detail .action-row .btn-live {
+        .action-row-secondary .btn-live {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             background: #E74C3C;
             color: #fff;
-            padding: 14px 28px;
+            padding: 12px 28px;
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.95rem;
@@ -608,7 +702,7 @@
             animation: pulse-live 2s infinite;
         }
 
-        .product-info-detail .action-row .btn-live:hover {
+        .action-row-secondary .btn-live:hover {
             transform: scale(1.04);
             background: #C0392B;
         }
@@ -623,7 +717,7 @@
             }
         }
 
-        .product-info-detail .action-row .btn-live .dot {
+        .action-row-secondary .btn-live .dot {
             display: inline-block;
             width: 10px;
             height: 10px;
@@ -640,6 +734,64 @@
             50% {
                 opacity: 0.3;
             }
+        }
+
+        /* ===== NEW: Pickup Available ===== */
+        .pickup-info {
+            background: var(--cream);
+            padding: 14px 20px;
+            border-radius: var(--radius-sm);
+            margin: 8px 0 16px;
+            border-left: 4px solid var(--gold);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px 16px;
+        }
+
+        .pickup-info .pickup-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .pickup-info .pickup-left .pickup-icon {
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        .pickup-info .pickup-left .pickup-text {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+        }
+
+        .pickup-info .pickup-left .pickup-text strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .pickup-info .pickup-left .pickup-text .ready {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.85rem;
+        }
+
+        .pickup-info .pickup-link {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            white-space: nowrap;
+        }
+
+        .pickup-info .pickup-link:hover {
+            color: var(--primary-dark);
+            gap: 8px;
         }
 
         .product-info-detail .trust-badges-compact {
@@ -1072,6 +1224,22 @@
             .footer-brand p {
                 max-width: 100%;
             }
+            .action-row-main .btn-primary,
+            .action-row-main .btn-buy-now {
+                min-width: 120px;
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+            .quantity-selector .qty-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            .quantity-selector .qty-number {
+                min-width: 34px;
+                font-size: 1rem;
+                line-height: 40px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1090,15 +1258,54 @@
             .product-info-detail .price-block .current-price {
                 font-size: 1.6rem;
             }
-            .product-info-detail .action-row {
-                flex-direction: column;
+
+            .action-row-main {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
             }
-            .product-info-detail .action-row .btn-primary,
-            .product-info-detail .action-row .btn-secondary,
-            .product-info-detail .action-row .btn-live {
+            .action-row-main .btn-primary,
+            .action-row-main .btn-buy-now {
+                flex: 1 1 calc(50% - 12px);
+                min-width: 100px;
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+            .quantity-selector {
+                flex: 0 0 auto;
+            }
+            .quantity-selector .qty-btn {
+                width: 38px;
+                height: 38px;
+                font-size: 1.1rem;
+            }
+            .quantity-selector .qty-number {
+                min-width: 30px;
+                font-size: 0.95rem;
+                line-height: 38px;
+            }
+
+            .action-row-secondary {
+                flex-direction: column;
+                width: 100%;
+            }
+            .action-row-secondary .btn-secondary,
+            .action-row-secondary .btn-live {
                 width: 100%;
                 justify-content: center;
+                padding: 12px 20px;
+                font-size: 0.9rem;
             }
+
+            .pickup-info {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 12px 16px;
+            }
+            .pickup-info .pickup-link {
+                white-space: normal;
+            }
+
             .product-specs .spec-grid {
                 grid-template-columns: 1fr;
                 gap: 4px;
@@ -1161,6 +1368,51 @@
             .product-gallery .secondary-image {
                 margin-top: 12px;
             }
+
+            .action-row-main {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            .action-row-main .btn-primary,
+            .action-row-main .btn-buy-now {
+                flex: 1 1 auto;
+                width: 100%;
+                min-width: unset;
+                padding: 14px 20px;
+                font-size: 0.95rem;
+            }
+            .quantity-selector {
+                align-self: center;
+            }
+            .quantity-selector .qty-btn {
+                width: 42px;
+                height: 42px;
+                font-size: 1.2rem;
+            }
+            .quantity-selector .qty-number {
+                min-width: 36px;
+                font-size: 1rem;
+                line-height: 42px;
+            }
+
+            .action-row-secondary .btn-secondary,
+            .action-row-secondary .btn-live {
+                padding: 12px 16px;
+                font-size: 0.85rem;
+            }
+
+            .pickup-info {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+            }
+            .pickup-info .pickup-left .pickup-text {
+                font-size: 0.82rem;
+            }
+            .pickup-info .pickup-link {
+                font-size: 0.82rem;
+            }
+
             .related-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
@@ -1205,6 +1457,16 @@
             }
             .product-info-detail .price-block .current-price {
                 font-size: 1.2rem;
+            }
+            .quantity-selector .qty-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 1rem;
+            }
+            .quantity-selector .qty-number {
+                min-width: 28px;
+                font-size: 0.9rem;
+                line-height: 36px;
             }
         }
     </style>
@@ -1309,9 +1571,36 @@
                         </div>
                     </div>
 
-                    <!-- Action Buttons -->
-                    <div class="action-row">
+                    <!-- ===== NEW: Action Row — Quantity + Add to Cart + Buy it now ===== -->
+                    <div class="action-row-main">
+                        <!-- Quantity Selector -->
+                        <div class="quantity-selector">
+                            <button class="qty-btn" id="qtyMinus" aria-label="Decrease quantity">−</button>
+                            <span class="qty-number" id="qtyNumber">1</span>
+                            <button class="qty-btn" id="qtyPlus" aria-label="Increase quantity">+</button>
+                        </div>
+
+                        <!-- Add to Cart -->
                         <button class="btn-primary" id="addToCartBtn">🛒 ADD TO CART</button>
+
+                        <!-- Buy it now -->
+                        <button class="btn-buy-now" id="buyNowBtn">Buy it now</button>
+                    </div>
+
+                    <!-- ===== NEW: Pickup Available ===== -->
+                    <div class="pickup-info">
+                        <div class="pickup-left">
+                            <span class="pickup-icon">📍</span>
+                            <span class="pickup-text">
+                                <strong>Pickup available</strong> at 11d Palm Avenue Park Circus Ballygunge<br />
+                                <span class="ready">✓ Usually ready in 24 hours</span>
+                            </span>
+                        </div>
+                        <a href="#" class="pickup-link">View store information →</a>
+                    </div>
+
+                    <!-- Secondary Action Row: Wishlist + Live Video Shopping -->
+                    <div class="action-row-secondary">
                         <button class="btn-secondary" id="wishlistBtn">✦ Add to Wishlist</button>
                         <button class="btn-live">
                             <span class="dot"></span> LIVE VIDEO SHOPPING
@@ -1549,7 +1838,36 @@
         const cartBadge = document.getElementById('cartBadge');
         const wishlistBadge = document.getElementById('wishlistBadge');
         const addToCartBtn = document.getElementById('addToCartBtn');
+        const buyNowBtn = document.getElementById('buyNowBtn');
         const wishlistBtn = document.getElementById('wishlistBtn');
+
+        // Quantity elements
+        const qtyMinus = document.getElementById('qtyMinus');
+        const qtyPlus = document.getElementById('qtyPlus');
+        const qtyNumber = document.getElementById('qtyNumber');
+
+        // ================================================================
+        // QUANTITY CONTROLS
+        // ================================================================
+        let currentQty = 1;
+
+        function updateQtyDisplay() {
+            qtyNumber.textContent = currentQty;
+        }
+
+        qtyMinus.addEventListener('click', function() {
+            if (currentQty > 1) {
+                currentQty--;
+                updateQtyDisplay();
+            }
+        });
+
+        qtyPlus.addEventListener('click', function() {
+            if (currentQty < 99) {
+                currentQty++;
+                updateQtyDisplay();
+            }
+        });
 
         // ================================================================
         // CART FUNCTIONS
@@ -1569,6 +1887,26 @@
             const cart = getCart();
             const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
             cartBadge.textContent = count;
+        }
+
+        function addToCart(quantity) {
+            let cart = getCart();
+            const existing = cart.find(item => item.id === PRODUCT.id);
+
+            if (existing) {
+                existing.quantity = (existing.quantity || 1) + quantity;
+            } else {
+                cart.push({
+                    id: PRODUCT.id,
+                    name: PRODUCT.name,
+                    variant: PRODUCT.variant,
+                    price: PRODUCT.price,
+                    image: PRODUCT.image,
+                    quantity: quantity
+                });
+            }
+
+            saveCart(cart);
         }
 
         // ================================================================
@@ -1619,32 +1957,37 @@
         }
 
         // ================================================================
-        // ADD TO CART — Redirect to cart page
+        // ADD TO CART — with quantity
         // ================================================================
         addToCartBtn.addEventListener('click', function(e) {
             e.preventDefault();
 
-            let cart = getCart();
-            const existing = cart.find(item => item.id === PRODUCT.id);
+            addToCart(currentQty);
 
-            if (existing) {
-                existing.quantity = (existing.quantity || 1) + 1;
-            } else {
-                cart.push({
-                    id: PRODUCT.id,
-                    name: PRODUCT.name,
-                    variant: PRODUCT.variant,
-                    price: PRODUCT.price,
-                    image: PRODUCT.image,
-                    quantity: 1
-                });
-            }
-
-            saveCart(cart);
-
-            // Show feedback then redirect
             const originalText = this.textContent;
-            this.textContent = '✓ Added!';
+            this.textContent = `✓ Added (${currentQty})`;
+            this.style.background = '#2E7D32';
+            this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
+
+            setTimeout(() => {
+                this.textContent = originalText;
+                this.style.background = '';
+                this.style.boxShadow = '';
+                // Optionally redirect to cart
+                // window.location.href = 'cart.html';
+            }, 1200);
+        });
+
+        // ================================================================
+        // BUY IT NOW — with quantity, redirect to cart
+        // ================================================================
+        buyNowBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            addToCart(currentQty);
+
+            const originalText = this.textContent;
+            this.textContent = `✓ Added (${currentQty})`;
             this.style.background = '#2E7D32';
             this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
 
@@ -1661,7 +2004,6 @@
             toggleWishlist(PRODUCT.id);
             updateWishlistButton();
 
-            // Haptic feedback
             const original = this.textContent;
             this.textContent = this.textContent.includes('Added') ? '✓ Saved!' : '✓ Added!';
             setTimeout(() => {
@@ -1752,12 +2094,12 @@
 
                 if (!items || items.length === 0) {
                     container.innerHTML = `
-                        <div class="empty-state">
-                            <span class="icon">👀</span>
-                            <h3>No recently viewed items</h3>
-                            <p>Start exploring our collection and the products you view will appear here.</p>
-                        </div>
-                    `;
+                            <div class="empty-state">
+                                <span class="icon">👀</span>
+                                <h3>No recently viewed items</h3>
+                                <p>Start exploring our collection and the products you view will appear here.</p>
+                            </div>
+                        `;
                     return;
                 }
 
@@ -1765,18 +2107,18 @@
                     `<div class="related-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:24px;">`;
                 items.forEach(item => {
                     gridHTML += `
-                        <div class="related-card">
-                            <div class="rel-image">
-                                <img src="${item.image}" alt="${item.name}" loading="lazy" />
+                            <div class="related-card">
+                                <div class="rel-image">
+                                    <img src="${item.image}" alt="${item.name}" loading="lazy" />
+                                </div>
+                                <div class="rel-info">
+                                    <div class="rel-name">${item.name}</div>
+                                    <div class="rel-variant">${item.variant}</div>
+                                    <div class="rel-price">${item.price}</div>
+                                    <button class="rel-btn" onclick="window.location.href='${item.url}'">View Product</button>
+                                </div>
                             </div>
-                            <div class="rel-info">
-                                <div class="rel-name">${item.name}</div>
-                                <div class="rel-variant">${item.variant}</div>
-                                <div class="rel-price">${item.price}</div>
-                                <button class="rel-btn" onclick="window.location.href='${item.url}'">View Product</button>
-                            </div>
-                        </div>
-                    `;
+                        `;
                 });
                 gridHTML += `</div>`;
                 container.innerHTML = gridHTML;
@@ -1822,7 +2164,7 @@
         updateWishlistBadge();
         updateWishlistButton();
 
-        console.log('🛒 Product page ready — Add to Cart → Cart → Checkout flow active.');
+        console.log('🛒 Product page ready — Quantity + Add to Cart + Buy it now active.');
         console.log('📦 Product ID:', PRODUCT.id, '| Name:', PRODUCT.name);
     </script>
 

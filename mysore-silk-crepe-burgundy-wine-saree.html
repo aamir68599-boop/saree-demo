@@ -1979,7 +1979,7 @@
         });
 
         // ================================================================
-        // BUY IT NOW — with quantity, redirect to cart
+        // BUY IT NOW — with quantity, redirect to CHECKOUT page (not cart)
         // ================================================================
         buyNowBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1992,7 +1992,7 @@
             this.style.boxShadow = '0 4px 20px rgba(46,125,50,0.3)';
 
             setTimeout(() => {
-                window.location.href = 'cart.html';
+                window.location.href = 'checkout.html';
             }, 600);
         });
 
